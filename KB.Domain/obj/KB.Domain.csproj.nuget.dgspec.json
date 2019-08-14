@@ -1,0 +1,175 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {}
+  },
+  "projects": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "projectName": "Comm100.Framework",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+        "projectName": "Comm100.Public",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
+        "projectName": "KB.Domain",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              },
+              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}
