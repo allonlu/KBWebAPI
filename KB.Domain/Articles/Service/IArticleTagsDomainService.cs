@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Application.Articles.Service
+namespace KB.Domain.Articles.Service
 {
     public interface IArticleTagsDomainService
     {
@@ -14,5 +14,7 @@ namespace KB.Application.Articles.Service
         ArticleTags UpdateTags(Guid articleId, ArticleTags tags);
 
         ArticleTags DeleteTags(Guid articleId, ArticleTags tags);
+
+        void Delete(Guid articleId);
     }
 }

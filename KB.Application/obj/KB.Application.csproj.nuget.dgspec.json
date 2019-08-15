@@ -41,6 +41,22 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Castle.Core": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",

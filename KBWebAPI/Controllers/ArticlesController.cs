@@ -28,9 +28,9 @@ namespace KBWebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<PagedListDto<ArticleWithIncludeDto>> GetList([FromQuery] ArticleQueryDto dto, [FromBody] Paging paging)
+        public ActionResult<PagedListDto<ArticleWithIncludeDto>> GetList([FromQuery] ArticleQueryDto dto, string include, [FromBody] Sorting sorting, [FromBody] Paging paging)
         {
-            var list = _app.GetList(dto);
+            var list = _app.GetList(dto, include, sorting, paging);
             return Ok(list);
         }
 

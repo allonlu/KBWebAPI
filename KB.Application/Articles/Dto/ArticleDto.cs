@@ -13,7 +13,7 @@ namespace KB.Application.Articles.Dto
 
         public string Content { get; set; }
 
-        public IEnumerable<string> Tags { get; set; }
+        //public IEnumerable<string> Tags { get; set; }
 
         public Guid AuthorId { get; set; }
 

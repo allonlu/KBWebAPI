@@ -1,4 +1,5 @@
-﻿using KB.Domain.Articles.Entity;
+﻿using Comm100.Framework;
+using KB.Domain.Articles.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +12,11 @@ namespace KB.Domain.Articles.Service
 
         ArticleWithInclude Get(Guid id, string include);
 
-        Tuple<int, IEnumerable<ArticleWithInclude>> GetList(ArticleQueryCondition condition);
+        int GetCount(ArticleQueryCondition condition);
+
+        IEnumerable<ArticleWithInclude> GetList(ArticleQueryCondition condition,
+            string include, Sorting sorting, Paging paging);
+
 
         Article Add(Article entity);
 
@@ -19,7 +24,7 @@ namespace KB.Domain.Articles.Service
 
         Article Delete(Guid id);
 
-        void DeleteByCategory(Guid categoryId);
+        void Delete(Article article);
 
         void Publish(Guid articleId);
 

@@ -11,9 +11,12 @@ namespace KB.Domain.Categories.Service
     public class CategoryDomainService : ICategoryDomainService
     {
         private readonly IRepository<Guid, Category> _repository;
-        public CategoryDomainService(IRepository<Guid, Category> repository)
+        private readonly IRepository<Guid, Article> _articleRepository;
+        public CategoryDomainService(IRepository<Guid, Category> repository, 
+            IRepository<Guid, Article> articleRepository)
         {
             this._repository = repository;
+            this._articleRepository = articleRepository;
         }
 
         public void DeleteAndAdoptChildren(Guid id, Guid targetId)
@@ -43,8 +46,13 @@ namespace KB.Domain.Categories.Service
                 Delete(child.Id);
             }
 
+            var articles = _articleRepository.GetQuery().Where(e => e.CategoryId == id).ToList();
             IArticleDomainService _articleDomainService = null; //IOC.Resolve<IArticleDomainService>();
-            _articleDomainService.DeleteByCategory(id);
+
+            foreach (var article in articles)
+            {
+                _articleDomainService.Delete(article);
+            }
 
             _repository.Delete(category);
 

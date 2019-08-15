@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public--.csproj": {}
+  },
+  "projects": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public--.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public--.csproj",
+        "projectName": "Comm100.Public--",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public--.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

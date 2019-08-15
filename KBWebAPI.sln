@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KBWebAPI", "KBWebAPI\KBWebAPI.csproj", "{E4FD8AF1-35F6-414E-B9B4-24B8984C2626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBWebAPI", "KBWebAPI\KBWebAPI.csproj", "{E4FD8AF1-35F6-414E-B9B4-24B8984C2626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Application", "KB.Application\KB.Application.csproj", "{927DCCA5-2F32-4EB0-B71D-62DC707C8A34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KB.Application", "KB.Application\KB.Application.csproj", "{927DCCA5-2F32-4EB0-B71D-62DC707C8A34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Domain", "KB.Domain\KB.Domain.csproj", "{8B09E228-75DD-4C7F-8594-64E1A093E35B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KB.Domain", "KB.Domain\KB.Domain.csproj", "{8B09E228-75DD-4C7F-8594-64E1A093E35B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comm100.Public", "Comm100.Public\Comm100.Public.csproj", "{01B4A6CD-5B80-4AE0-AD60-B42ED8E6E707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comm100.Public", "Comm100.Public\Comm100.Public.csproj", "{01B4A6CD-5B80-4AE0-AD60-B42ED8E6E707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comm100.Framework", "Comm100.Framework\Comm100.Framework.csproj", "{462FA51B-E285-461A-BE3C-C62029436C9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Comm100.Framework", "Comm100.Framework\Comm100.Framework.csproj", "{462FA51B-E285-461A-BE3C-C62029436C9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KB.Infrastructure", "KB.Infrastructure\KB.Infrastructure.csproj", "{5930D348-97BE-4ED3-A698-AECAF1B89839}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{462FA51B-E285-461A-BE3C-C62029436C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{462FA51B-E285-461A-BE3C-C62029436C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{462FA51B-E285-461A-BE3C-C62029436C9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5930D348-97BE-4ED3-A698-AECAF1B89839}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5930D348-97BE-4ED3-A698-AECAF1B89839}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5930D348-97BE-4ED3-A698-AECAF1B89839}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5930D348-97BE-4ED3-A698-AECAF1B89839}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

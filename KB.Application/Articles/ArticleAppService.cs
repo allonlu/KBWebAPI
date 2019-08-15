@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using AutoMapper;
 using Comm100.Framework;
 using KB.Application.Articles.Dto;
-using KB.Application.Articles.Service;
 using KB.Domain.Articles.Entity;
 using KB.Domain.Articles.Service;
 
@@ -23,16 +22,17 @@ namespace KB.Application.Articles
         {
             this._articleDomainService = articleDomainService;
             this._articleTagsDomainService = articleTagsDomainService;
-            
 
             var configuration = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Article, ArticleDto>();
                 cfg.CreateMap<ArticleWithInclude, ArticleWithIncludeDto>();
+
                 cfg.CreateMap<ArticleCreateDto, Article>();
                 cfg.CreateMap<ArticleUpdateDto, Article>();
                 cfg.CreateMap<ArticleQueryDto, ArticleQueryCondition>();
-                //cfg.CreateMap<ArticleTagsDto, ArticleTags>();
+                cfg.CreateMap<ArticleTagsDto, ArticleTags>();
+                cfg.CreateMap<ArticleTags, ArticleTagsDto>();
             });
         }
 
@@ -65,35 +65,37 @@ namespace KB.Application.Articles
             return _mapper.Map<ArticleWithIncludeDto>(articleWithInclude);
         }
 
-        public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto)
+        public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Sorting sorting, Paging paging)
         {
             var condition = _mapper.Map<ArticleQueryCondition>(dto);
-            var tuple = _articleDomainService.GetList(condition);
-            var count = tuple.Item1;
-            var list = tuple.Item2;
+            var count = _articleDomainService.GetCount(condition);
+            var list = _articleDomainService.GetList(condition, include, sorting, paging);
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => _mapper.Map<ArticleWithIncludeDto>(e)));
         }
 
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
-            throw new NotImplementedException();
+            var tags = _articleTagsDomainService.AddTags(id, _mapper.Map<ArticleTags>(dto));
+            return _mapper.Map<ArticleTagsDto>(tags);
         }
 
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
-            throw new NotImplementedException();
+            var tags = _articleTagsDomainService.DeleteTags(id, _mapper.Map<ArticleTags>(dto));
+            return _mapper.Map<ArticleTagsDto>(tags);
         }
 
 
         public ArticleTagsDto GetTags(Guid id)
         {
-            throw new NotImplementedException();
+            var tags = _articleTagsDomainService.GetTags(id);
+            return _mapper.Map<ArticleTagsDto>(tags);
         }
 
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
-            throw new NotImplementedException();
+            var tags = _articleTagsDomainService.UpdateTags(id, _mapper.Map<ArticleTags>(dto));
+            return _mapper.Map<ArticleTagsDto>(tags);
         }
-
     }
 }

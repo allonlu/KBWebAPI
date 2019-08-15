@@ -41,6 +41,22 @@
       "frameworks": {
         "netstandard2.0": {
           "dependencies": {
+            "Castle.Core": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
             "NETStandard.Library": {
               "suppressParent": "All",
               "target": "Package",
@@ -250,14 +266,14 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp2.1"
+          "netcoreapp2.2"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp2.1": {
+          "netcoreapp2.2": {
             "projectReferences": {
               "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
                 "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj"
@@ -275,31 +291,22 @@
         }
       },
       "frameworks": {
-        "netcoreapp2.1": {
+        "netcoreapp2.2": {
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
               "version": "[9.0.0, )"
             },
-            "Json.NET": {
-              "target": "Package",
-              "version": "[1.0.16, )"
-            },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.1, )",
+              "version": "[2.2.0, )",
               "autoReferenced": true
-            },
-            "Microsoft.AspNetCore.Razor.Design": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.1.2, )"
             },
             "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[2.1.0, )",
+              "version": "[2.2.0, )",
               "autoReferenced": true
             }
           },
