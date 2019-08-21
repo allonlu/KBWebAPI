@@ -1,6 +1,7 @@
 ﻿
 using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
+using Comm100.Runtime;
 using KB.Infrastructure.Runtime.Authorization;
 using KB.Infrastructure.Runtime.Logging;
 using KB.Infrastructure.Runtime.Session;

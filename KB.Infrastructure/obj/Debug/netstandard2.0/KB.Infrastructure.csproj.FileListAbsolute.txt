@@ -1,5 +1,12 @@
 D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\bin\Debug\netstandard2.0\KB.Infrastructure.deps.json
 D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\bin\Debug\netstandard2.0\KB.Infrastructure.dll
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\bin\Debug\netstandard2.0\KB.Infrastructure.pdb
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\bin\Debug\netstandard2.0\Comm100.Framework.dll
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\bin\Debug\netstandard2.0\Comm100.Framework.pdb
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.csprojAssemblyReference.cache
 D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.csproj.CoreCompileInputs.cache
 D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.AssemblyInfoInputs.cache
 D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.AssemblyInfo.cs
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.csproj.CopyComplete
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.dll
+D:\Developer\kb-web-api\KBWebAPI\KB.Infrastructure\obj\Debug\netstandard2.0\KB.Infrastructure.pdb

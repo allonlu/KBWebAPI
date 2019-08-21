@@ -47,12 +47,7 @@ namespace Comm100.Framework
 
     public static class StringIncludeExtension {
 
-        public static string[] AnalyzeInclude(this string include)
-        {
-            if (string.IsNullOrEmpty(include)) return new string[0];
-
-            return include.Split(',').Select(e => e.ToLower()).ToArray();
-        }
+        
     }
 
 }

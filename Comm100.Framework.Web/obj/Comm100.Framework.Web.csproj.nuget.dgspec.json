@@ -1,0 +1,136 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {}
+  },
+  "projects": {
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
+        "projectName": "Comm100.Framework.Web",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework.Web\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "projectName": "Comm100.Framework",
+        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
+        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Castle.Core": {
+              "target": "Package",
+              "version": "[4.4.0, )"
+            },
+            "Castle.Windsor": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    }
+  }
+}

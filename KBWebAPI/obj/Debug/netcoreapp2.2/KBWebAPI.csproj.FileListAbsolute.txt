@@ -8,9 +8,9 @@ D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\Comm100.Public
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\KB.Application.dll
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\KB.Domain.dll
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\KB.Application.pdb
-D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\KB.Domain.pdb
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\Comm100.Framework.pdb
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\Comm100.Public.pdb
+D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\bin\Debug\netcoreapp2.2\KB.Domain.pdb
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\obj\Debug\netcoreapp2.2\KBWebAPI.csprojAssemblyReference.cache
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\obj\Debug\netcoreapp2.2\KBWebAPI.csproj.CoreCompileInputs.cache
 D:\Developer\kb-web-api\KBWebAPI\KBWebAPI\obj\Debug\netcoreapp2.2\KBWebAPI.RazorAssemblyInfo.cache

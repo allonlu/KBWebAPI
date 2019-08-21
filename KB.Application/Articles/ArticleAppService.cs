@@ -6,96 +6,81 @@ using Comm100.Framework;
 using KB.Application.Articles.Dto;
 using KB.Domain.Articles.Entity;
 using KB.Domain.Articles.Service;
+using Comm100.Runtime;
+using Comm100.Application.Services;
+using Comm100.Runtime.Transactions;
 
 namespace KB.Application.Articles
 {
-    public class ArticleAppService : IArticleAppService
+    public class ArticleAppService : AppServiceBase, IArticleAppService
     {
 
         private readonly IArticleDomainService _articleDomainService;
 
-        private readonly IArticleTagsDomainService _articleTagsDomainService;
+        public override void OnMapperConfiguration(IProfileExpression config)
+        {
+            config.CreateMap<Article, ArticleDto>();
+            config.CreateMap<ArticleWithInclude, ArticleWithIncludeDto>();
 
-        private Mapper _mapper = null;
+            config.CreateMap<ArticleCreateDto, Article>();
+            config.CreateMap<ArticleQueryDto, ArticleQueryCondition>();
+            config.CreateMap<ArticleTagsDto, ArticleTags>();
+            config.CreateMap<ArticleTags, ArticleTagsDto>();
+        }
 
-        public ArticleAppService(IArticleDomainService articleDomainService, IArticleTagsDomainService articleTagsDomainService)
+
+        
+        public ArticleAppService(IArticleDomainService articleDomainService) : base()
         {
             this._articleDomainService = articleDomainService;
-            this._articleTagsDomainService = articleTagsDomainService;
-
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Article, ArticleDto>();
-                cfg.CreateMap<ArticleWithInclude, ArticleWithIncludeDto>();
-
-                cfg.CreateMap<ArticleCreateDto, Article>();
-                cfg.CreateMap<ArticleUpdateDto, Article>();
-                cfg.CreateMap<ArticleQueryDto, ArticleQueryCondition>();
-                cfg.CreateMap<ArticleTagsDto, ArticleTags>();
-                cfg.CreateMap<ArticleTags, ArticleTagsDto>();
-            });
         }
 
+        [Permission("article:write")]
+        [Transaction(System.Transactions.IsolationLevel.Serializable)]
         public ArticleDto Add(ArticleCreateDto dto)
         {
-            var article = this._articleDomainService.Add(_mapper.Map<Article>(dto));
-            return _mapper.Map<ArticleDto>(article);
+            var article = this._articleDomainService.Add(Mapper.Map<Article>(dto));
+            return Mapper.Map<ArticleDto>(article);
         }
 
+        [Permission("article.write")]
         public void PublishArticle(Guid id)
         {
             _articleDomainService.Publish(id);
         }
+
+        [Permission("article.write")]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
-            var article = _articleDomainService.Update(_mapper.Map<Article>(dto));
-            return _mapper.Map<ArticleDto>(article);
+            var article = _articleDomainService.Get(dto.Id);
+            Mapper.Map(dto, article);
+            article = _articleDomainService.Update(article);
+            return Mapper.Map<ArticleDto>(article);
         }
 
-
+        [Permission("article.write")]
         public void Delete(Guid id)
         {
             var article = _articleDomainService.Delete(id);
             // audit log - article deleted
         }
 
+        [Permission("article.read")]
         public ArticleWithIncludeDto Get(Guid id, string include)
         {
             var articleWithInclude = _articleDomainService.Get(id, include);
-            return _mapper.Map<ArticleWithIncludeDto>(articleWithInclude);
+            return Mapper.Map<ArticleWithIncludeDto>(articleWithInclude);
         }
 
+        [Permission("article.read")]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Sorting sorting, Paging paging)
         {
-            var condition = _mapper.Map<ArticleQueryCondition>(dto);
+            var condition = Mapper.Map<ArticleQueryCondition>(dto);
             var count = _articleDomainService.GetCount(condition);
             var list = _articleDomainService.GetList(condition, include, sorting, paging);
-            return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => _mapper.Map<ArticleWithIncludeDto>(e)));
+            return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
 
-        public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
-        {
-            var tags = _articleTagsDomainService.AddTags(id, _mapper.Map<ArticleTags>(dto));
-            return _mapper.Map<ArticleTagsDto>(tags);
-        }
-
-        public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
-        {
-            var tags = _articleTagsDomainService.DeleteTags(id, _mapper.Map<ArticleTags>(dto));
-            return _mapper.Map<ArticleTagsDto>(tags);
-        }
-
-
-        public ArticleTagsDto GetTags(Guid id)
-        {
-            var tags = _articleTagsDomainService.GetTags(id);
-            return _mapper.Map<ArticleTagsDto>(tags);
-        }
-
-        public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
-        {
-            var tags = _articleTagsDomainService.UpdateTags(id, _mapper.Map<ArticleTags>(dto));
-            return _mapper.Map<ArticleTagsDto>(tags);
-        }
+        
     }
 }

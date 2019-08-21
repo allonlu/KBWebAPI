@@ -49,10 +49,6 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
-            "Microsoft.AspNet.Mvc": {
-              "target": "Package",
-              "version": "[5.2.7, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[2.2.6, )"
@@ -277,9 +273,6 @@
             "projectReferences": {
               "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
                 "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj"
-              },
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
               }
             }
           }

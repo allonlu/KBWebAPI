@@ -25,7 +25,7 @@ namespace Comm100.Application
              .Configure(configurer =>
              {
                  configurer.Named(configurer.Implementation.Name);
-                 ///注册AOP拦截器
+                 /// register ioc interceptor
                  _ = configurer.Interceptors(InterceptorReference.ForType<AppServiceInterceptor>()).Anywhere;
              })
               .WithService.Self()

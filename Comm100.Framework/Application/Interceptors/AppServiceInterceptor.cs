@@ -27,6 +27,7 @@ namespace Comm100.Application.Interceptors
         /// <summary>
         /// IOC容器注入
         /// </summary>
+        /// 
         [Mandatory]
         public ILogger Logger { get; set; }
 
@@ -38,6 +39,7 @@ namespace Comm100.Application.Interceptors
             PermissionChecker = NullPermissionChecker.Instance;
             Session = NullSession.Instance;
         }
+
         public void Intercept(IInvocation invocation)
         {
             try

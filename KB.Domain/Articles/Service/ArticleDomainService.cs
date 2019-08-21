@@ -7,6 +7,7 @@ using KB.Domain.Articles.Entity;
 using KB.Domain.Categories.Entity;
 using KB.Domain.Service;
 using KB.Domain.Tags;
+using Comm100.Extension;
 
 namespace KB.Domain.Articles.Service
 {
@@ -107,7 +108,11 @@ namespace KB.Domain.Articles.Service
             Category category = _categoryRepository.Get(article.CategoryId);
             if (category.isPublished)
             {
-                article.Publish();
+                if (article.Status != EnumArticleStatus.Audited)
+                {
+                    throw new Exception("Article needs to be audited first.");
+                }
+                article.Status = EnumArticleStatus.Published;
             }
             else
             {
@@ -115,8 +120,6 @@ namespace KB.Domain.Articles.Service
             }
             _repository.Update(article);
         }
-
-        
     }
 
     public class ArticleQueryCondition

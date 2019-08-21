@@ -29,21 +29,5 @@ namespace KB.Domain.Articles.Entity
 
         public DateTime LastModifiedTime { get; set; }
 
-        public void Publish()
-        {
-            if (this.Status != EnumArticleStatus.Audited)
-            {
-                throw new Exception("Article needs to be audited first.");
-            }
-            this.Status = EnumArticleStatus.Published;
-        }
-
-        public void Audit()
-        {
-            if (this.Status == EnumArticleStatus.Draft)
-            {
-                this.Status = EnumArticleStatus.Audited;
-            }
-        }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Comm100.Public.Dto;
-using KB.Application.Category;
+using KB.Application.Categories.Dto;
 using System;
 using System.Collections.Generic;
 using System.Text;

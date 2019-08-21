@@ -28,14 +28,15 @@ namespace Comm100.Extension
             if (attrs.Length > 0)
                 return attrs[0].IsolationLevel;
 
-            switch (methodInfo.Name.Substring(0, 3))
-            {
-                case "Add":
-                    return IsolationLevel.Serializable;
+            return IsolationLevel.ReadCommitted;
+            //switch (methodInfo.Name.Substring(0, 3))
+            //{
+            //    case "Add":
+            //        return IsolationLevel.Serializable;
 
-                default:
-                    return IsolationLevel.ReadCommitted;
-            }
+            //    default:
+            //        return IsolationLevel.ReadCommitted;
+            //}
 
         }
         public static IsolationLevel GetIsolationLevel(this IInvocation invocation)

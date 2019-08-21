@@ -15,9 +15,11 @@ namespace KBWebAPI.Controllers
     {
 
         private readonly IArticleAppService _app;
-        public ArticlesController(IArticleAppService app)
+        private readonly IArticleTagsAppService _articleTagsApp;
+        public ArticlesController(IArticleAppService app, IArticleTagsAppService articleTagsApp)
         {
             this._app = app;
+            this._articleTagsApp = articleTagsApp;
         }
 
         [HttpGet("{id}")]
@@ -42,7 +44,7 @@ namespace KBWebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<ArticleDto> Put(Guid id, ArticleUpdateDto dto)
+        public ActionResult<ArticleDto> Put(Guid id, [FromBody]ArticleUpdateDto dto)
         {
             var article = _app.Update(dto);
             return Ok(article);
@@ -66,28 +68,28 @@ namespace KBWebAPI.Controllers
         [HttpGet("{id}/tags")]
         public ActionResult<ArticleTagsDto> GetTags(Guid id)
         {
-            var tags = _app.GetTags(id);
+            var tags = _articleTagsApp.GetTags(id);
             return Ok(tags);
         }
 
         [HttpPost("{id}/tags")]
         public ActionResult<ArticleTagsDto> AddTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _app.AddTags(id, dto);
+            var tags = _articleTagsApp.AddTags(id, dto);
             return Ok(tags);
         }
 
         [HttpPut("{id}/tags")]
         public ActionResult<ArticleTagsDto> SetTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _app.SetTags(id, dto);
+            var tags = _articleTagsApp.SetTags(id, dto);
             return Ok(tags);
         }
 
         [HttpDelete("{id}/tags")]
         public ActionResult<ArticleTagsDto> DeleteTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _app.DeleteTags(id, dto);
+            var tags = _articleTagsApp.DeleteTags(id, dto);
             return Ok(tags);
         }
     }

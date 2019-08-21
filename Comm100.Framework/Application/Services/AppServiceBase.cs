@@ -1,4 +1,5 @@
-﻿using Castle.Core.Logging;
+﻿using AutoMapper;
+using Castle.Core.Logging;
 using Comm100.Domain.Ioc;
 using Comm100.Runtime;
 using System;
@@ -9,13 +10,16 @@ using NullLogger = Comm100.Runtime.NullLogger;
 
 namespace Comm100.Application.Services
 {
-    public abstract class AppServiceBase:IAppService
+    public abstract class AppServiceBase: IAppService
     {
         public AppServiceBase()
         {
             this.Session = NullSession.Instance;
             this.PermissionChecker = NullPermissionChecker.Instance;
             this.Logger = NullLogger.Instance;
+
+            var configuration = new MapperConfiguration(cfg => OnMapperConfiguration(cfg));
+            this.Mapper = configuration.CreateMapper();
         }
         /// <summary>
         /// IOC容器注入
@@ -33,5 +37,15 @@ namespace Comm100.Application.Services
         /// </summary>
         [Mandatory]
         public ILogger Logger { get; set; }
+
+        public IMapper Mapper { get; private set; }
+
+
+        //public void Audit()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
+        public abstract void OnMapperConfiguration(IProfileExpression config);
     }
 }
