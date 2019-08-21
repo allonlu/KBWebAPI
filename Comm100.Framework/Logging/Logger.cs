@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KB.Infrastructure.Runtime.Logging
+namespace Comm100.Framework.Logging
 {
     public class Logger : ILogger
     {

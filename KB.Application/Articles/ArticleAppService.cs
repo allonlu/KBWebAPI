@@ -9,6 +9,7 @@ using KB.Domain.Articles.Service;
 using Comm100.Runtime;
 using Comm100.Application.Services;
 using Comm100.Runtime.Transactions;
+using System.Transactions;
 
 namespace KB.Application.Articles
 {
@@ -28,15 +29,13 @@ namespace KB.Application.Articles
             config.CreateMap<ArticleTags, ArticleTagsDto>();
         }
 
-
-        
         public ArticleAppService(IArticleDomainService articleDomainService) : base()
         {
             this._articleDomainService = articleDomainService;
         }
 
         [Permission("article:write")]
-        [Transaction(System.Transactions.IsolationLevel.Serializable)]
+        [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Add(ArticleCreateDto dto)
         {
             var article = this._articleDomainService.Add(Mapper.Map<Article>(dto));
@@ -50,6 +49,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article.write")]
+        [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
             var article = _articleDomainService.Get(dto.Id);
@@ -80,7 +80,5 @@ namespace KB.Application.Articles
             var list = _articleDomainService.GetList(condition, include, sorting, paging);
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
-
-        
     }
 }

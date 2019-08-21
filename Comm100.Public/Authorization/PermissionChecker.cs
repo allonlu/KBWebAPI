@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KB.Infrastructure.Runtime.Authorization
+namespace Comm100.Public.Authorization
 {
     public class PermissionChecker : IPermissionChecker
     {

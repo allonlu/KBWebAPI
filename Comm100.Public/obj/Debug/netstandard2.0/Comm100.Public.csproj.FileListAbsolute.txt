@@ -7,3 +7,6 @@ D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100
 D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.AssemblyInfo.cs
 D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.dll
 D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.pdb
+D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\bin\Debug\netstandard2.0\Comm100.Framework.dll
+D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\bin\Debug\netstandard2.0\Comm100.Framework.pdb
+D:\Developer\kb-web-api\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.csproj.CopyComplete

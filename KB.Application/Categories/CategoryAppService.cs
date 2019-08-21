@@ -9,7 +9,7 @@ using System.Text;
 
 namespace KB.Application.Categories.Service
 {
-    public class CategoryAppService : AppServiceBase, ICategoryDomainService
+    public class CategoryAppService : AppServiceBase, ICategoryAppService
     {
         private ICategoryDomainService _domainService;
 
@@ -26,6 +26,11 @@ namespace KB.Application.Categories.Service
         public void Delete(Guid id)
         {
             _domainService.Delete(id);
+        }
+
+        public CategoryDto Add(CategoryCreateDto dto)
+        {
+            throw new NotImplementedException();
         }
     }
 }
