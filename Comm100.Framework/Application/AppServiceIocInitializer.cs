@@ -15,6 +15,7 @@ namespace Comm100.Application
         public static void AppServiceRegister(this IKernel kernel,Assembly assembly)
         {
             kernel.Register(
+                //TODO
              Component.For<AppServiceInterceptor>()
                      .ImplementedBy<AppServiceInterceptor>()
                      .LifestyleTransient(),

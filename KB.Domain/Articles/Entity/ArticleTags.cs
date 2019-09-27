@@ -6,6 +6,6 @@ namespace KB.Domain.Articles.Entity
 {
     public class ArticleTags
     {
-        public IEnumerator<string> Tags { get; set; } 
+        public virtual IEnumerable<ArticleTag> Tags { get; set; }
     }
 }

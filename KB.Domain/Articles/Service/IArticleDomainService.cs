@@ -3,18 +3,19 @@ using KB.Domain.Articles.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Comm100.Domain.Services;
 
 namespace KB.Domain.Articles.Service
 {
-    public interface IArticleDomainService
+    public interface IArticleDomainService : IDomainService
     {
         Article Get(Guid id);
 
-        ArticleWithInclude Get(Guid id, string include);
+        Article Get(Guid id, string include);
 
         int GetCount(ArticleQueryCondition condition);
 
-        IEnumerable<ArticleWithInclude> GetList(ArticleQueryCondition condition,
+        IEnumerable<Article> GetList(ArticleQueryCondition condition,
             string include, Sorting sorting, Paging paging);
 
 

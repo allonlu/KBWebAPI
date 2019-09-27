@@ -1,11 +1,10 @@
 ﻿using KB.Domain.Articles.Entity;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Comm100.Domain.Services;
 
 namespace KB.Domain.Articles.Service
 {
-    public interface IArticleTagsDomainService
+    public interface IArticleTagsDomainService : IDomainService
     {
         ArticleTags AddTags(Guid articleId, ArticleTags tags);
 

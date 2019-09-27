@@ -12,6 +12,6 @@ namespace KB.Domain.Categories.Entity
 
         public Guid ParentId { get; set; }
 
-        public bool isPublished { get; set; }
+        public bool IsPublished { get; set; }
     }
 }

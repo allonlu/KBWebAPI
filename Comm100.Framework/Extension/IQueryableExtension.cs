@@ -24,7 +24,7 @@ namespace Comm100.Framework
 
         public static IQueryable<T> Paging<T>(this IQueryable<T> query, Paging paging)
         {
-            return paging == null ? query : query.Skip(paging.Index * paging.Size).Take(paging.Size);
+            return paging == null ? query : query.Skip((paging.PageIndex - 1) * paging.PageSize).Take(paging.PageSize);
         }
 
         public static IQueryable<T> Sorting<T>(this IQueryable<T> query, Sorting sorting)

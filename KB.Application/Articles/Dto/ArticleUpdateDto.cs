@@ -16,7 +16,5 @@ namespace KB.Application.Articles.Dto
         public string Title { get; set; }
 
         public string Content { get; set; }
-
-        //public IEnumerable<string> Tags { get; set; }
     }
 }

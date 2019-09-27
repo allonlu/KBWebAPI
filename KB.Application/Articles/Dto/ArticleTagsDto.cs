@@ -6,6 +6,6 @@ namespace KB.Application.Articles.Dto
 {
     public class ArticleTagsDto
     {
-        public IEnumerator<string> Tags { get; set; }
+        public IEnumerable<string> Tags { get; set; }
     }
 }

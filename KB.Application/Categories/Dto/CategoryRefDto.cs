@@ -2,14 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Comm100.Public.Dto
+namespace KB.Application.Categories.Dto
 {
-    public class AgentDto
+    public class CategoryRefDto
     {
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-
-        public string Avatar { get; set; }
     }
 }

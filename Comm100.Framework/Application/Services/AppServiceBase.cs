@@ -17,14 +17,10 @@ namespace Comm100.Application.Services
             this.Session = NullSession.Instance;
             this.PermissionChecker = NullPermissionChecker.Instance;
             this.Logger = NullLogger.Instance;
-
-            var configuration = new MapperConfiguration(cfg => OnMapperConfiguration(cfg));
-            this.Mapper = configuration.CreateMapper();
         }
         /// <summary>
         /// IOC容器注入
         /// </summary>
-        /// 
         [Mandatory]
         public ISession Session { get; set; }
         /// <summary>
@@ -38,14 +34,7 @@ namespace Comm100.Application.Services
         [Mandatory]
         public ILogger Logger { get; set; }
 
-        public IMapper Mapper { get; private set; }
-
-
-        //public void Audit()
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        public abstract void OnMapperConfiguration(IProfileExpression config);
+        public IMapper Mapper { get; set; }
+        
     }
 }

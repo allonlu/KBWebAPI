@@ -14,40 +14,41 @@ namespace KB.Application.Articles
     {
         private IArticleTagsDomainService _articleTagsDomainService;
 
-
-        public override void OnMapperConfiguration(IProfileExpression config)
-        {
-            config.CreateMap<ArticleTags, ArticleTagsDto>();
-            config.CreateMap<ArticleTagsDto, ArticleTags>();
-        }
-
         public ArticleTagsAppService(IArticleTagsDomainService articleTagsDomainService) : base()
         {
             this._articleTagsDomainService = articleTagsDomainService;
+            var configuration = new MapperConfiguration(config => 
+            {
+                config.CreateMap<ArticleTags, ArticleTagsDto>();
+                config.CreateMap<ArticleTagsDto, ArticleTags>();
+                config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
+                config.CreateMap<string, ArticleTag>().ConvertUsing(t => new ArticleTag() { Tag = t });
+            });
+            this.Mapper = configuration.CreateMapper();
         }
 
-        [Permission("article.write")]
+        [Permission("article:write")]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
             var tags = _articleTagsDomainService.AddTags(id, Mapper.Map<ArticleTags>(dto));
             return Mapper.Map<ArticleTagsDto>(tags);
         }
 
-        [Permission("article.write")]
+        [Permission("article:write")]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
             var tags = _articleTagsDomainService.DeleteTags(id, Mapper.Map<ArticleTags>(dto));
             return Mapper.Map<ArticleTagsDto>(tags);
         }
 
-        [Permission("article.write")]
+        [Permission("article:read")]
         public ArticleTagsDto GetTags(Guid id)
         {
             var tags = _articleTagsDomainService.GetTags(id);
             return Mapper.Map<ArticleTagsDto>(tags);
         }
 
-        [Permission("article.write")]
+        [Permission("article:write")]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
             var tags = _articleTagsDomainService.UpdateTags(id, Mapper.Map<ArticleTags>(dto));

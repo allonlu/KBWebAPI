@@ -8,6 +8,7 @@ using KB.Domain;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 
 namespace KB.Application
 {
@@ -25,7 +26,8 @@ namespace KB.Application
                Component.For(typeof(ISession)).ImplementedBy(typeof(Session))
                             .LifestyleScoped(),
                Component.For(typeof(IPermissionChecker)).ImplementedBy(typeof(PermissionChecker))
-                            .LifestyleScoped());
+                            .LifestyleScoped()  
+                );
         }
     }
 }

@@ -26,7 +26,11 @@ namespace Comm100.Web.Filters
 
             var myException = context.Exception as Comm100Exception;
             if (myException == null)
-                context.Result = new ObjectResult(new { ErrorCode = 10009, Message = context.Exception.Message });
+                context.Result = new ObjectResult(
+                    new { 
+                        ErrorCode = 10009, 
+                        Message = context.Exception.Message + context.Exception.InnerException.Message,
+                    });
             else
                 context.Result = new ObjectResult(new { ErrorCode = myException.ErrorCode, Message = myException.Message });
 

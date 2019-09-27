@@ -42,25 +42,16 @@ namespace Comm100.Application.Interceptors
 
         public void Intercept(IInvocation invocation)
         {
-            try
+            var method = invocation.GetMethod();
+
+            CheckPermission(method);
+
+            using (var uow = _unitOfWorkMananger.Begin(method.GetIsolationLevel()))
             {
-                var method = invocation.GetMethod();
 
-                CheckPermission(method);
-
-                using (var uow = _unitOfWorkMananger.Begin(method.GetIsolationLevel()))
-                {
-
-                    uow.SetSiteId(Session.GetSiteId());
-                    invocation.Proceed();
-                    uow.Complete();
-                }
-
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.Message);
-                throw e;
+                uow.SetSiteId(Session.GetSiteId());
+                invocation.Proceed();
+                uow.Complete();
             }
         }
 

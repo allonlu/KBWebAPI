@@ -1,23 +1,87 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {}
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {}
   },
   "projects": {
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
-        "projectName": "Comm100.Framework",
-        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
-        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
-        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\obj\\",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
+        "projectName": "Comm100.Framework.Web",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Mvc.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "projectName": "Comm100.Framework",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -53,7 +117,19 @@
               "target": "Package",
               "version": "[5.0.0, )"
             },
+            "Microsoft.AspNetCore.Cors": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Core": {
+              "target": "Package",
+              "version": "[2.2.5, )"
+            },
             "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
               "version": "[2.2.6, )"
             },
@@ -62,6 +138,10 @@
               "target": "Package",
               "version": "[2.0.3, )",
               "autoReferenced": true
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.2, )"
             }
           },
           "imports": [
@@ -72,20 +152,20 @@
         }
       }
     },
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
         "projectName": "Comm100.Public",
-        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
-        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
-        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\obj\\",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -98,8 +178,8 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               }
             }
           }
@@ -132,20 +212,20 @@
         }
       }
     },
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj",
         "projectName": "KB.Application",
-        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj",
-        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
-        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\obj\\",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -158,14 +238,14 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               },
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
               },
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
               }
             }
           }
@@ -194,20 +274,20 @@
         }
       }
     },
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
         "projectName": "KB.Domain",
-        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
-        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
-        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Domain\\obj\\",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -220,11 +300,11 @@
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               },
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
               }
             }
           }
@@ -253,20 +333,91 @@
         }
       }
     },
-    "D:\\Developer\\kb-web-api\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Developer\\kb-web-api\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
-        "projectName": "KBWebAPI",
-        "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
-        "packagesPath": "C:\\Users\\comm100\\.nuget\\packages\\",
-        "outputPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KBWebAPI\\obj\\",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj",
+        "projectName": "KB.Infrastructure",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\comm100\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+              },
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[2.2.6, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461"
+          ],
+          "assetTargetFallback": true,
+          "warn": true
+        }
+      }
+    },
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
+        "projectName": "KBWebAPI",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -279,8 +430,14 @@
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
-                "projectPath": "D:\\Developer\\kb-web-api\\KBWebAPI\\KB.Application\\KB.Application.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj"
+              },
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj"
+              },
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj"
               }
             }
           }
@@ -297,6 +454,14 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[9.0.0, )"
+            },
+            "Castle.Facilities.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Castle.Windsor.MsDependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.1, )"
             },
             "Microsoft.AspNetCore.App": {
               "suppressParent": "All",

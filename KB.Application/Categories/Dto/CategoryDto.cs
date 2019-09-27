@@ -11,5 +11,7 @@ namespace KB.Application.Categories.Dto
         public string Name { get; set; }
 
         public Guid ParentId { get; set; }
+
+        public bool IsPublished { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Comm100.Domain.Services
 {
-    public abstract class DomainServiceBase:IDomainService
+    public abstract class DomainServiceBase : IDomainService
     {
         public DomainServiceBase()
         {

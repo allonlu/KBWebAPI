@@ -2,7 +2,6 @@
 using Castle.MicroKernel;
 using Castle.MicroKernel.Registration;
 using Comm100.Domain.Interceptors;
-using Comm100.Domain.Repository;
 using Comm100.Domain.Services;
 using System;
 using System.Collections.Generic;

@@ -1,5 +1,6 @@
 ﻿using Comm100.Public.Dto;
 using KB.Application.Categories.Dto;
+using KB.Domain.Articles.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,8 +9,10 @@ namespace KB.Application.Articles.Dto
 {
     public class ArticleWithIncludeDto : ArticleDto
     {
-        public AgentDto Author { get; set; }
+        public AgentRefDto Author { get; set; }
 
-        public CategoryDto Category { get; set; }
+        public CategoryRefDto Category { get; set; }
+
+        public IEnumerable<string> Tags { get; set; }
     }
 }

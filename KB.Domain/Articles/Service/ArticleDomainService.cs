@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Comm100.Framework;
+using Comm100.Framework.Domain.Repository;
 using KB.Domain.Articles.Entity;
 using KB.Domain.Categories.Entity;
 using KB.Domain.Service;
+
 using KB.Domain.Tags;
 using Comm100.Extension;
 
@@ -13,16 +15,15 @@ namespace KB.Domain.Articles.Service
 {
     public class ArticleDomainService : IArticleDomainService
     {
-        private IRepository<Guid, Article> _repository;
-        private IRepository<Guid, ArticleWithInclude> _repositoryWithInclude;
+        private IRepository<Guid, ArticleWithInclude> _repository;
         private IRepository<Guid, Category> _categoryRepository;
 
-        public ArticleDomainService(IRepository<Guid, Article> repository,
-            IRepository<Guid, ArticleWithInclude> repositoryWithInclude,
+        public ArticleDomainService(IRepository<Guid, ArticleWithInclude> repository,
+            //IRepository<Guid, ArticleWithInclude> repositoryWithInclude,
             IRepository<Guid, Category> categoryRepository)
         {
             this._repository = repository;
-            this._repositoryWithInclude = repositoryWithInclude;
+            //this._repositoryWithInclude = repositoryWithInclude;
             this._categoryRepository = categoryRepository;
         }
 
@@ -39,10 +40,10 @@ namespace KB.Domain.Articles.Service
                 .Count();
         }
 
-        public ArticleWithInclude Get(Guid id, string include)
+        public Article Get(Guid id, string include)
         {
             // TODO: need to solve the include
-            return this._repositoryWithInclude.Get(id);
+            return this._repository.Get(id);
         }
 
         public IEnumerable<Article> GetList(ArticleQueryCondition condition)
@@ -55,7 +56,7 @@ namespace KB.Domain.Articles.Service
         public IEnumerable<ArticleWithInclude> GetList(ArticleQueryCondition condition, 
             string include, Sorting sorting, Paging paging)
         {
-            return this._repositoryWithInclude.GetQuery()
+            return this._repository.GetQuery()
                     .Query(new ArticleQueryer<ArticleWithInclude>() { Condition = condition })
                     .IncludeLoading(new ArticleInclude() { Include = include })
                     .Sorting(sorting)
@@ -106,13 +107,13 @@ namespace KB.Domain.Articles.Service
         {
             Article article = _repository.Get(id);
             Category category = _categoryRepository.Get(article.CategoryId);
-            if (category.isPublished)
+            if (category.IsPublished)
             {
-                if (article.Status != EnumArticleStatus.Audited)
+                if (article.Status != EnumArticleStatus.Audited.ToString())
                 {
                     throw new Exception("Article needs to be audited first.");
                 }
-                article.Status = EnumArticleStatus.Published;
+                article.Status = EnumArticleStatus.Published.ToString();
             }
             else
             {
@@ -122,7 +123,7 @@ namespace KB.Domain.Articles.Service
         }
     }
 
-    public class ArticleQueryCondition
+    public struct ArticleQueryCondition
     {
         public Guid? CategoryId { get; set; }
 
@@ -139,8 +140,8 @@ namespace KB.Domain.Articles.Service
         {
             return query
                 .WhereIf(e => e.CategoryId == Condition.CategoryId.Value, Condition.CategoryId.HasValue)
-                .WhereIf(e => e.Title.Contains(Condition.Keywords) || e.Content.Contains(Condition.Keywords), !string.IsNullOrEmpty(Condition.Keywords))
-                .WhereIf(e => e.Tags.Any(t => t == Condition.Tag), !string.IsNullOrEmpty(Condition.Tag));
+                .WhereIf(e => e.Title.Contains(Condition.Keywords) || e.Content.Contains(Condition.Keywords), !string.IsNullOrEmpty(Condition.Keywords));
+                //.WhereIf(e => e.Tags.Any(t => t.Tag == Condition.Tag), !string.IsNullOrEmpty(Condition.Tag));
         }
     }
 
@@ -155,16 +156,23 @@ namespace KB.Domain.Articles.Service
             {
                 switch(name)
                 {
+                    case "category":
+                        query = query.Include(e => e.Category);
+                        break;
                     case "author":
-                        return query.Include(e => e.Author);
+                        query = query.Include(e => e.Author);
+                        break;
+                    case "tags":
+                        query = query.Include(e => e.Tags);
+                        break;
                 }
             }
-            return null;
+            return query;
         }
 
         public ArticleWithInclude ProcessInclude(ArticleWithInclude t)
         {
-            return t;
+            throw new NotImplementedException();
         }
     }
 }

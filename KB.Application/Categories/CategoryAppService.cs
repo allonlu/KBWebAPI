@@ -16,11 +16,12 @@ namespace KB.Application.Categories.Service
         public CategoryAppService(ICategoryDomainService domainService) : base()
         {
             this._domainService = domainService;
-        }
-
-        public override void OnMapperConfiguration(IProfileExpression config)
-        {
-            config.CreateMap<CategoryDto, Category>();
+            var configuration = new MapperConfiguration(cfg => 
+            {
+                cfg.CreateMap<CategoryDto, Category>();
+                cfg.CreateMap<Category, CategoryDto>();
+            });
+            this.Mapper = configuration.CreateMapper();
         }
 
         public void Delete(Guid id)
