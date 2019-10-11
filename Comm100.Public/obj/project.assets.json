@@ -5102,37 +5102,31 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\AllonLu\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/allon/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+      "projectUniqueName": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj",
       "projectName": "Comm100.Public",
-      "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
-      "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\obj\\",
+      "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj",
+      "packagesPath": "/Users/allon/.nuget/packages/",
+      "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Public/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/allon/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
-              "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
+            "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
+              "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
             }
           }
         }
@@ -5158,10 +5152,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

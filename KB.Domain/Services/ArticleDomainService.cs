@@ -15,10 +15,7 @@ namespace KB.Domain.Articles.Service
 {
     public class ArticleDomainService : IArticleDomainService
     {
-        private IRepository<Guid, ArticleWithInclude> _repository;
-        private IRepository<Guid, Category> _categoryRepository;
-
-        public ArticleDomainService(IRepository<Guid, ArticleWithInclude> repository,
+        public ArticleDomainService(IRepository<Guid, Article> repository,
             //IRepository<Guid, ArticleWithInclude> repositoryWithInclude,
             IRepository<Guid, Category> categoryRepository)
         {
@@ -36,7 +33,7 @@ namespace KB.Domain.Articles.Service
         public int GetCount(ArticleQueryCondition condition)
         {
             return this._repository.GetQuery()
-                .Query(new ArticleQueryer<Article>() { Condition = condition })
+                .Query(new ArticleQueryer() { Condition = condition })
                 .Count();
         }
 
@@ -49,19 +46,19 @@ namespace KB.Domain.Articles.Service
         public IEnumerable<Article> GetList(ArticleQueryCondition condition)
         {
             return this._repository.GetQuery()
-                .Query(new ArticleQueryer<Article>() { Condition = condition })
+                .Query(new ArticleQueryer() { Condition = condition })
                 .ToList<Article>();
         }
 
-        public IEnumerable<ArticleWithInclude> GetList(ArticleQueryCondition condition, 
+        public IEnumerable<Article> GetList(ArticleQueryCondition condition, 
             string include, Sorting sorting, Paging paging)
         {
             return this._repository.GetQuery()
-                    .Query(new ArticleQueryer<ArticleWithInclude>() { Condition = condition })
+                    .Query(new ArticleQueryer() { Condition = condition })
                     .IncludeLoading(new ArticleInclude() { Include = include })
                     .Sorting(sorting)
                     .Paging(paging)
-                    .ToList<ArticleWithInclude>();
+                    .ToList<Article>();
         }
 
         public void Delete(Article article)
@@ -123,7 +120,7 @@ namespace KB.Domain.Articles.Service
         }
     }
 
-    public struct ArticleQueryCondition
+    public struct ArticleFilter
     {
         public Guid? CategoryId { get; set; }
 
@@ -132,25 +129,25 @@ namespace KB.Domain.Articles.Service
         public string Tag { get; set; }
     }
 
-    public class ArticleQueryer<T> : IEntityQueryer<T> where T : Article
+    public class ArticleQueryer : IEntityQueryer<Article>
     {
-        public ArticleQueryCondition Condition { get; set; }
+        public ArticleFilter Filter { get; set; }
 
-        public IQueryable<T> ProcessQuery(IQueryable<T> query)
+        public IQueryable<Article> ProcessQuery(IQueryable<Article> query)
         {
             return query
-                .WhereIf(e => e.CategoryId == Condition.CategoryId.Value, Condition.CategoryId.HasValue)
-                .WhereIf(e => e.Title.Contains(Condition.Keywords) || e.Content.Contains(Condition.Keywords), !string.IsNullOrEmpty(Condition.Keywords));
+                .WhereIf(e => e.CategoryId == Filter.CategoryId.Value, Filter.CategoryId.HasValue)
+                .WhereIf(e => e.Title.Contains(Filter.Keywords) || e.Content.Contains(Filter.Keywords), !string.IsNullOrEmpty(Condition.Keywords));
                 //.WhereIf(e => e.Tags.Any(t => t.Tag == Condition.Tag), !string.IsNullOrEmpty(Condition.Tag));
         }
     }
 
 
-    public class ArticleInclude : IEntityIncluder<ArticleWithInclude>
+    public class ArticleInclude : IEntityIncluder<Article>
     {
         public string Include { get; set; }
 
-        public IQueryable<ArticleWithInclude> ProcessInclude(IQueryable<ArticleWithInclude> query)
+        public IQueryable<Article> ProcessInclude(IQueryable<Article> query)
         {
             foreach (string name in Include.AnalyzeInclude())
             {
@@ -170,7 +167,7 @@ namespace KB.Domain.Articles.Service
             return query;
         }
 
-        public ArticleWithInclude ProcessInclude(ArticleWithInclude t)
+        public Article ProcessInclude(Article t)
         {
             throw new NotImplementedException();
         }

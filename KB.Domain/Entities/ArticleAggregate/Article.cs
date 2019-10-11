@@ -1,9 +1,8 @@
 ﻿using Comm100.Public;
-using KB.Domain.Categories.Entity;
 using System;
 using System.Collections.Generic;
 
-namespace KB.Domain.Articles.Entity
+namespace KB.Domain.Entities
 {
     public enum EnumArticleStatus
     {
@@ -11,6 +10,7 @@ namespace KB.Domain.Articles.Entity
         Audited,
         Published,
     }
+
     public class Article
     {
         public Guid Id { get; set; }
@@ -30,7 +30,5 @@ namespace KB.Domain.Articles.Entity
         public DateTime LastModifiedTime { get; set; }
 
         public IEnumerable<ArticleTag> Tags { get; set; }
-
-
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Comm100.Framework;
-using KB.Domain.Articles.Entity;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Comm100.Domain.Services;
+using KB.Domain.Entities;
 
 namespace KB.Domain.Articles.Service
 {
@@ -13,11 +13,10 @@ namespace KB.Domain.Articles.Service
 
         Article Get(Guid id, string include);
 
-        int GetCount(ArticleQueryCondition condition);
+        int GetCount(ArticleFilter filter);
 
-        IEnumerable<Article> GetList(ArticleQueryCondition condition,
+        IEnumerable<Article> GetList(ArticleFilter filter,
             string include, Sorting sorting, Paging paging);
-
 
         Article Add(Article entity);
 
@@ -28,6 +27,5 @@ namespace KB.Domain.Articles.Service
         void Delete(Article article);
 
         void Publish(Guid articleId);
-
     }
 }

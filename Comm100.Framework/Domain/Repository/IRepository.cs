@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Comm100.Framework.Domain.Specifications;
 
 namespace Comm100.Framework.Domain.Repository
 {
     public interface IRepository<TId, TEntity>
     {
         TEntity Get(TId id);
-        IQueryable<TEntity> GetQuery(Expression<Func<TEntity, bool>> predicate);
-        IQueryable<TEntity> GetQuery();
+        IReadOnlyList<TEntity> List(ISpecification<TEntity> spec);
+        IReadOnlyList<TEntity> GetQuery();
         int Count(Expression<Func<TEntity, bool>> predicate);
         TEntity Create(TEntity entity);
         TEntity Update(TEntity entity);

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Domain.Feedbacks
+namespace KB.Domain.Entities
 {
     public class Feedback
     {

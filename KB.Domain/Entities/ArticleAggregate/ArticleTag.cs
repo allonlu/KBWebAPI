@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Domain.Articles.Entity
+namespace KB.Domain.Entities
 {
     public class ArticleTag
     {
