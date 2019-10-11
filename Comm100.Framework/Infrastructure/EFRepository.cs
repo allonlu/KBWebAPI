@@ -1,60 +1,65 @@
 using Comm100.Framework.Domain.Repository;
+using Comm100.Framework.Domain.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 
 namespace Comm100.Framework.Infrastructure 
 {
-    public class EFRepository<TId, TEntity> : IRepository<TId, TEntity> where TEntity : class {
+    public class EFRepository<TId, TEntity> : IRepository<TId, TEntity> where TEntity : class
+    {
 
-        protected DbContext _dbContext;
-        protected DbSet<TEntity> _dataSet;
+        protected readonly DbContext _dbContext;
 
-        public EFRepository(DbContext dbContext) 
+        protected EFRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
-            _dataSet = dbContext.Set<TEntity>();
         }
-        public TEntity Get(TId id) {
-            return _dataSet.Find(id);
-        }
-        public IQueryable<TEntity> GetQuery(Expression<Func<TEntity, bool>> predicate)
+        public int Count(ISpecification<TEntity> spec)
         {
-            if (predicate == null) return _dataSet.AsNoTracking();
-            return _dataSet.AsNoTracking().Where(predicate);
+            return ApplySpecification(spec).Count();
         }
-        public IQueryable<TEntity> GetQuery() {
-            return _dataSet.AsQueryable();
-        }
-        public int Count(Expression<Func<TEntity, bool>> predicate)
+
+        public TEntity Create(TEntity entity)
         {
-            if (predicate == null) return _dataSet.Count(predicate);
-            return _dataSet.Count(predicate);
-        }
-        public TEntity Create(TEntity entity) 
-        {
-            _dataSet.Add(entity);
+            _dbContext.Set<TEntity>().Add(entity);
             _dbContext.SaveChanges();
             return entity;
         }
-        public TEntity Update(TEntity entity)
+
+        public void Delete(TEntity entity)
         {
-            _dbContext.Update(entity);
-            return entity;
+            _dbContext.Set<TEntity>().Remove(entity);
+            _dbContext.SaveChanges();
+        }
+        public void Update(TEntity entity)
+        {
+            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChangesAsync();
         }
 
-        public int Delete(TEntity entity)
+        public TEntity Get(TId id)
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<TEntity>().Find(id);
         }
-        public int Delete(Expression<Func<TEntity, bool>> predicate)
+
+        public IReadOnlyList<TEntity> ListAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<TEntity>().ToList();
         }
-        public bool Exists(Expression<Func<TEntity, bool>> predicate)
+
+        public IReadOnlyList<TEntity> List(ISpecification<TEntity> spec)
         {
-            throw new NotImplementedException();
+            return ApplySpecification(spec).ToList();
+        }
+
+        
+
+        private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> spec)
+        {
+            return SpecificationEvaluator<TEntity>.GetQuery(_dbContext.Set<TEntity>().AsQueryable(), spec);
         }
     }
 }

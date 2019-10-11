@@ -1,4 +1,4 @@
-﻿using KB.Domain.Articles.Entity;
+﻿using KB.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

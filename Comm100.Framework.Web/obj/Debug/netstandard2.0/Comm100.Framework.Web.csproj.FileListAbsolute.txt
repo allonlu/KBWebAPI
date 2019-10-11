@@ -35,3 +35,7 @@ C:/Users/AllonLu/developer/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2
 /Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.0/Comm100.Framework.Web.csproj.CopyComplete
 /Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.0/Comm100.Framework.Web.dll
 /Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.0/Comm100.Framework.Web.pdb
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework.Web\obj\Debug\netstandard2.0\Comm100.Framework.Web.csprojAssemblyReference.cache
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework.Web\obj\Debug\netstandard2.0\Comm100.Framework.Web.csproj.CoreCompileInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework.Web\obj\Debug\netstandard2.0\Comm100.Framework.Web.AssemblyInfoInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework.Web\obj\Debug\netstandard2.0\Comm100.Framework.Web.AssemblyInfo.cs

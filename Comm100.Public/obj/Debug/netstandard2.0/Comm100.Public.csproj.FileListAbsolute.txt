@@ -33,3 +33,6 @@ C:/Users/AllonLu/developer/KBWebAPI/Comm100.Public/obj/Debug/netstandard2.0/Comm
 /Users/allon/git/KBWebAPI/Comm100.Public/obj/Debug/netstandard2.0/Comm100.Public.csproj.CopyComplete
 /Users/allon/git/KBWebAPI/Comm100.Public/obj/Debug/netstandard2.0/Comm100.Public.dll
 /Users/allon/git/KBWebAPI/Comm100.Public/obj/Debug/netstandard2.0/Comm100.Public.pdb
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.csproj.CoreCompileInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.AssemblyInfoInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Public\obj\Debug\netstandard2.0\Comm100.Public.AssemblyInfo.cs

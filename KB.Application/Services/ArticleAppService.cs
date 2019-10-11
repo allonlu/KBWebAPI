@@ -39,10 +39,12 @@ namespace KB.Application.Articles
                 config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
          
                 config.CreateMap<ArticleCreateDto, Article>();
-                config.CreateMap<ArticleQueryDto, ArticleFilter>();
 
                 config.CreateMap<ArticleTagsDto, Article>();
                 config.CreateMap<Article, ArticleTagsDto>();
+
+                config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
+                config.CreateMap<string, ArticleTag>().ConvertUsing(t => new ArticleTag() { Tag = t });
             });
 
             this.Mapper = configuration.CreateMapper();
@@ -60,9 +62,8 @@ namespace KB.Application.Articles
         public void PublishArticle(Guid id)
         {
             Article article = _repository.Get(id);
-            article.Publish();
+            _articleDomainService.Publish(article);
             _repository.Update(article);
-            //_articleDomainService.Publish(id);
         }
 
         [Permission("article:write")]
@@ -96,7 +97,7 @@ namespace KB.Application.Articles
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Sorting sorting, Paging paging)
         {
             ArticleFilter condition = Mapper.Map<ArticleFilter>(dto);
-            _repository.List()
+            //_repository.List();
             int count = _articleDomainService.GetCount(condition);
             IEnumerable<Article> list = _articleDomainService.GetList(condition, include, sorting, paging);
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));

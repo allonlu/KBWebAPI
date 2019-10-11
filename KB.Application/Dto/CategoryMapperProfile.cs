@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using KB.Domain.Categories.Entity;
+using KB.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;

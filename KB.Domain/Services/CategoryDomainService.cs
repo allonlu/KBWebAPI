@@ -1,6 +1,4 @@
-﻿using KB.Domain.Articles.Entity;
-using KB.Domain.Articles.Service;
-using KB.Domain.Categories.Entity;
+﻿using KB.Domain.Articles.Service;
 using Comm100.Framework.Domain.Repository;
 using System;
 using System.Collections.Generic;

@@ -9,13 +9,11 @@ namespace Comm100.Framework.Domain.Repository
     public interface IRepository<TId, TEntity>
     {
         TEntity Get(TId id);
+        IReadOnlyList<TEntity> ListAll();
         IReadOnlyList<TEntity> List(ISpecification<TEntity> spec);
-        IReadOnlyList<TEntity> GetQuery();
-        int Count(Expression<Func<TEntity, bool>> predicate);
+        int Count(ISpecification<TEntity> spec);
         TEntity Create(TEntity entity);
-        TEntity Update(TEntity entity);
-        int Delete(TEntity entity);
-        int Delete(Expression<Func<TEntity, bool>> predicate);
-        bool Exists(Expression<Func<TEntity, bool>> predicate);
+        void Update(TEntity entity);
+        void Delete(TEntity entity);
     }
 }

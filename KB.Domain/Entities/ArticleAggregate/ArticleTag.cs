@@ -7,7 +7,6 @@ namespace KB.Domain.Entities
     public class ArticleTag
     {
         public Guid ArticleId { get; set; }
-
         public string Tag { get; set; }
 
     }

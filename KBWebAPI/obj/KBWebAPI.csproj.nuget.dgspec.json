@@ -1,32 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj": {}
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {}
   },
   "projects": {
-    "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
         "projectName": "Comm100.Framework.Web",
-        "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               }
             }
           }
@@ -56,35 +61,34 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
         "projectName": "Comm100.Framework",
-        "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -141,42 +145,41 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
         "projectName": "Comm100.Public",
-        "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Public/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               }
             }
           }
@@ -202,48 +205,47 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj",
         "projectName": "KB.Application",
-        "projectPath": "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/KB.Application/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               },
-              "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
               },
-              "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
               }
             }
           }
@@ -265,45 +267,44 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
         "projectName": "KB.Domain",
-        "projectPath": "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/KB.Domain/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               },
-              "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Public/Comm100.Public.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Public\\Comm100.Public.csproj"
               }
             }
           }
@@ -325,45 +326,44 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj",
         "projectName": "KB.Infrastructure",
-        "projectPath": "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/KB.Infrastructure/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj"
               },
-              "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/KB.Domain/KB.Domain.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Domain\\KB.Domain.csproj"
               }
             }
           }
@@ -397,48 +397,47 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     },
-    "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj": {
+    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
         "projectName": "KBWebAPI",
-        "projectPath": "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj",
-        "packagesPath": "/Users/allon/.nuget/packages/",
-        "outputPath": "/Users/allon/git/KBWebAPI/KBWebAPI/obj/",
+        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
+        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/allon/.config/NuGet/NuGet.Config"
+          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp2.2"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netcoreapp2.2": {
             "projectReferences": {
-              "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj"
               },
-              "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj"
               },
-              "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj": {
-                "projectPath": "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj"
+              "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj"
               }
             }
           }
@@ -478,16 +477,10 @@
             }
           },
           "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48"
+            "net461"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

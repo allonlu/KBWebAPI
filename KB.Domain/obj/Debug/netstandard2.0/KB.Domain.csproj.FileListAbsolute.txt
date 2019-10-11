@@ -31,3 +31,6 @@ C:/Users/AllonLu/developer/KBWebAPI/KB.Domain/obj/Debug/netstandard2.0/KB.Domain
 /Users/allon/git/KBWebAPI/KB.Domain/obj/Debug/netstandard2.0/KB.Domain.AssemblyInfo.cs
 /Users/allon/git/KBWebAPI/KB.Domain/obj/Debug/netstandard2.0/KB.Domain.dll
 /Users/allon/git/KBWebAPI/KB.Domain/obj/Debug/netstandard2.0/KB.Domain.pdb
+C:\Users\AllonLu\developer\KBWebAPI\KB.Domain\obj\Debug\netstandard2.0\KB.Domain.csproj.CoreCompileInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\KB.Domain\obj\Debug\netstandard2.0\KB.Domain.AssemblyInfoInputs.cache
+C:\Users\AllonLu\developer\KBWebAPI\KB.Domain\obj\Debug\netstandard2.0\KB.Domain.AssemblyInfo.cs

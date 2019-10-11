@@ -12732,37 +12732,43 @@
     ]
   },
   "packageFolders": {
-    "/Users/allon/.nuget/packages/": {}
+    "C:\\Users\\AllonLu\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
       "projectName": "KBWebAPI",
-      "projectPath": "/Users/allon/git/KBWebAPI/KBWebAPI/KBWebAPI.csproj",
-      "packagesPath": "/Users/allon/.nuget/packages/",
-      "outputPath": "/Users/allon/git/KBWebAPI/KBWebAPI/obj/",
+      "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\KBWebAPI.csproj",
+      "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KBWebAPI\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "/Users/allon/.config/NuGet/NuGet.Config"
+        "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj": {
-              "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework.Web/Comm100.Framework.Web.csproj"
+            "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj": {
+              "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework.Web\\Comm100.Framework.Web.csproj"
             },
-            "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj": {
-              "projectPath": "/Users/allon/git/KBWebAPI/KB.Application/KB.Application.csproj"
+            "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj": {
+              "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Application\\KB.Application.csproj"
             },
-            "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj": {
-              "projectPath": "/Users/allon/git/KBWebAPI/KB.Infrastructure/KB.Infrastructure.csproj"
+            "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\KB.Infrastructure\\KB.Infrastructure.csproj"
             }
           }
         }
@@ -12802,16 +12808,10 @@
           }
         },
         "imports": [
-          "net461",
-          "net462",
-          "net47",
-          "net471",
-          "net472",
-          "net48"
+          "net461"
         ],
         "assetTargetFallback": true,
-        "warn": true,
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+        "warn": true
       }
     }
   }
