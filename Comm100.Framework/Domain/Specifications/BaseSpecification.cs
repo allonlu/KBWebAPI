@@ -29,10 +29,10 @@ namespace Comm100.Framework.Domain.Specifications
         {
             IncludeStrings.Add(includeString);
         }
-        protected virtual void ApplyPaging(int skip, int take)
+        protected virtual void ApplyPaging(int index, int size)
         {
-            Skip = skip;
-            Take = take;
+            Skip = (index - 1) * size;
+            Take = size;
             IsPagingEnabled = true;
         }
         protected virtual void ApplyOrderBy(Expression<Func<T, object>> orderByExpression)

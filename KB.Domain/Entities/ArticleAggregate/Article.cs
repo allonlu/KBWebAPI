@@ -22,7 +22,7 @@ namespace KB.Domain.Entities
         public Guid AuthorId { get; set; }
 
         public Guid CategoryId { get; set; }
-        
+
         public string Status { get; set; }
 
         public DateTime CreatedTime { get; set; }
@@ -30,5 +30,22 @@ namespace KB.Domain.Entities
         public DateTime LastModifiedTime { get; set; }
 
         public IEnumerable<ArticleTag> Tags { get; set; }
+
+
+        public void AddTags(IEnumerable<string> tags)
+        {
+
+        }
+
+        public void DeleteTags(IEnumerable<string> tags)
+        {
+
+        }
+
+        public void SetTags(IEnumerable<string> tags)
+        {
+
+        }
+
     }
 }

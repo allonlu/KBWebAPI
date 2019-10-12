@@ -13,6 +13,7 @@ using System.Transactions;
 using Comm100.Public.Dto;
 using KB.Application.Categories.Dto;
 using Comm100.Framework.Domain.Repository;
+using KB.Domain.Specificaitons;
 
 namespace KB.Application.Articles
 {
@@ -22,9 +23,10 @@ namespace KB.Application.Articles
         private readonly IRepository<Guid, Article> _repository;
         private readonly IArticleDomainService _articleDomainService;
 
-        public ArticleAppService(IArticleDomainService articleDomainService) : base()
+        public ArticleAppService(IRepository<Guid, Article> repository, IArticleDomainService articleDomainService) : base()
         {
-            //this._articleDomainService = articleDomainService;
+            this._repository = repository;
+            this._articleDomainService = articleDomainService;
 
             MapperConfiguration configuration = new MapperConfiguration(config => {
 
@@ -94,12 +96,11 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:read")]
-        public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Sorting sorting, Paging paging)
+        public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
-            ArticleFilter condition = Mapper.Map<ArticleFilter>(dto);
-            //_repository.List();
-            int count = _articleDomainService.GetCount(condition);
-            IEnumerable<Article> list = _articleDomainService.GetList(condition, include, sorting, paging);
+            var spec = new ArticleFilterPaginatedSpecification(dto.CategoryId, dto.Tag, dto.Keywords, paging);
+            int count = _repository.Count(spec);
+            var list = _repository.List(spec);
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
     }

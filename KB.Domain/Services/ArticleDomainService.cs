@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Comm100.Framework.Domain.Repository;
 using KB.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace KB.Domain.Articles.Service
 {
@@ -10,6 +12,8 @@ namespace KB.Domain.Articles.Service
         public ArticleDomainService(IRepository<Guid, Category> categoryRepository)
         {
             this._categoryRepository = categoryRepository;
+            IQueryable<Article> q = null;
+            q.Include("");
         }
 
         public void Publish(Article article)

@@ -10,7 +10,7 @@ namespace KB.Application.Articles
     {
         ArticleWithIncludeDto Get(Guid id, string include);
 
-        PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Sorting sorting, Paging paging);
+        PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging);
 
         ArticleDto Add(ArticleCreateDto dto);
 

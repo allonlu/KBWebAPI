@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using KB.Domain.Entities;
+using KB.Domain.Specifications;
 
 namespace KB.Domain.Categories.Service
 {
@@ -21,14 +23,20 @@ namespace KB.Domain.Categories.Service
         public void DeleteAndAdoptChildren(Guid id, Guid targetId)
         {
             Category category = _repository.Get(id);
-            IList<Category> childrenCategory = _repository.GetQuery(c => c.ParentId == id).ToList<Category>();
+            var childrenCategory = _repository.List(new CategoryFilterSpecification(id));
 
-            // _repository.Update(c => c.ParentId == id, new { ParentId = targetId }); // bulk update
-
-            foreach(var child in childrenCategory)
+            foreach (var child in childrenCategory)
             {
                 child.ParentId = targetId;
                 _repository.Update(child);
+            }
+
+            var articles = _articleRepository.List(new ArticleFilterSpecification(id));
+
+            foreach (var article in articles)
+            {
+                article.CategoryId = targetId;
+                _articleRepository.Update(article);
             }
 
             _repository.Delete(category);
@@ -38,21 +46,19 @@ namespace KB.Domain.Categories.Service
         {
             Category category = _repository.Get(id);
 
-            IList<Category> children = _repository.GetQuery(c => c.ParentId == id).ToList<Category>();
+            var children = _repository.List(new CategoryFilterSpecification(id));
 
             foreach(var child in children)
             {
                 Delete(child.Id);
             }
 
-            var articles = _articleRepository.GetQuery().Where(e => e.CategoryId == id).ToList();
-            IArticleDomainService _articleDomainService = null; //IOC.Resolve<IArticleDomainService>();
+            var articles = _articleRepository.List(new ArticleFilterSpecification(id));
 
             foreach (var article in articles)
             {
-                _articleDomainService.Delete(article);
+                _articleRepository.Delete(article);
             }
-
             _repository.Delete(category);
 
         }

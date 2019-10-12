@@ -17,11 +17,6 @@ namespace Comm100.Framework
             return queryable.ProcessQuery(query);
         }
 
-        public static IQueryable<T> IncludeLoading<T>(this IQueryable<T> query, IEntityIncluder<T> includable)
-        {
-            return includable.ProcessInclude(query);
-        }
-
         public static IQueryable<T> Paging<T>(this IQueryable<T> query, Paging paging)
         {
             return paging == null ? query : query.Skip((paging.PageIndex - 1) * paging.PageSize).Take(paging.PageSize);

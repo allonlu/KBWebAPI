@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Comm100.Application.Services;
+using Comm100.Framework.Domain.Repository;
 using Comm100.Runtime;
 using KB.Application.Articles.Dto;
 using KB.Domain.Entities;
@@ -11,13 +12,14 @@ namespace KB.Application.Articles
 {
     public class ArticleTagsAppService : AppServiceBase, IArticleTagsAppService
     {
-        public ArticleTagsAppService(IArticleTagsDomainService articleTagsDomainService) : base()
+        private readonly IRepository<Guid, Article> _repository;
+        public ArticleTagsAppService(IRepository<Guid, Article> repository) : base()
         {
-            this._articleTagsDomainService = articleTagsDomainService;
+            this._repository = repository;
             var configuration = new MapperConfiguration(config => 
             {
+                config.CreateMap<Article, ArticleTagsDto>();
                 config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
-                config.CreateMap<string, ArticleTag>().ConvertUsing(t => new ArticleTag() { Tag = t });
             });
             this.Mapper = configuration.CreateMapper();
         }
@@ -25,29 +27,35 @@ namespace KB.Application.Articles
         [Permission("article:write")]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _articleTagsDomainService.AddTags(id, Mapper.Map<Article>(dto));
-            return Mapper.Map<ArticleTagsDto>(tags);
+            Article article = _repository.Get(id);
+            article.AddTags(dto.Tags);
+            _repository.Update(article);
+            return Mapper.Map<ArticleTagsDto>(article);
         }
 
         [Permission("article:write")]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _articleTagsDomainService.DeleteTags(id, Mapper.Map<Article>(dto));
-            return Mapper.Map<ArticleTagsDto>(tags);
+            Article article = _repository.Get(id);
+            article.DeleteTags(dto.Tags);
+            _repository.Update(article);
+            return Mapper.Map<ArticleTagsDto>(article);
         }
 
         [Permission("article:read")]
         public ArticleTagsDto GetTags(Guid id)
         {
-            var tags = _articleTagsDomainService.GetTags(id);
-            return Mapper.Map<ArticleTagsDto>(tags);
+            Article article = _repository.Get(id);
+            return Mapper.Map<ArticleTagsDto>(article);
         }
 
         [Permission("article:write")]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
-            var tags = _articleTagsDomainService.UpdateTags(id, Mapper.Map<Article>(dto));
-            return Mapper.Map<ArticleTagsDto>(tags);
+            Article article = _repository.Get(id);
+            article.SetTags(dto.Tags);
+            _repository.Update(article);
+            return Mapper.Map<ArticleTagsDto>(article);
         }
     }
 }

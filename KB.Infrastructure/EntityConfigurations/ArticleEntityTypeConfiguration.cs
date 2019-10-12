@@ -1,5 +1,5 @@
 ﻿using System;
-using KB.Domain.Articles.Entity;
+using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
