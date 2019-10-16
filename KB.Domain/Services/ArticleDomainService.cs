@@ -1,23 +1,60 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Comm100.Framework.Domain.Repository;
+using Comm100.Framework.Domain.Specifications;
 using KB.Domain.Entities;
+using KB.Domain.Specificaitons;
 using Microsoft.EntityFrameworkCore;
 
 namespace KB.Domain.Articles.Service
 {
     public class ArticleDomainService : IArticleDomainService
     {
+        private IRepository<Guid, Article> _articleRepository;
         private IRepository<Guid, Category> _categoryRepository;
-        public ArticleDomainService(IRepository<Guid, Category> categoryRepository)
+        public ArticleDomainService(IRepository<Guid, Article> articleRepository, 
+            IRepository<Guid, Category> categoryRepository)
         {
+            this._articleRepository = articleRepository;
             this._categoryRepository = categoryRepository;
-            IQueryable<Article> q = null;
-            q.Include("");
         }
 
-        public void Publish(Article article)
+        public Article Create(Article entity)
         {
+            return _articleRepository.Create(entity);
+        }
+
+        public int Count(BaseSpecification<Article> spec)
+        {
+            return _articleRepository.Count(spec);
+        }
+
+        public IReadOnlyList<Article> List(BaseSpecification<Article> spec)
+        {
+            return _articleRepository.List(spec);
+        }
+
+        public Article Delete(Guid id)
+        {
+            Article article = _articleRepository.Get(id);
+            _articleRepository.Delete(article);
+            return article;
+        }
+        
+        public void Delete(Article article)
+        {
+            _articleRepository.Delete(article);
+        }
+
+        public Article Get(Guid id)
+        {
+            return _articleRepository.Get(id);
+        }
+
+        public void Publish(Guid articleId)
+        {
+            Article article = _articleRepository.Get(articleId);
             Category category = _categoryRepository.Get(article.CategoryId);
             if (category.IsPublished)
             {
@@ -32,58 +69,11 @@ namespace KB.Domain.Articles.Service
                 throw new Exception("You can only publish article below the public category.");
             }
         }
+
+        public Article Update(Article entity)
+        {
+            _articleRepository.Update(entity);
+            return entity;
+        }
     }
-
-    //public struct ArticleFilter
-    //{
-    //    public Guid? CategoryId { get; set; }
-
-    //    public string Keywords { get; set; }
-
-    //    public string Tag { get; set; }
-    //}
-
-    //public class ArticleQueryer : IEntityQueryer<Article>
-    //{
-    //    public ArticleFilter Filter { get; set; }
-
-    //    public IQueryable<Article> ProcessQuery(IQueryable<Article> query)
-    //    {
-    //        return query
-    //            .WhereIf(e => e.CategoryId == Filter.CategoryId.Value, Filter.CategoryId.HasValue)
-    //            .WhereIf(e => e.Title.Contains(Filter.Keywords) || e.Content.Contains(Filter.Keywords), !string.IsNullOrEmpty(Condition.Keywords));
-    //            //.WhereIf(e => e.Tags.Any(t => t.Tag == Condition.Tag), !string.IsNullOrEmpty(Condition.Tag));
-    //    }
-    //}
-
-
-    //public class ArticleInclude : IEntityIncluder<Article>
-    //{
-    //    public string Include { get; set; }
-
-    //    public IQueryable<Article> ProcessInclude(IQueryable<Article> query)
-    //    {
-    //        foreach (string name in Include.AnalyzeInclude())
-    //        {
-    //            switch(name)
-    //            {
-    //                case "category":
-    //                    query = query.Include(e => e.Category);
-    //                    break;
-    //                case "author":
-    //                    query = query.Include(e => e.Author);
-    //                    break;
-    //                case "tags":
-    //                    query = query.Include(e => e.Tags);
-    //                    break;
-    //            }
-    //        }
-    //        return query;
-    //    }
-
-    //    public Article ProcessInclude(Article t)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
 }

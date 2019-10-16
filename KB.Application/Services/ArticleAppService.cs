@@ -19,13 +19,10 @@ namespace KB.Application.Articles
 {
     public class ArticleAppService : AppServiceBase, IArticleAppService
     {
-
-        private readonly IRepository<Guid, Article> _repository;
         private readonly IArticleDomainService _articleDomainService;
 
-        public ArticleAppService(IRepository<Guid, Article> repository, IArticleDomainService articleDomainService) : base()
+        public ArticleAppService(IArticleDomainService articleDomainService) : base()
         {
-            this._repository = repository;
             this._articleDomainService = articleDomainService;
 
             MapperConfiguration configuration = new MapperConfiguration(config => {
@@ -56,41 +53,37 @@ namespace KB.Application.Articles
         [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Add(ArticleCreateDto dto)
         {
-            Article article = _repository.Create(Mapper.Map<Article>(dto));
+            Article article = _articleDomainService.Create(Mapper.Map<Article>(dto));
             return Mapper.Map<ArticleDto>(article);
         }
 
         [Permission("article:write")]
         public void PublishArticle(Guid id)
         {
-            Article article = _repository.Get(id);
-            _articleDomainService.Publish(article);
-            _repository.Update(article);
+            _articleDomainService.Publish(id);
         }
 
         [Permission("article:write")]
         [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
-            Article article = _repository.Get(dto.Id);
+            Article article = _articleDomainService.Get(dto.Id);
             Mapper.Map(dto, article);
-            _repository.Update(article);
+            _articleDomainService.Update(article);
             return Mapper.Map<ArticleDto>(article);
         }
 
         [Permission("article:write")]
         public void Delete(Guid id)
         {
-            Article article = _repository.Get(id);
-            _repository.Delete(article);
-
+            Article article = _articleDomainService.Delete(id);
             // audit log - article deleted
         }
 
         [Permission("article:read")]
         public ArticleWithIncludeDto Get(Guid id, string include)
         {
-            Article article = _repository.Get(id);
+            Article article = _articleDomainService.Get(id);
 
             return Mapper.Map<ArticleWithIncludeDto>(article);
         }
@@ -98,9 +91,10 @@ namespace KB.Application.Articles
         [Permission("article:read")]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
-            var spec = new ArticleFilterPaginatedSpecification(dto.CategoryId, dto.Tag, dto.Keywords, paging);
-            int count = _repository.Count(spec);
-            var list = _repository.List(spec);
+            var spec = new ArticleFilterSpecification(dto.CategoryId, dto.Tag, dto.Keywords);
+            int count = _articleDomainService.Count(spec);
+            spec.ApplyPaging(paging);
+            var list = _articleDomainService.List(spec);
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
     }

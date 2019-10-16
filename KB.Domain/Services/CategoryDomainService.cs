@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using KB.Domain.Entities;
 using KB.Domain.Specifications;
+using KB.Domain.Specificaitons;
 
 namespace KB.Domain.Categories.Service
 {
@@ -31,7 +32,7 @@ namespace KB.Domain.Categories.Service
                 _repository.Update(child);
             }
 
-            var articles = _articleRepository.List(new ArticleFilterSpecification(id));
+            var articles = _articleRepository.List(new ArticleFilterSpecification(id, null, null));
 
             foreach (var article in articles)
             {
@@ -53,7 +54,7 @@ namespace KB.Domain.Categories.Service
                 Delete(child.Id);
             }
 
-            var articles = _articleRepository.List(new ArticleFilterSpecification(id));
+            var articles = _articleRepository.List(new ArticleFilterSpecification(id, null, null));
 
             foreach (var article in articles)
             {

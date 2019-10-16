@@ -10,6 +10,7 @@ namespace Comm100.Framework.Domain.Specifications
         {
             Criteria = criteria;
         }
+
         public Expression<Func<T, bool>> Criteria { get; }
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
         public List<string> IncludeStrings { get; } = new List<string>();
@@ -29,6 +30,7 @@ namespace Comm100.Framework.Domain.Specifications
         {
             IncludeStrings.Add(includeString);
         }
+
         protected virtual void ApplyPaging(int index, int size)
         {
             Skip = (index - 1) * size;
