@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Comm100.Framework;
 using KB.Application.Articles;
-using KB.Application.Articles.Dto;
+using KB.Application.Dto;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KB.WebAPI.Controllers
@@ -15,11 +15,9 @@ namespace KB.WebAPI.Controllers
     {
 
         private readonly IArticleAppService _app;
-        private readonly IArticleTagsAppService _articleTagsApp;
-        public ArticlesController(IArticleAppService app, IArticleTagsAppService articleTagsApp)
+        public ArticlesController(IArticleAppService app)
         {
             this._app = app;
-            this._articleTagsApp = articleTagsApp;
         }
 
         [HttpGet("{id}")]
@@ -61,7 +59,7 @@ namespace KB.WebAPI.Controllers
         [HttpPost("{id}:publish")]
         public ActionResult<ArticleDto> Publish([FromRoute] Guid id)
         {
-            _app.PublishArticle(id);
+            _app.Publish(id);
             return Ok();
         }
 
@@ -69,28 +67,28 @@ namespace KB.WebAPI.Controllers
         [HttpGet("{id}/tags")]
         public ActionResult<ArticleTagsDto> GetTags([FromRoute] Guid id)
         {
-            var tags = _articleTagsApp.GetTags(id);
+            var tags = _app.GetTags(id);
             return Ok(tags);
         }
 
         [HttpPost("{id}/tags")]
         public ActionResult<ArticleTagsDto> AddTags([FromRoute] Guid id, [FromBody] ArticleTagsDto dto)
         {
-            var tags = _articleTagsApp.AddTags(id, dto);
+            var tags = _app.AddTags(id, dto);
             return Ok(tags);
         }
 
         [HttpPut("{id}/tags")]
         public ActionResult<ArticleTagsDto> SetTags([FromRoute] Guid id, [FromBody] ArticleTagsDto dto)
         {
-            var tags = _articleTagsApp.SetTags(id, dto);
+            var tags = _app.SetTags(id, dto);
             return Ok(tags);
         }
 
         [HttpDelete("{id}/tags")]
         public ActionResult<ArticleTagsDto> DeleteTags([FromRoute] Guid id, [FromBody] ArticleTagsDto dto)
         {
-            var tags = _articleTagsApp.DeleteTags(id, dto);
+            var tags = _app.DeleteTags(id, dto);
             return Ok(tags);
         }
     }

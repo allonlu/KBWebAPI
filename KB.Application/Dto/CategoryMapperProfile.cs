@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Application.Categories.Dto
+namespace KB.Application.Dto
 {
     public class CategoryMapperProfile : Profile
     {

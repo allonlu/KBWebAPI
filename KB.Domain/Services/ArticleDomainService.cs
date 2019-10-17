@@ -3,58 +3,69 @@ using System.Collections.Generic;
 using System.Linq;
 using Comm100.Framework.Domain.Repository;
 using Comm100.Framework.Domain.Specifications;
+using KB.Domain.Bo;
 using KB.Domain.Entities;
 using KB.Domain.Interfaces;
+using KB.Domain.Specificaitons;
 
 namespace KB.Domain.Services
 {
     public class ArticleDomainService : IArticleDomainService
     {
-        private IRepository<Guid, Article> _articleRepository;
-        private IRepository<Guid, Category> _categoryRepository;
-        public ArticleDomainService(IRepository<Guid, Article> articleRepository, 
-            IRepository<Guid, Category> categoryRepository)
+        private IRepository<Guid, Article> _repository;
+
+        public ArticleDomainService(IRepository<Guid, Article> repository)
         {
-            this._articleRepository = articleRepository;
-            this._categoryRepository = categoryRepository;
+            this._repository = repository;
         }
 
         public Article Create(Article entity)
         {
-            return _articleRepository.Create(entity);
+            return _repository.Create(entity);
         }
 
-        public int Count(BaseSpecification<Article> spec)
+        public int Count(ArticleFilterSpecification spec)
         {
-            return _articleRepository.Count(spec);
+            return _repository.Count(spec);
         }
 
-        public IReadOnlyList<Article> List(BaseSpecification<Article> spec)
+        public IReadOnlyList<Article> List(ArticleFilterSpecification spec)
         {
-            return _articleRepository.List(spec);
+            return _repository.List(spec);
         }
 
         public Article Delete(Guid id)
         {
-            Article article = _articleRepository.Get(id);
-            _articleRepository.Delete(article);
+            Article article = _repository.Get(id);
+
+            if (article != null)
+            {
+                _repository.Delete(article);
+            }
+
             return article;
-        }
-        
-        public void Delete(Article article)
-        {
-            _articleRepository.Delete(article);
         }
 
         public Article Get(Guid id)
         {
-            return _articleRepository.Get(id);
+            Article article = _repository.Get(id);
+
+            if (article == null)
+            {
+                throw new Exception($"Article with Id '{id}' does not exist.");
+            }
+
+            return article;
         }
 
         public void Publish(Guid articleId)
         {
-            Article article = _articleRepository.Get(articleId);
-            Category category = _categoryRepository.Get(article.CategoryId);
+            Article article = _repository.Get(articleId);
+
+            ICategoryDomainService categoryDomainService = null; // IOCContainer.Resolve<ICategoryDomainService>();
+
+            Category category = categoryDomainService.Get(article.CategoryId);
+
             if (category.IsPublished)
             {
                 if (article.Status != EnumArticleStatus.Audited.ToString())
@@ -69,25 +80,52 @@ namespace KB.Domain.Services
             }
         }
 
-        public Article Update(Article entity)
+        public Article Update(ArticleUpdateBo bo)
         {
-            _articleRepository.Update(entity);
-            return entity;
+            Article article = _repository.Get(bo.Id);
+
+            // Check title unique
+
+            article.Title = bo.Title;       // here can use auto-mapper to update if there are many fields
+            article.Content = bo.Content;
+
+            // update other system fields like lastModifiedTime
+            _repository.Update(article);
+            return article;
         }
 
-        public Article AddTags(IEnumerable<string> tags)
+        public Article AddTags(Guid id, IEnumerable<string> tags)
         {
-            throw new NotImplementedException();
+            Article article = _repository.Get(id);
+
+            article.Tags = article.Tags
+                    .Concat<ArticleTag>(tags.Select(name => new ArticleTag() { ArticleId = id, Tag = name }))
+                    .Distinct();
+
+            _repository.Update(article);
+
+            return article;
         }
 
-        public Article DeleteTags(IEnumerable<string> tags)
+        public Article DeleteTags(Guid id, IEnumerable<string> tags)
         {
-            throw new NotImplementedException();
+            Article article = _repository.Get(id);
+
+            article.Tags = article.Tags.Where(tag => !tags.Any(name => tag.Tag == name));
+
+            _repository.Update(article);
+
+            return article;
+
         }
 
-        public Article SetTags(IEnumerable<string> tags)
+        public Article SetTags(Guid id, IEnumerable<string> tags)
         {
-            throw new NotImplementedException();
+            Article article = _repository.Get(id);
+
+            article.Tags = tags.Select(name => new ArticleTag() { ArticleId = id, Tag = name });
+
+            return article;
         }
     }
 }

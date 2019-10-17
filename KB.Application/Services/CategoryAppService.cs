@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Comm100.Application.Services;
-using KB.Application.Categories.Dto;
+using KB.Application.Dto;
+using KB.Application.Services;
+using KB.Domain.Bo;
 using KB.Domain.Entities;
 using KB.Domain.Interfaces;
 using System;
@@ -31,7 +33,26 @@ namespace KB.Application.Categories.Service
 
         public CategoryDto Add(CategoryCreateDto dto)
         {
-            throw new NotImplementedException();
+            Category category = _domainService.Create(Mapper.Map<Category>(dto));
+            return Mapper.Map<CategoryDto>(category);
+        }
+
+        public CategoryDto Update(CategoryUpdateDto dto)
+        {
+            Category category = _domainService.Update(Mapper.Map<CategoryUpdateBo>(dto));
+            return Mapper.Map<CategoryDto>(category);
+        }
+
+        public CategoryDto Get(Guid id)
+        {
+            Category category = _domainService.Get(id);
+            return Mapper.Map<CategoryDto>(category);
+        }
+
+        public IReadOnlyList<CategoryDto> GetList()
+        {
+            IReadOnlyList<Category> list = _domainService.List();
+            return Mapper.Map<IReadOnlyList<CategoryDto>>(list);
         }
     }
 }

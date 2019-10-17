@@ -10,10 +10,12 @@ namespace Comm100.Framework.Domain.Repository
     {
         TEntity Get(TId id);
         IReadOnlyList<TEntity> ListAll();
-        IReadOnlyList<TEntity> List(ISpecification<TEntity> spec);
+        IReadOnlyList<TEntity> List(ISpecification<TEntity> spec); 
         int Count(ISpecification<TEntity> spec);
         TEntity Create(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
+
+        bool Exists(TId id);
     }
 }

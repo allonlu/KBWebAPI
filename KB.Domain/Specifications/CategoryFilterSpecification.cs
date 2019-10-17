@@ -11,7 +11,6 @@ namespace KB.Domain.Specifications
         public CategoryFilterSpecification(Guid parentId)
             :base(c => c.ParentId == parentId)
         {
-
         }
     }
 }

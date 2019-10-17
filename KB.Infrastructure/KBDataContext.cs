@@ -23,7 +23,6 @@ namespace KB.Infrastructure
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<ArticleTag> ArticleTags { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -31,7 +30,6 @@ namespace KB.Infrastructure
             modelBuilder.ApplyConfiguration(new ArticleEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new ArticleTagEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new FeedbackEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new TagEntityTypeConfiguration());
         }
     }

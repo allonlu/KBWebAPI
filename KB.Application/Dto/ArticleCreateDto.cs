@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace KB.Application.Articles.Dto
+namespace KB.Application.Dto
 {
     public class ArticleCreateDto
     {

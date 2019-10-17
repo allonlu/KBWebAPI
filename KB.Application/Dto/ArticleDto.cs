@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Application.Articles.Dto
+namespace KB.Application.Dto
 {
     public class ArticleDto
     {
@@ -22,5 +22,7 @@ namespace KB.Application.Articles.Dto
         public DateTime CreatedTime { get; set; }
 
         public DateTime LastModifiedTime { get; set; }
+
+        public IEnumerable<string> Tags { get; set; }
     }
 }

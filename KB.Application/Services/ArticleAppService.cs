@@ -1,30 +1,31 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using AutoMapper;
 using Comm100.Framework;
-using KB.Application.Articles.Dto;
 using KB.Domain.Entities;
 using Comm100.Runtime;
 using Comm100.Application.Services;
 using Comm100.Runtime.Transactions;
 using System.Transactions;
 using Comm100.Public.Dto;
-using KB.Application.Categories.Dto;
-using Comm100.Framework.Domain.Repository;
 using KB.Domain.Specificaitons;
 using Comm100.Extension;
 using KB.Domain.Interfaces;
+using KB.Application.Dto;
+using KB.Domain.Bo;
 
 namespace KB.Application.Articles
 {
     public class ArticleAppService : AppServiceBase, IArticleAppService
     {
         private readonly IArticleDomainService _articleDomainService;
+        private readonly ICategoryDomainService _categoryDomainService;
 
-        public ArticleAppService(IArticleDomainService articleDomainService) : base()
+        public ArticleAppService(IArticleDomainService articleDomainService, 
+            ICategoryDomainService categoryDomainService) : base()
         {
             this._articleDomainService = articleDomainService;
+            this._categoryDomainService = categoryDomainService;
 
             MapperConfiguration configuration = new MapperConfiguration(config => {
 
@@ -39,6 +40,7 @@ namespace KB.Application.Articles
                 config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
          
                 config.CreateMap<ArticleCreateDto, Article>();
+                config.CreateMap<ArticleUpdateDto, ArticleUpdateBo>();
 
                 config.CreateMap<ArticleTagsDto, Article>();
                 config.CreateMap<Article, ArticleTagsDto>();
@@ -59,7 +61,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
-        public void PublishArticle(Guid id)
+        public void Publish(Guid id)
         {
             _articleDomainService.Publish(id);
         }
@@ -68,9 +70,7 @@ namespace KB.Application.Articles
         [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
-            Article article = _articleDomainService.Get(dto.Id);
-            Mapper.Map(dto, article);
-            _articleDomainService.Update(article);
+            Article article = _articleDomainService.Update(Mapper.Map<ArticleUpdateBo>(dto));
             return Mapper.Map<ArticleDto>(article);
         }
 
@@ -88,22 +88,31 @@ namespace KB.Application.Articles
 
             ArticleWithIncludeDto dto = Mapper.Map<ArticleWithIncludeDto>(article);
 
-            if(!string.IsNullOrEmpty(include))
+            HandleInclude(dto, include);
+
+            return dto;
+        }
+
+        private void HandleInclude(ArticleWithIncludeDto dto, string include)
+        {
+            if (!string.IsNullOrEmpty(include))
             {
                 var entityIncludes = include.AnalyzeInclude();
-                foreach(var entity in entityIncludes)
+                foreach (var entity in entityIncludes)
                 {
                     switch (entity)
                     {
                         case "category":
+                            dto.Category = Mapper.Map<CategoryRefDto>(_categoryDomainService.Get(dto.CategoryId));
                             break;
                         case "author":
+                            dto.Author = null; // need call public module.
                             break;
+                        default:
+                            throw new Exception("Invalid include parameters.");
                     }
                 }
             }
-
-            return dto;
         }
 
         [Permission("article:read")]
@@ -113,7 +122,43 @@ namespace KB.Application.Articles
             int count = _articleDomainService.Count(spec);
             spec.ApplyPaging(paging);
             var list = _articleDomainService.List(spec);
+
+            var listIncludes = list.Select(e =>
+            {
+                ArticleWithIncludeDto toDto = Mapper.Map<ArticleWithIncludeDto>(e);
+                HandleInclude(toDto, include);
+                return toDto;
+            });
+
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
+        }
+
+        [Permission("article:write")]
+        public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
+        {
+            var article = _articleDomainService.AddTags(id, dto.Tags);
+            return Mapper.Map<ArticleTagsDto>(article);
+        }
+
+        [Permission("article:write")]
+        public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
+        {
+            Article article = _articleDomainService.DeleteTags(id, dto.Tags);
+            return Mapper.Map<ArticleTagsDto>(article);
+        }
+
+        [Permission("article:read")]
+        public ArticleTagsDto GetTags(Guid id)
+        {
+            Article article = _articleDomainService.Get(id);
+            return Mapper.Map<ArticleTagsDto>(article);
+        }
+
+        [Permission("article:write")]
+        public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
+        {
+            Article article = _articleDomainService.SetTags(id, dto.Tags);
+            return Mapper.Map<ArticleTagsDto>(article);
         }
     }
 }

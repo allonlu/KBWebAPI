@@ -44,6 +44,11 @@ namespace Comm100.Framework.Infrastructure
             return _dbContext.Set<TEntity>().Find(id);
         }
 
+        public bool Exists(TId id)
+        {
+            return Get(id) != null;
+        }
+
         public IReadOnlyList<TEntity> ListAll()
         {
             return _dbContext.Set<TEntity>().ToList();

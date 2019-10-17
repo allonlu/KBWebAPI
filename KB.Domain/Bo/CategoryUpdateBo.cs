@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Application.Dto
+namespace KB.Domain.Bo
 {
-    public class CategoryDto
+    public class CategoryUpdateBo
     {
         public Guid Id { get; set; }
-
 
         public string Name { get; set; }
 
         public Guid ParentId { get; set; }
-
-        public bool IsPublished { get; set; }
     }
 }

@@ -5,30 +5,31 @@ using System.Text;
 using Comm100.Domain.Services;
 using KB.Domain.Entities;
 using Comm100.Framework.Domain.Specifications;
+using KB.Domain.Bo;
+using KB.Domain.Specificaitons;
 
 namespace KB.Domain.Interfaces
 {
     public interface IArticleDomainService : IDomainService
     {
         Article Get(Guid id);
-        int Count(BaseSpecification<Article> spec);
 
-        IReadOnlyList<Article> List(BaseSpecification<Article> spec);
+        int Count(ArticleFilterSpecification spec);
+
+        IReadOnlyList<Article> List(ArticleFilterSpecification spec);
 
         Article Create(Article entity);
 
-        Article Update(Article entity);
+        Article Update(ArticleUpdateBo entity);
 
         Article Delete(Guid id);
 
-        void Delete(Article article);
-
         void Publish(Guid articleId);
 
-        Article AddTags(IEnumerable<string> tags);
+        Article AddTags(Guid id, IEnumerable<string> tags);
 
-        Article DeleteTags(IEnumerable<string> tags);
+        Article DeleteTags(Guid id, IEnumerable<string> tags);
 
-        Article SetTags(IEnumerable<string> tags);
+        Article SetTags(Guid id, IEnumerable<string> tags);
     }
 }
