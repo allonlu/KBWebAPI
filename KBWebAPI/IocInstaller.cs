@@ -12,11 +12,13 @@ namespace KB.WebAPI
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            
+
             //container.AddFacility<Comm100IocFacility>();
-            container.AddFacility<ApplicationIocFacility>();
-            container.AddFacility<EFIocFacility>();
             container.AddFacility<InfrastructureIocFacility>();
+            container.AddFacility<EFIocFacility>();
+            container.AddFacility<ApplicationIocFacility>();
+            
+            
         }
     }
 }

@@ -10,10 +10,9 @@ namespace Comm100.Framework.Infrastructure
 {
     public class EFRepository<TId, TEntity> : IRepository<TId, TEntity> where TEntity : class
     {
-
         protected readonly DbContext _dbContext;
 
-        protected EFRepository(DbContext dbContext)
+        public EFRepository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -54,8 +53,6 @@ namespace Comm100.Framework.Infrastructure
         {
             return ApplySpecification(spec).ToList();
         }
-
-        
 
         private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> spec)
         {

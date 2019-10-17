@@ -6,7 +6,7 @@ using Comm100.Domain.Services;
 using KB.Domain.Entities;
 using Comm100.Framework.Domain.Specifications;
 
-namespace KB.Domain.Articles.Service
+namespace KB.Domain.Interfaces
 {
     public interface IArticleDomainService : IDomainService
     {
@@ -24,5 +24,11 @@ namespace KB.Domain.Articles.Service
         void Delete(Article article);
 
         void Publish(Guid articleId);
+
+        Article AddTags(IEnumerable<string> tags);
+
+        Article DeleteTags(IEnumerable<string> tags);
+
+        Article SetTags(IEnumerable<string> tags);
     }
 }

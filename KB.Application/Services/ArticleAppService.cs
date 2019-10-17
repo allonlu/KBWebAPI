@@ -5,7 +5,6 @@ using AutoMapper;
 using Comm100.Framework;
 using KB.Application.Articles.Dto;
 using KB.Domain.Entities;
-using KB.Domain.Articles.Service;
 using Comm100.Runtime;
 using Comm100.Application.Services;
 using Comm100.Runtime.Transactions;
@@ -14,6 +13,8 @@ using Comm100.Public.Dto;
 using KB.Application.Categories.Dto;
 using Comm100.Framework.Domain.Repository;
 using KB.Domain.Specificaitons;
+using Comm100.Extension;
+using KB.Domain.Interfaces;
 
 namespace KB.Application.Articles
 {
@@ -85,7 +86,24 @@ namespace KB.Application.Articles
         {
             Article article = _articleDomainService.Get(id);
 
-            return Mapper.Map<ArticleWithIncludeDto>(article);
+            ArticleWithIncludeDto dto = Mapper.Map<ArticleWithIncludeDto>(article);
+
+            if(!string.IsNullOrEmpty(include))
+            {
+                var entityIncludes = include.AnalyzeInclude();
+                foreach(var entity in entityIncludes)
+                {
+                    switch (entity)
+                    {
+                        case "category":
+                            break;
+                        case "author":
+                            break;
+                    }
+                }
+            }
+
+            return dto;
         }
 
         [Permission("article:read")]

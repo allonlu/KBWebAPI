@@ -1,5 +1,5 @@
 ﻿using System;
-namespace KB.Domain.Articles.Service
+namespace KB.Domain.Services
 {
     public class ArticlePublishService
     {

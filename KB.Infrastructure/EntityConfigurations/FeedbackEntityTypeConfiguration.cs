@@ -9,7 +9,8 @@ namespace KB.Infrastructure.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Feedback> builder)
         {
-            builder.ToTable("t_KB_Feedback");
+            builder.ToTable("t_KB_Feedback")
+                .HasKey(f => f.Id);
         }
     }
 }

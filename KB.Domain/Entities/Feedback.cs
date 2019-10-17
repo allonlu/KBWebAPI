@@ -6,6 +6,6 @@ namespace KB.Domain.Entities
 {
     public class Feedback
     {
-        
+        public Guid Id { get; set; }
     }
 }

@@ -11,8 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\" />
-    <Folder Include="Interface\" />
     <Folder Include="Dto\" />
   </ItemGroup>
 </Project>

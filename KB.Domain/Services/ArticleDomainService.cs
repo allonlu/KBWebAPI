@@ -4,10 +4,9 @@ using System.Linq;
 using Comm100.Framework.Domain.Repository;
 using Comm100.Framework.Domain.Specifications;
 using KB.Domain.Entities;
-using KB.Domain.Specificaitons;
-using Microsoft.EntityFrameworkCore;
+using KB.Domain.Interfaces;
 
-namespace KB.Domain.Articles.Service
+namespace KB.Domain.Services
 {
     public class ArticleDomainService : IArticleDomainService
     {
@@ -74,6 +73,21 @@ namespace KB.Domain.Articles.Service
         {
             _articleRepository.Update(entity);
             return entity;
+        }
+
+        public Article AddTags(IEnumerable<string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Article DeleteTags(IEnumerable<string> tags)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Article SetTags(IEnumerable<string> tags)
+        {
+            throw new NotImplementedException();
         }
     }
 }

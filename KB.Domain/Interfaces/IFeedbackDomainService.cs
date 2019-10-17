@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Domain.Tags
+namespace KB.Domain.Interfaces
 {
-    public interface ITagDomainService
+    public interface IFeedbackDomainService
     {
         void DeleteByArticle(Guid articleId);
     }

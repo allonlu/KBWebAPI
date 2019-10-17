@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using Comm100.Application.Services;
 using KB.Application.Categories.Dto;
-using KB.Domain.Categories.Service;
 using KB.Domain.Entities;
+using KB.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;

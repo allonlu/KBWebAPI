@@ -32,20 +32,7 @@ namespace KB.Domain.Entities
         public IEnumerable<ArticleTag> Tags { get; set; }
 
 
-        public void AddTags(IEnumerable<string> tags)
-        {
-
-        }
-
-        public void DeleteTags(IEnumerable<string> tags)
-        {
-
-        }
-
-        public void SetTags(IEnumerable<string> tags)
-        {
-
-        }
+        
 
     }
 }

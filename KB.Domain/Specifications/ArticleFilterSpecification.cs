@@ -12,8 +12,8 @@ namespace KB.Domain.Specificaitons
     {
         public ArticleFilterSpecification(Guid? categoryId, string tag, string keywords)
             : base(i => (!categoryId.HasValue || i.CategoryId == categoryId) &&
-                 (!string.IsNullOrEmpty(tag) || i.Tags.Any(t => t.Tag == tag)) &&
-                 (!string.IsNullOrEmpty(keywords) || i.Content.Contains(keywords) || i.Title.Contains(keywords)))
+                 (string.IsNullOrEmpty(tag) || i.Tags.Any(t => t.Tag == tag)) &&
+                 (string.IsNullOrEmpty(keywords) || i.Content.Contains(keywords) || i.Title.Contains(keywords)))
         {
         }
 

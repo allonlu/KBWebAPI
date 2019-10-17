@@ -28,3 +28,4 @@ C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework\obj\Debug\netstandard2.0\C
 C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework\obj\Debug\netstandard2.0\Comm100.Framework.AssemblyInfo.cs
 C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework\obj\Debug\netstandard2.0\Comm100.Framework.dll
 C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework\obj\Debug\netstandard2.0\Comm100.Framework.pdb
+C:\Users\AllonLu\developer\KBWebAPI\Comm100.Framework\obj\Debug\netstandard2.0\Comm100.Framework.csprojAssemblyReference.cache

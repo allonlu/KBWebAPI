@@ -9,7 +9,7 @@ namespace KB.Infrastructure.EntityConfigurations
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
-            builder.ToTable("t_KB_Category");
+            builder.ToTable("t_KB_Category").HasKey(c => c.Id);
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using KB.Domain.Articles.Service;
-using Comm100.Framework.Domain.Repository;
+﻿using Comm100.Framework.Domain.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +6,7 @@ using System.Text;
 using KB.Domain.Entities;
 using KB.Domain.Specifications;
 using KB.Domain.Specificaitons;
+using KB.Domain.Interfaces;
 
 namespace KB.Domain.Categories.Service
 {
@@ -25,6 +25,8 @@ namespace KB.Domain.Categories.Service
         {
             Category category = _repository.Get(id);
             var childrenCategory = _repository.List(new CategoryFilterSpecification(id));
+
+
 
             foreach (var child in childrenCategory)
             {
