@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Domain.Entities
+namespace KB.Application.Dto
 {
-    public class Tag
+    public class TagDto
     {
         public Guid Id { get; set; }
 

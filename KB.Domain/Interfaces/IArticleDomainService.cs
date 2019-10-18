@@ -26,10 +26,10 @@ namespace KB.Domain.Interfaces
 
         void Publish(Guid articleId);
 
-        Article AddTags(Guid id, IEnumerable<string> tags);
+        Article AddTags(Guid id, IEnumerable<Guid> tagIds);
 
-        Article DeleteTags(Guid id, IEnumerable<string> tags);
+        Article DeleteTags(Guid id, IEnumerable<Guid> tagIds);
 
-        Article SetTags(Guid id, IEnumerable<string> tags);
+        Article SetTags(Guid id, IEnumerable<Guid> tagIds);
     }
 }

@@ -10,6 +10,8 @@ namespace KB.Application.Dto
         public AgentRefDto Author { get; set; }
 
         public CategoryRefDto Category { get; set; }
+
+        public IEnumerable<TagRefDto> Tags { get; set; }
         
     }
 }

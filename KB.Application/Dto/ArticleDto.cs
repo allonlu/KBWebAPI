@@ -23,6 +23,6 @@ namespace KB.Application.Dto
 
         public DateTime LastModifiedTime { get; set; }
 
-        public IEnumerable<string> Tags { get; set; }
+        public IEnumerable<Guid> TagIds { get; set; }
     }
 }

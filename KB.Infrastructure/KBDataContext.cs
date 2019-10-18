@@ -12,12 +12,10 @@ namespace KB.Infrastructure
         public KBDataContext(IConfiguration configuration)
         {
             this.connectString = configuration.GetConnectionString("DefaultConnection");
-            //this.configuration = configuration;
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectString);
-            //.UseSqlServer(connectString);
         }
 
         public virtual DbSet<Article> Articles { get; set; }

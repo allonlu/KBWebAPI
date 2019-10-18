@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Castle.Windsor;
 using Comm100.Framework.Domain.Repository;
 using Comm100.Framework.Domain.Specifications;
 using KB.Domain.Bo;
@@ -12,11 +13,14 @@ namespace KB.Domain.Services
 {
     public class ArticleDomainService : IArticleDomainService
     {
+        private IWindsorContainer _container;
+
         private IRepository<Guid, Article> _repository;
 
-        public ArticleDomainService(IRepository<Guid, Article> repository)
+        public ArticleDomainService(IRepository<Guid, Article> repository, IWindsorContainer container)
         {
             this._repository = repository;
+            this._container = container;
         }
 
         public Article Create(Article entity)
@@ -62,7 +66,7 @@ namespace KB.Domain.Services
         {
             Article article = _repository.Get(articleId);
 
-            ICategoryDomainService categoryDomainService = null; // IOCContainer.Resolve<ICategoryDomainService>();
+            ICategoryDomainService categoryDomainService = _container.Resolve<ICategoryDomainService>();
 
             Category category = categoryDomainService.Get(article.CategoryId);
 
@@ -90,16 +94,17 @@ namespace KB.Domain.Services
             article.Content = bo.Content;
 
             // update other system fields like lastModifiedTime
+
             _repository.Update(article);
             return article;
         }
 
-        public Article AddTags(Guid id, IEnumerable<string> tags)
+        public Article AddTags(Guid id, IEnumerable<Guid> tagIds)
         {
             Article article = _repository.Get(id);
 
             article.Tags = article.Tags
-                    .Concat<ArticleTag>(tags.Select(name => new ArticleTag() { ArticleId = id, Tag = name }))
+                    .Concat<ArticleTag>(tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId }))
                     .Distinct();
 
             _repository.Update(article);
@@ -107,11 +112,11 @@ namespace KB.Domain.Services
             return article;
         }
 
-        public Article DeleteTags(Guid id, IEnumerable<string> tags)
+        public Article DeleteTags(Guid id, IEnumerable<Guid> tagIds)
         {
             Article article = _repository.Get(id);
 
-            article.Tags = article.Tags.Where(tag => !tags.Any(name => tag.Tag == name));
+            article.Tags = article.Tags.Where(articleTag => !tagIds.Any(tagId => articleTag.TagId == tagId));
 
             _repository.Update(article);
 
@@ -119,11 +124,11 @@ namespace KB.Domain.Services
 
         }
 
-        public Article SetTags(Guid id, IEnumerable<string> tags)
+        public Article SetTags(Guid id, IEnumerable<Guid> tagIds)
         {
             Article article = _repository.Get(id);
 
-            article.Tags = tags.Select(name => new ArticleTag() { ArticleId = id, Tag = name });
+            article.Tags = tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId });
 
             return article;
         }

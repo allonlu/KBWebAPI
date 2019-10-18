@@ -20,6 +20,7 @@ namespace KB.Application.Articles
     {
         private readonly IArticleDomainService _articleDomainService;
         private readonly ICategoryDomainService _categoryDomainService;
+        private readonly ITagDomainService _tagDomainService;
 
         public ArticleAppService(IArticleDomainService articleDomainService, 
             ICategoryDomainService categoryDomainService) : base()
@@ -37,16 +38,13 @@ namespace KB.Application.Articles
                 
                 config.CreateMap<Article, ArticleDto>();
                 config.CreateMap<Article, ArticleWithIncludeDto>();
-                config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
+                config.CreateMap<ArticleTag, Guid>().ConvertUsing(t => t.TagId);
          
                 config.CreateMap<ArticleCreateDto, Article>();
                 config.CreateMap<ArticleUpdateDto, ArticleUpdateBo>();
 
                 config.CreateMap<ArticleTagsDto, Article>();
                 config.CreateMap<Article, ArticleTagsDto>();
-
-                config.CreateMap<ArticleTag, string>().ConvertUsing(t => t.Tag);
-                config.CreateMap<string, ArticleTag>().ConvertUsing(t => new ArticleTag() { Tag = t });
             });
 
             this.Mapper = configuration.CreateMapper();
@@ -108,6 +106,9 @@ namespace KB.Application.Articles
                         case "author":
                             dto.Author = null; // need call public module.
                             break;
+                        case "tags":
+                            dto.Tags = dto.TagIds.Select(id => Mapper.Map<TagRefDto>(_tagDomainService.Get(id)));
+                            break;
                         default:
                             throw new Exception("Invalid include parameters.");
                     }
@@ -118,7 +119,7 @@ namespace KB.Application.Articles
         [Permission("article:read")]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
-            var spec = new ArticleFilterSpecification(dto.CategoryId, dto.Tag, dto.Keywords);
+            var spec = new ArticleFilterSpecification(dto.CategoryId, dto.TagId, dto.Keywords);
             int count = _articleDomainService.Count(spec);
             spec.ApplyPaging(paging);
             var list = _articleDomainService.List(spec);
@@ -136,14 +137,14 @@ namespace KB.Application.Articles
         [Permission("article:write")]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
-            var article = _articleDomainService.AddTags(id, dto.Tags);
+            var article = _articleDomainService.AddTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
         [Permission("article:write")]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
-            Article article = _articleDomainService.DeleteTags(id, dto.Tags);
+            Article article = _articleDomainService.DeleteTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
@@ -157,7 +158,7 @@ namespace KB.Application.Articles
         [Permission("article:write")]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
-            Article article = _articleDomainService.SetTags(id, dto.Tags);
+            Article article = _articleDomainService.SetTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
     }

@@ -31,8 +31,5 @@ namespace KB.Domain.Entities
 
         public IEnumerable<ArticleTag> Tags { get; set; }
 
-
-        
-
     }
 }

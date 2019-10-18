@@ -10,8 +10,8 @@ namespace KB.Infrastructure.EntityConfigurations
         public void Configure(EntityTypeBuilder<ArticleTag> builder)
         {
             builder.ToTable("t_KB_ArticleTag");
-            builder.HasKey(t => new { t.ArticleId, t.Tag });
-            builder.HasIndex(t => new { t.ArticleId, t.Tag }).IsUnique();
+            builder.HasKey(t => new { t.ArticleId, t.TagId });
+            builder.HasIndex(t => new { t.ArticleId, t.TagId }).IsUnique();
         }
     }
 }

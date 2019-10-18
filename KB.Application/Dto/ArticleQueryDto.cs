@@ -8,6 +8,6 @@ namespace KB.Application.Dto
     {
         public Guid? CategoryId { get; set; }
         public string Keywords { get; set; }
-        public string Tag { get; set; }
+        public Guid TagId { get; set; }
     }
 }

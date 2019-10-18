@@ -8,16 +8,19 @@ using KB.Domain.Specifications;
 using KB.Domain.Specificaitons;
 using KB.Domain.Interfaces;
 using KB.Domain.Bo;
+using Castle.Windsor;
 
 namespace KB.Domain.Categories.Service
 {
     public class CategoryDomainService : ICategoryDomainService
     {
+        private IWindsorContainer _container;
         private readonly IRepository<Guid, Category> _repository;
 
-        public CategoryDomainService(IRepository<Guid, Category> repository)
+        public CategoryDomainService(IRepository<Guid, Category> repository, IWindsorContainer container)
         {
             this._repository = repository;
+            this._container = container;
         }
 
         public Category Create(Category category)
@@ -67,15 +70,12 @@ namespace KB.Domain.Categories.Service
             }
 
             // maybe have performance issue for cascading delete
-            IArticleDomainService articleDomainService = null; // resolve from container
+            IArticleDomainService articleDomainService = _container.Resolve<IArticleDomainService>();
 
-            var articles = articleDomainService.List(new ArticleFilterSpecification(id, null, null));
+            var articles = articleDomainService.List(new ArticleFilterSpecification(id));
 
             foreach (var article in articles)
             {
-                article.CategoryId = targetId;
-
-                // bad taste
                 articleDomainService.Update(new ArticleUpdateBo() { CategoryId = article.CategoryId });
             }
 
@@ -93,7 +93,7 @@ namespace KB.Domain.Categories.Service
                 Delete(child.Id);
             }
 
-            IArticleDomainService articleDomainService = null; // need resolve by IOC 
+            IArticleDomainService articleDomainService = _container.Resolve<IArticleDomainService>();
 
             var articles = articleDomainService.List(new ArticleFilterSpecification(id, null, null));
 

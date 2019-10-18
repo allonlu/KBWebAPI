@@ -4,8 +4,10 @@ using System.Text;
 
 namespace KB.Application.Dto
 {
-    public class ArticleTagsDto
+    public class TagRefDto
     {
-        public IEnumerable<Guid> TagIds { get; set; }
+        public Guid Id { get; set; }
+
+        public string Name { get; set; }
     }
 }
