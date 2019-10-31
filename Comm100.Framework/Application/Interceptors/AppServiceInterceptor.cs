@@ -49,7 +49,7 @@ namespace Comm100.Application.Interceptors
             using (var uow = _unitOfWorkMananger.Begin(method.GetIsolationLevel()))
             {
 
-                uow.SetSiteId(Session.GetSiteId());
+                //uow.SetSiteId(Session.GetSiteId());
                 invocation.Proceed();
                 uow.Complete();
             }

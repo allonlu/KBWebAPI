@@ -1,4 +1,5 @@
-﻿using KB.Domain.Bo;
+﻿using Comm100.Domain.Services;
+using KB.Domain.Bo;
 using KB.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace KB.Domain.Interfaces
 {
-    public interface ICategoryDomainService
+    public interface ICategoryDomainService : IDomainService
     {
         Category Create(Category category);
 

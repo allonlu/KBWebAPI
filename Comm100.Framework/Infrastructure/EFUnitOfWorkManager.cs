@@ -49,10 +49,5 @@ namespace Comm100.Framework.Infrastructure
 
             return _outerUow;
         }
-        
-        public int GetSiteId()
-        {
-            return _outerUow.GetSiteId();
-        }
     }
 }

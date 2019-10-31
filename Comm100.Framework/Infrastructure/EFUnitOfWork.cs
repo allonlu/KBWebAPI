@@ -26,12 +26,17 @@ namespace Comm100.Framework.Infrastructure
 
         public EFUnitOfWork(DbContext dbContext, TransactionOptions options)
         {
-            
-           
             _transaction = dbContext.Database.BeginTransaction();
             _isCommitted = false;
             _dbContext = dbContext;
             this.options = options;
+
+            var tenantId = 10000;
+
+            var databaseName = GetDatabase(tenantId);
+
+            ChangeDatabase(databaseName);
+            ChangeTableName(tenantId);
         }
 
         public event EventHandler Disposed;
@@ -52,10 +57,7 @@ namespace Comm100.Framework.Infrastructure
         public void SetSiteId(int siteId)
         {
             _siteId = siteId;
-            var databaseName = GetDatabase(siteId);
-
-            ChangeDatabase(databaseName);
-            ChangeTableName(siteId);
+            
         }
 
         private void ChangeTableName(int siteId)
@@ -94,13 +96,6 @@ namespace Comm100.Framework.Infrastructure
         private string GetDatabase(int siteId)
         {
             return "KB";
-
-        }
-
-
-        public int GetSiteId()
-        {
-            return _siteId;
         }
     }
 }

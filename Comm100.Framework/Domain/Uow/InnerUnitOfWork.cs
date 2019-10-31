@@ -23,15 +23,5 @@ namespace Comm100.Domain.Uow
         {
           
         }
-
-        public int GetSiteId()
-        {
-            return _siteId;
-        }
-
-        public void SetSiteId(int siteId)
-        {
-            _siteId = siteId;
-        }
     }
 }

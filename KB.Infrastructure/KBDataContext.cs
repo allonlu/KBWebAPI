@@ -1,6 +1,7 @@
 
 using KB.Domain.Entities;
 using KB.Infrastructure.EntityConfigurations;
+using KB.Infrastructure.Tenants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -8,14 +9,19 @@ namespace KB.Infrastructure
 {
     public class KBDataContext : DbContext
     {
-        public string connectString { get; set; }
-        public KBDataContext(IConfiguration configuration)
+        private string _connectString { get; set; }
+
+        private readonly Tenant _tenant;
+
+        public KBDataContext(IConfiguration configuration, ITenantProvider tenantProvider)
         {
-            this.connectString = configuration.GetConnectionString("DefaultConnection");
+            this._connectString = configuration.GetConnectionString("DefaultConnection");
+            this._tenant = tenantProvider.GetTenant();
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(connectString);
+            optionsBuilder.UseSqlServer(_connectString);
+            
         }
 
         public virtual DbSet<Article> Articles { get; set; }
@@ -25,7 +31,7 @@ namespace KB.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new ArticleEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ArticleEntityTypeConfiguration(this._tenant.Id));
             modelBuilder.ApplyConfiguration(new ArticleTagEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
             modelBuilder.ApplyConfiguration(new TagEntityTypeConfiguration());

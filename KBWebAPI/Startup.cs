@@ -37,6 +37,7 @@ namespace KB.WebAPI
         {
 
             Container.AddFacility<AspNetCoreFacility>(f => f.CrossWiresInto(services));
+            Container.Register(Component.For<IWindsorContainer>().Instance(Container));
 
             services.Configure<IISServerOptions>(options => {
                 options.AutomaticAuthentication = false;
@@ -59,7 +60,10 @@ namespace KB.WebAPI
             }).AddJsonOptions(option=> {
                 option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-           
+
+            services.AddHttpContextAccessor();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services.AddWindsor(Container,
                  opts => opts.UseEntryAssembly(this.GetType().Assembly), // <- Recommended

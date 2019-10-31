@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using KB.Infrastructure.Tenants;
 
 namespace KB.Infrastructure
 {
@@ -14,7 +15,10 @@ namespace KB.Infrastructure
             Kernel.Register(
                Component.For(typeof(DbContext))
                         .ImplementedBy(typeof(KBDataContext))
-                        .LifestyleScoped()
+                        .LifestyleScoped(),
+               Component.For(typeof(ITenantProvider))
+                         .ImplementedBy(typeof(TenantProvider))
+                         .LifestyleScoped()
                 );
         }
     }

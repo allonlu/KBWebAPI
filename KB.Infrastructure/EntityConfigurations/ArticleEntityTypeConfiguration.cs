@@ -7,6 +7,12 @@ namespace KB.Infrastructure.EntityConfigurations
 {
     class ArticleEntityTypeConfiguration : IEntityTypeConfiguration<Article>
     {
+        private int _tenantId;
+        public ArticleEntityTypeConfiguration(int tenantId)
+        {
+            this._tenantId = tenantId;
+        }
+
         public void Configure(EntityTypeBuilder<Article> articleConfiguration)
         {
             articleConfiguration.ToTable("t_KB_Article");

@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KBWebAPI.Controllers
 {
+    [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
     {

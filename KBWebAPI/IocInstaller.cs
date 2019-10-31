@@ -17,6 +17,7 @@ namespace KB.WebAPI
             container.AddFacility<InfrastructureIocFacility>();
             container.AddFacility<EFIocFacility>();
             container.AddFacility<ApplicationIocFacility>();
+
         }
     }
 }
