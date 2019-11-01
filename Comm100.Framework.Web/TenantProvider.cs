@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Comm100.Framework.Tenants;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Infrastructure.Tenants
+namespace Comm100.Framework.Web
 {
     public class TenantProvider : ITenantProvider
     {
@@ -11,11 +12,14 @@ namespace KB.Infrastructure.Tenants
         public TenantProvider(IHttpContextAccessor accessor)
         {
             var host = accessor.HttpContext.Request.Host.Value;
-            var id = Convert.ToInt32(accessor.HttpContext.Request.Query["siteId"]);  // get from db by host if use subdomain
 
+            // get from database by host if use subdomain, if complete the site database merge, also need get the database name from the database
+            var id = Convert.ToInt32(accessor.HttpContext.Request.Query["siteId"]); 
+            
             this._tenant = new Tenant()
             {
                 Id = id,
+                DatabaseName = "KB" + (id / 500 + 1),
                 Host = host
             };
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace KB.Infrastructure.Tenants
+namespace Comm100.Framework.Tenants
 {
     public interface ITenantProvider
     {

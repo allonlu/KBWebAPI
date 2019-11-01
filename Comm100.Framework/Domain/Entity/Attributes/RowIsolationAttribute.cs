@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Comm100.Domain.Entity
+namespace Comm100.Framework.Domain.Entity.Attributes
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
-    public class TableBySiteAttribute : Attribute
+    public class RowIsolationAttribute : Attribute
     {
-
     }
 }

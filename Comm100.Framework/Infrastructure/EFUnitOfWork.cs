@@ -1,5 +1,6 @@
 ﻿using Comm100.Domain.Entity;
 using Comm100.Domain.Uow;
+using Comm100.Framework.Tenants;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -20,23 +21,19 @@ namespace Comm100.Framework.Infrastructure
         private DbContext _dbContext;
         private readonly TransactionOptions options;
         private bool _isCommitted;
-        private int _siteId;
 
         public TransactionOptions TransactionOptions => options;
 
-        public EFUnitOfWork(DbContext dbContext, TransactionOptions options)
+        public EFUnitOfWork(DbContext dbContext, TransactionOptions options, Tenant tenant)
         {
             _transaction = dbContext.Database.BeginTransaction();
             _isCommitted = false;
             _dbContext = dbContext;
             this.options = options;
 
-            var tenantId = 10000;
-
-            var databaseName = GetDatabase(tenantId);
+            var databaseName = tenant.DatabaseName;
 
             ChangeDatabase(databaseName);
-            ChangeTableName(tenantId);
         }
 
         public event EventHandler Disposed;
@@ -54,31 +51,6 @@ namespace Comm100.Framework.Infrastructure
             Disposed(this, null);
         }
 
-        public void SetSiteId(int siteId)
-        {
-            _siteId = siteId;
-            
-        }
-
-        private void ChangeTableName(int siteId)
-        {
-            
-            foreach (IEntityType entityType in _dbContext.Model.GetEntityTypes())
-            {
-                ///如果entity继承IBelongToSite接口，就会更换表名
-                if (entityType.ClrType.GetCustomAttributes(true).OfType<TableBySiteAttribute>().Any())
-                {
-                    if (entityType.Relational() is RelationalEntityTypeAnnotations relational)
-                    {
-                       relational.TableName = CreateTableName(relational, siteId);
-                    }
-                }
-            }
-        }
-        private string  CreateTableName(RelationalEntityTypeAnnotations relational, int siteId)
-        {
-            return relational.TableName + siteId;
-        }
         private void ChangeDatabase(string databaseName)
         {
             var connection = _dbContext.Database.GetDbConnection();
@@ -88,14 +60,9 @@ namespace Comm100.Framework.Infrastructure
             }
             else
             {
-                var connectionString = Regex.Replace(connection.ConnectionString.Replace(" ", ""), @"(?<=[Dd]atabase=)\w+(?=;)", databaseName, RegexOptions.Singleline);
-                connection.ConnectionString = connectionString;
+                connection.Open();
+                connection.ChangeDatabase(databaseName);
             }
-        }
-
-        private string GetDatabase(int siteId)
-        {
-            return "KB";
         }
     }
 }

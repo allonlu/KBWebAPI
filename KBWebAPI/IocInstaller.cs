@@ -4,7 +4,8 @@ using Castle.Windsor;
 using KB.Application;
 using KB.Infrastructure;
 using Comm100.Framework.Infrastructure;
-
+using Comm100.Framework.Tenants;
+using Comm100.Framework.Web;
 
 namespace KB.WebAPI
 {
@@ -17,7 +18,11 @@ namespace KB.WebAPI
             container.AddFacility<InfrastructureIocFacility>();
             container.AddFacility<EFIocFacility>();
             container.AddFacility<ApplicationIocFacility>();
-
+            container.Register(
+               Component.For(typeof(ITenantProvider))
+                         .ImplementedBy(typeof(TenantProvider))
+                         .LifestyleScoped()
+            );
         }
     }
 }

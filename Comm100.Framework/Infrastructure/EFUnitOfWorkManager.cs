@@ -2,6 +2,7 @@
 using Castle.Windsor;
 using Castle.Windsor.Proxy;
 using Comm100.Domain.Uow;
+using Comm100.Framework.Tenants;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,12 @@ namespace Comm100.Framework.Infrastructure
     public class EFUnitOfWorkManager : IUnitOfWorkManager
     {
         private DbContext _dbContext;
+        private Tenant _tenant;
         private IUnitOfWork _outerUow;
-        public EFUnitOfWorkManager(DbContext dbContext)
+        public EFUnitOfWorkManager(DbContext dbContext, ITenantProvider tenantProvider)
         {
             this._dbContext = dbContext;
+            this._tenant = tenantProvider.GetTenant();
         }
 
         public IUnitOfWork Current =>_outerUow;
@@ -38,7 +41,7 @@ namespace Comm100.Framework.Infrastructure
                 IsolationLevel = isolationLevel
             };
 
-            var uow = new EFUnitOfWork(_dbContext,option);
+            var uow = new EFUnitOfWork(_dbContext, option, _tenant);
 
             uow.Disposed += (sender, e) =>
             {
