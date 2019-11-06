@@ -14,7 +14,10 @@ namespace KB.Infrastructure
             Kernel.Register(
                Component.For(typeof(DbContext))
                         .ImplementedBy(typeof(KBDataContext))
-                        .LifestyleScoped()
+                        .LifestyleScoped(),
+               Component.For(typeof(ITableIsolationResolver))
+                         .ImplementedBy(typeof(TableIsolationResolver))
+                         .LifestyleScoped()
                 );
         }
     }

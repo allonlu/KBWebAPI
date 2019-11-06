@@ -1,17 +1,20 @@
 ﻿using System;
+using Comm100.Framework.Infrastructure;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KB.Infrastructure.EntityConfigurations
 {
-    public class ArticleTagEntityTypeConfiguration : IEntityTypeConfiguration<ArticleTag>
+    public class ArticleTagEntityTypeConfiguration : CEntityTypeConfiguration<ArticleTag>
     {
-        public void Configure(EntityTypeBuilder<ArticleTag> builder)
+        public override void Configure(EntityTypeBuilder<ArticleTag> config)
         {
-            builder.ToTable("t_KB_ArticleTag");
-            builder.HasKey(t => new { t.ArticleId, t.TagId });
-            builder.HasIndex(t => new { t.ArticleId, t.TagId }).IsUnique();
+            config.ToTable("t_KB_ArticleTag");
+            config.HasKey(t => new { t.ArticleId, t.TagId });
+            config.HasIndex(t => new { t.ArticleId, t.TagId }).IsUnique();
+
+            base.Configure(config);
         }
     }
 }

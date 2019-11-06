@@ -40,7 +40,7 @@ namespace Comm100.Application.Interceptors
             Session = NullSession.Instance;
         }
 
-        public void Intercept(IInvocation invocation)
+        void IInterceptor.Intercept(IInvocation invocation)
         {
             var method = invocation.GetMethod();
 

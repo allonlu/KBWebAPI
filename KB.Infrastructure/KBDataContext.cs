@@ -2,6 +2,7 @@
 using KB.Domain.Entities;
 using KB.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
+
 using Microsoft.Extensions.Configuration;
 
 namespace KB.Infrastructure
@@ -10,14 +11,18 @@ namespace KB.Infrastructure
     {
         private string _connectString { get; set; }
 
-        public KBDataContext(IConfiguration configuration)
+        private ITableIsolationResolver _resolver;
+
+        public KBDataContext(IConfiguration configuration, ITableIsolationResolver resolver)
         {
             this._connectString = configuration.GetConnectionString("DefaultConnection");
+            this._resolver = resolver;
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(_connectString);
-            
+            optionsBuilder
+                .UseSqlServer(_connectString)
+                .AddInterceptors(new TableIsolationCommandInterceptor(_resolver));
         }
 
         public virtual DbSet<Article> Articles { get; set; }

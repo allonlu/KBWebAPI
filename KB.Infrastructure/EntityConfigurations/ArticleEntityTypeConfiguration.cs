@@ -1,17 +1,21 @@
 ﻿using System;
+using Comm100.Framework.Domain.Entity.Attributes;
+using Comm100.Framework.Infrastructure;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KB.Infrastructure.EntityConfigurations
 {
-    class ArticleEntityTypeConfiguration : IEntityTypeConfiguration<Article>
+    public class ArticleEntityTypeConfiguration : CEntityTypeConfiguration<Article>
     {
-        public void Configure(EntityTypeBuilder<Article> articleConfiguration)
+        public override void Configure(EntityTypeBuilder<Article> config)
         {
-            articleConfiguration.ToTable("t_KB_Article");
+            config.ToTable("t_KB_Article" + "{#TENANTID}");
 
-            articleConfiguration.HasKey(a => a.Id);
+            config.HasKey(a => a.Id);
+
+            base.Configure(config);
         }
     }
 }

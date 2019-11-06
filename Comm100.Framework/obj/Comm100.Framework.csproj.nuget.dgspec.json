@@ -1,34 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {}
+    "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj": {
+    "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
+        "projectUniqueName": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj",
         "projectName": "Comm100.Framework",
-        "projectPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\Comm100.Framework.csproj",
-        "packagesPath": "C:\\Users\\AllonLu\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AllonLu\\developer\\KBWebAPI\\Comm100.Framework\\obj\\",
+        "projectPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/Comm100.Framework.csproj",
+        "packagesPath": "/Users/allon/.nuget/packages/",
+        "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Framework/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\AllonLu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/allon/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netstandard2.0"
+          "netstandard2.1"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netstandard2.0": {
+          "netstandard2.1": {
             "projectReferences": {}
           }
         },
@@ -39,7 +34,7 @@
         }
       },
       "frameworks": {
-        "netstandard2.0": {
+        "netstandard2.1": {
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -51,7 +46,7 @@
             },
             "Castle.Windsor": {
               "target": "Package",
-              "version": "[5.0.0, )"
+              "version": "[5.0.1, )"
             },
             "Microsoft.AspNetCore.Cors": {
               "target": "Package",
@@ -63,17 +58,11 @@
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[2.2.6, )"
+              "version": "[3.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[2.2.6, )"
-            },
-            "NETStandard.Library": {
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[2.0.3, )",
-              "autoReferenced": true
+              "version": "[3.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -81,10 +70,21 @@
             }
           },
           "imports": [
-            "net461"
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true
+          "warn": true,
+          "frameworkReferences": {
+            "NETStandard.Library": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

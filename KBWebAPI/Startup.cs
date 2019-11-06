@@ -5,12 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 using Castle.Facilities.AspNetCore;
 using Castle.MicroKernel.Registration;
@@ -54,24 +52,27 @@ namespace KB.WebAPI
                 options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
-            services.AddMvc(options=> {
+            services.AddMvc(options =>
+            {
                 //options.Filters.Add(typeof(Comm100ExceptionFilter));
                 options.MaxValidationDepth = 200;
-            }).AddJsonOptions(option=> {
-                option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
-            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            }).AddJsonOptions(option =>
+            {
+                option.JsonSerializerOptions.IgnoreNullValues = true;
+                //option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddHttpContextAccessor();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             return services.AddWindsor(Container,
-                 opts => opts.UseEntryAssembly(this.GetType().Assembly), // <- Recommended
-                 () => services.BuildServiceProvider(validateScopes: false));
+                 opts => opts.UseEntryAssembly(this.GetType().Assembly));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -83,11 +84,14 @@ namespace KB.WebAPI
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc(routes => 
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints => 
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Articles}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    "default",
+                    "{controller=Articles}/{action=Index}/{id?}");
             });
         }
 

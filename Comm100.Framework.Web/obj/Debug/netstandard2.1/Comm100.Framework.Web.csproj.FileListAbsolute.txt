@@ -1,0 +1,11 @@
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/bin/Debug/netstandard2.1/Comm100.Framework.Web.deps.json
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/bin/Debug/netstandard2.1/Comm100.Framework.Web.dll
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/bin/Debug/netstandard2.1/Comm100.Framework.Web.pdb
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/bin/Debug/netstandard2.1/Comm100.Framework.dll
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/bin/Debug/netstandard2.1/Comm100.Framework.pdb
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.csprojAssemblyReference.cache
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.AssemblyInfoInputs.cache
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.AssemblyInfo.cs
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.csproj.CopyComplete
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.dll
+/Users/allon/git/KBWebAPI/Comm100.Framework.Web/obj/Debug/netstandard2.1/Comm100.Framework.Web.pdb

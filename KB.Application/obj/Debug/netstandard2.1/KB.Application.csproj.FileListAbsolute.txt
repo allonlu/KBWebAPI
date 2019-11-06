@@ -1,0 +1,15 @@
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/KB.Application.deps.json
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/KB.Application.dll
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/KB.Application.pdb
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/Comm100.Framework.dll
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/Comm100.Public.dll
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/KB.Domain.dll
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/Comm100.Framework.pdb
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/Comm100.Public.pdb
+/Users/allon/git/KBWebAPI/KB.Application/bin/Debug/netstandard2.1/KB.Domain.pdb
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.csprojAssemblyReference.cache
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.AssemblyInfoInputs.cache
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.AssemblyInfo.cs
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.csproj.CopyComplete
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.dll
+/Users/allon/git/KBWebAPI/KB.Application/obj/Debug/netstandard2.1/KB.Application.pdb

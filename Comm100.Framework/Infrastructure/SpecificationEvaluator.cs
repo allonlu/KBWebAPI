@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Comm100.Framework.Domain.Specifications;
-using Comm100.Framework.Domain;
 
 namespace Comm100.Framework.Infrastructure
 {
@@ -16,8 +15,7 @@ namespace Comm100.Framework.Infrastructure
             {
                 query = query.Where(specification.Criteria);
             }
-
-
+            
             // Includes all expression-based includes
             query = specification.Includes.Aggregate(query,
                                     (current, include) => current.Include(include));

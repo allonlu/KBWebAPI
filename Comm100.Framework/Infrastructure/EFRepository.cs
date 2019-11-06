@@ -1,5 +1,7 @@
+using Comm100.Domain.Entity;
 using Comm100.Framework.Domain.Repository;
 using Comm100.Framework.Domain.Specifications;
+using Comm100.Framework.Tenants;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,13 @@ namespace Comm100.Framework.Infrastructure
     {
         protected readonly DbContext _dbContext;
 
-        public EFRepository(DbContext dbContext)
+        private readonly Tenant _tenant;
+
+        public EFRepository(DbContext dbContext, ITenantProvider tenantProvider)
         {
             _dbContext = dbContext;
+
+            _tenant = tenantProvider.GetTenant();
         }
         public int Count(ISpecification<TEntity> spec)
         {
@@ -51,7 +57,7 @@ namespace Comm100.Framework.Infrastructure
 
         public IReadOnlyList<TEntity> ListAll()
         {
-            return _dbContext.Set<TEntity>().ToList();
+            return GetQueryable().ToList();
         }
 
         public IReadOnlyList<TEntity> List(ISpecification<TEntity> spec)
@@ -59,9 +65,21 @@ namespace Comm100.Framework.Infrastructure
             return ApplySpecification(spec).ToList();
         }
 
+        private IQueryable<TEntity> GetQueryable()
+        {
+            var query = _dbContext.Set<TEntity>().AsQueryable();
+
+            if (typeof(IMultiSite).IsAssignableFrom(typeof(TEntity)))
+            {
+                query = query.Where(t => ((IMultiSite)t).SiteId == _tenant.Id);
+            }
+
+            return query;
+        }
+
         private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> spec)
         {
-            return SpecificationEvaluator<TEntity>.GetQuery(_dbContext.Set<TEntity>().AsQueryable(), spec);
+            return SpecificationEvaluator<TEntity>.GetQuery(GetQueryable(), spec);
         }
     }
 }

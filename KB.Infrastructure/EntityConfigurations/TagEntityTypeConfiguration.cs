@@ -1,15 +1,18 @@
 ﻿using System;
+using Comm100.Framework.Infrastructure;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace KB.Infrastructure.EntityConfigurations
 {
-    public class TagEntityTypeConfiguration : IEntityTypeConfiguration<Tag>
+    public class TagEntityTypeConfiguration : CEntityTypeConfiguration<Tag>
     {
-        public void Configure(EntityTypeBuilder<Tag> builder)
+        public override void Configure(EntityTypeBuilder<Tag> config)
         {
-            builder.ToTable("t_KB_Tag").HasKey(t => t.Name);
+            config.ToTable("t_KB_Tag").HasKey(t => t.Name);
+
+            base.Configure(config);
         }
     }
 }

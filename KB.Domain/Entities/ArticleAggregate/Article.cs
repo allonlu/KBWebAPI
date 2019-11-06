@@ -1,4 +1,5 @@
 ﻿using Comm100.Domain.Entity;
+using Comm100.Framework.Domain.Entity;
 using Comm100.Framework.Domain.Entity.Attributes;
 using Comm100.Public;
 using System;
@@ -14,7 +15,7 @@ namespace KB.Domain.Entities
     }
 
     [TableIsolation]
-    public class Article
+    public class Article : ISoftDelete
     {
         public Guid Id { get; set; }
 
@@ -34,5 +35,6 @@ namespace KB.Domain.Entities
 
         public IEnumerable<ArticleTag> Tags { get; set; }
 
+        public bool IsDeleted { get; set; }
     }
 }

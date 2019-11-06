@@ -18,6 +18,7 @@ namespace Comm100.Framework.Infrastructure
         private DbContext _dbContext;
         private Tenant _tenant;
         private IUnitOfWork _outerUow;
+
         public EFUnitOfWorkManager(DbContext dbContext, ITenantProvider tenantProvider)
         {
             this._dbContext = dbContext;
