@@ -1,4 +1,6 @@
 ﻿using Comm100.Framework;
+using Comm100.Public;
+using Comm100.Public.Constants;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +13,7 @@ namespace KB.Application.Dto
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(StringLength.MaxNameLength)]
+        [MaxLength(StringLength.MaxLength_Name)]
         public string Name { get; set; }
 
         public Guid ParentId { get; set; }

@@ -15,7 +15,6 @@ namespace Comm100.Framework.Domain.Repository
         TEntity Create(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);
-
         bool Exists(TId id);
     }
 }

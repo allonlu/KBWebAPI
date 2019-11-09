@@ -1,6 +1,5 @@
 ﻿using Comm100.Domain.Entity;
 using Comm100.Framework.Domain.Entity;
-using Comm100.Framework.Domain.Entity.Attributes;
 using Comm100.Public;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,6 @@ namespace KB.Domain.Entities
         Published,
     }
 
-    [TableIsolation]
     public class Article : ISoftDelete
     {
         public Guid Id { get; set; }

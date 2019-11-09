@@ -1,4 +1,5 @@
 ﻿using Castle.DynamicProxy;
+using Comm100.Framework.AuditLog;
 using Comm100.Runtime.Transactions;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,11 @@ using System.Reflection;
 using System.Text;
 using System.Transactions;
 
-namespace Comm100.Extension
+namespace Comm100.Framework.Extensions
 {
     public static class InterceptorExtension
     {
-        public static MethodInfo GetMethod(this IInvocation invocation)
+        private static MethodInfo GetMethod(this IInvocation invocation)
         {
             try
             {
@@ -22,26 +23,29 @@ namespace Comm100.Extension
                 return invocation.GetConcreteMethod();
             }
         }
-        public static IsolationLevel GetIsolationLevel(this MethodInfo methodInfo)
+
+        public static T[] GetAttributes<T>(this IInvocation invocation)
         {
-            var attrs = methodInfo.GetCustomAttributes(true).OfType<TransactionAttribute>().ToArray();
+            var attrs = invocation.GetMethod().GetCustomAttributes(true).OfType<T>().ToArray();
+            return attrs;
+        }
+
+        public static IsolationLevel GetIsolationLevel(this IInvocation invocation)
+        {
+            var attrs = invocation.GetAttributes<TransactionAttribute>();
             if (attrs.Length > 0)
                 return attrs[0].IsolationLevel;
 
             return IsolationLevel.ReadCommitted;
-            //switch (methodInfo.Name.Substring(0, 3))
-            //{
-            //    case "Add":
-            //        return IsolationLevel.Serializable;
-
-            //    default:
-            //        return IsolationLevel.ReadCommitted;
-            //}
-
         }
-        public static IsolationLevel GetIsolationLevel(this IInvocation invocation)
+
+        public static string GetAuditAction(this IInvocation invocation)
         {
-            return invocation.GetMethod().GetIsolationLevel();
+            var attrs = invocation.GetAttributes<AuditAttribute>();
+            if (attrs.Length > 0)
+                return attrs[0].Action;
+
+            return null;
         }
     }
 }

@@ -6832,7 +6832,7 @@
       "outputPath": "/Users/allon/git/KBWebAPI/Comm100.Public/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/allon/.nuget/NuGet/NuGet.Config"
+        "/Users/allon/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netstandard2.1"

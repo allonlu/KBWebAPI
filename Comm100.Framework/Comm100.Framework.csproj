@@ -14,10 +14,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Specifications\" />
+    <Folder Include="Exception\" />
+    <Folder Include="Authentication\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Authentication\Session\" />
+    <Folder Include="Extension\" />
+    <Folder Include="AuditLog\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
     <Compile Remove="Extension\IQueryableExtension.cs" />
     <Compile Remove="Domain\Repository\ISoftDelete.cs" />
+    <Compile Remove="Extension\CheckerExtension.cs" />
+    <Compile Remove="Domain\Entity\Attributes\TableIsolationAttribute.cs" />
+    <Compile Remove="Domain\Entity\Attributes\RowIsolationAttribute.cs" />
   </ItemGroup>
 </Project>

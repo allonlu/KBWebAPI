@@ -1,11 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Comm100.Runtime
+namespace Comm100.Framework.Logging
 {
-    public class NullLogger : ILogger
+    public class NLogger : ILogger
     {
+        public NLogger()
+        {
+            // load configuration and create log instance
+        }
+
+        public void Debug(string message)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Error(string message)
         {
             throw new NotImplementedException();
@@ -20,6 +27,5 @@ namespace Comm100.Runtime
         {
             throw new NotImplementedException();
         }
-        public static ILogger Instance=>new NullLogger();
     }
 }

@@ -1,8 +1,7 @@
 ﻿using Castle.DynamicProxy;
 using Comm100.Domain.Uow;
-using Comm100.Extension;
+using Comm100.Framework.Extensions;
 using Comm100.Runtime.Exception;
-using Comm100.Runtime.Transactions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

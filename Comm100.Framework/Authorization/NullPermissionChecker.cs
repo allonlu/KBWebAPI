@@ -8,10 +8,11 @@ namespace Comm100.Runtime
 {
     public class NullPermissionChecker : IPermissionChecker
     {
-        public bool IsGranted(int agentId, string permissionName)
+        public bool IsGranted(ISession session, string permission)
         {
             return true;
         }
+
         public static IPermissionChecker Instance => new NullPermissionChecker();
     }
 }

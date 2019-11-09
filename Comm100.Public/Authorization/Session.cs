@@ -1,4 +1,5 @@
-﻿using Comm100.Runtime;
+﻿using Comm100.Framework.Authentication;
+using Comm100.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,24 @@ namespace Comm100.Public.Authorization
 {
     public class Session : ISession
     {
-        public int GetAgentId()
+        public string GetApplication()
         {
-            return 1;
+            throw new NotImplementedException();
         }
 
-        public int GetSiteId()
+        public EnumRole GetRole()
         {
-            return 1231;
+            throw new NotImplementedException();
+        }
+
+        Guid? ISession.GetAgentId()
+        {
+            throw new NotImplementedException();
+        }
+
+        int? ISession.GetSiteId()
+        {
+            throw new NotImplementedException();
         }
     }
 }

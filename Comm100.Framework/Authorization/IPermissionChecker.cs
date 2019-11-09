@@ -8,6 +8,6 @@ namespace Comm100.Runtime
 {
     public interface IPermissionChecker
     {
-        bool IsGranted(int agentId, string permissionName);
+        bool IsGranted(ISession session, string permission);
     }
 }

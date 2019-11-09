@@ -16,6 +16,9 @@ using Castle.Windsor;
 using Castle.Windsor.MsDependencyInjection;
 
 using Comm100.Web.Filters;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace KB.WebAPI
 {
@@ -35,10 +38,31 @@ namespace KB.WebAPI
         {
 
             Container.AddFacility<AspNetCoreFacility>(f => f.CrossWiresInto(services));
+
             Container.Register(Component.For<IWindsorContainer>().Instance(Container));
 
             services.Configure<IISServerOptions>(options => {
                 options.AutomaticAuthentication = false;
+            });
+
+            var key = Encoding.ASCII.GetBytes("comm100-secret");
+
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = true;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
             });
 
             services.Configure<CookiePolicyOptions>(options => {
@@ -52,6 +76,7 @@ namespace KB.WebAPI
                 options.AddDefaultPolicy(builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             });
 
+
             services.AddMvc(options =>
             {
                 //options.Filters.Add(typeof(Comm100ExceptionFilter));
@@ -59,7 +84,6 @@ namespace KB.WebAPI
             }).AddJsonOptions(option =>
             {
                 option.JsonSerializerOptions.IgnoreNullValues = true;
-                //option.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddHttpContextAccessor();
@@ -87,6 +111,10 @@ namespace KB.WebAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints => 
             {
                 endpoints.MapControllerRoute(
@@ -100,7 +128,6 @@ namespace KB.WebAPI
             // Application components
             Container.Register(Component.For<IHttpContextAccessor>().ImplementedBy<HttpContextAccessor>());
             Container.Install(new IocInstaller());
-
         }
     }
 }

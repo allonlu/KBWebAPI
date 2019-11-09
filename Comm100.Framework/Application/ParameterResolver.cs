@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Comm100.Extension
 {
-    public static class StringExtension
+    public static class ParameterResolver
     {
         public static string[] AnalyzeInclude(this string include)
         {

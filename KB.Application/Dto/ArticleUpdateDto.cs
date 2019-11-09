@@ -1,4 +1,4 @@
-﻿using Comm100.Framework;
+﻿using Comm100.Public.Constants;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +12,7 @@ namespace KB.Application.Dto
         public Guid Id { get; set; }
 
         [Required]
-        [MaxLength(StringLength.MaxTitleLength)]
+        [MaxLength(StringLength.MaxLength_ArticleTitle)]
         public string Title { get; set; }
 
         public string Content { get; set; }

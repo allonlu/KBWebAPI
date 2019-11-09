@@ -141,3 +141,10 @@
 /Users/allon/git/KBWebAPI/KBWebAPI/obj/Debug/netcoreapp3.0/KBWebAPI.dll
 /Users/allon/git/KBWebAPI/KBWebAPI/obj/Debug/netcoreapp3.0/KBWebAPI.pdb
 /Users/allon/git/KBWebAPI/KBWebAPI/obj/Debug/netcoreapp3.0/KBWebAPI.csprojAssemblyReference.cache
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Logging.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Tokens.dll
+/Users/allon/git/KBWebAPI/KBWebAPI/bin/Debug/netcoreapp3.0/System.IdentityModel.Tokens.Jwt.dll

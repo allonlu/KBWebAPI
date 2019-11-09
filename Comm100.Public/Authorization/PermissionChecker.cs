@@ -9,7 +9,8 @@ namespace Comm100.Public.Authorization
 {
     public class PermissionChecker : IPermissionChecker
     {
-        public bool IsGranted(int agentId, string permissionName)
+
+        public bool IsGranted(ISession session, string permission)
         {
             return true;
         }

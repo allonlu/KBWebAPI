@@ -1,4 +1,5 @@
 using Comm100.Domain.Entity;
+using Comm100.Framework.Domain.Entity;
 using Comm100.Framework.Domain.Repository;
 using Comm100.Framework.Domain.Specifications;
 using Comm100.Framework.Tenants;
@@ -36,7 +37,16 @@ namespace Comm100.Framework.Infrastructure
 
         public void Delete(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Remove(entity);
+            if (entity is ISoftDelete)
+            {
+                (entity as ISoftDelete).IsDeleted = false;
+                _dbContext.Entry(entity).State = EntityState.Modified;
+            }
+            else
+            {
+                _dbContext.Set<TEntity>().Remove(entity);
+            }
+
             _dbContext.SaveChanges();
         }
         public void Update(TEntity entity)

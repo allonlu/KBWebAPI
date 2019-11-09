@@ -5,8 +5,6 @@ using Comm100.Runtime;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using ILogger = Comm100.Runtime.ILogger;
-using NullLogger = Comm100.Runtime.NullLogger;
 
 namespace Comm100.Application.Services
 {

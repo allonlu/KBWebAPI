@@ -11,10 +11,5 @@ namespace Comm100.Runtime.Exception
         public AuthorizationException():base(100102,ErrorMessages.E100102)
         {
         }
-
-
-
-
-
     }
 }

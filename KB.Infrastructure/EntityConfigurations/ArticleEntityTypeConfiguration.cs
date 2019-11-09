@@ -1,5 +1,4 @@
 ﻿using System;
-using Comm100.Framework.Domain.Entity.Attributes;
 using Comm100.Framework.Infrastructure;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;

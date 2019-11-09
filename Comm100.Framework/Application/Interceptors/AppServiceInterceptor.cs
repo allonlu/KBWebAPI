@@ -2,6 +2,9 @@
 using Comm100.Domain.Ioc;
 using Comm100.Domain.Uow;
 using Comm100.Extension;
+using Comm100.Framework.AuditLog;
+using Comm100.Framework.Extensions;
+using Comm100.Framework.Logging;
 using Comm100.Runtime;
 using Comm100.Runtime.Exception;
 using Comm100.Runtime.Transactions;
@@ -12,24 +15,21 @@ using System.Reflection;
 using System.Text;
 using System.Transactions;
 
-namespace Comm100.Application.Interceptors
+namespace Comm100.Framework.Application.Interceptors
 {
 
     public class AppServiceInterceptor : IInterceptor
     {
         [Mandatory]
         public ISession Session { get; set; }
-        /// <summary>
-        /// IOC容器注入
-        /// </summary>
+
         [Mandatory]
         public IPermissionChecker PermissionChecker { get; set; }
-        /// <summary>
-        /// IOC容器注入
-        /// </summary>
-        /// 
+
         [Mandatory]
         public ILogger Logger { get; set; }
+
+        public IAuditLogService AuditLogService { get; set; }
 
         private IUnitOfWorkManager _unitOfWorkMananger;
         public AppServiceInterceptor(IUnitOfWorkManager unitOfWorkManager)
@@ -42,34 +42,41 @@ namespace Comm100.Application.Interceptors
 
         void IInterceptor.Intercept(IInvocation invocation)
         {
-            var method = invocation.GetMethod();
+            CheckPermission(invocation);
 
-            CheckPermission(method);
-
-            using (var uow = _unitOfWorkMananger.Begin(method.GetIsolationLevel()))
+            using (var uow = _unitOfWorkMananger.Begin(invocation.GetIsolationLevel()))
             {
-
-                //uow.SetSiteId(Session.GetSiteId());
                 invocation.Proceed();
+
+                Audit(invocation);
+                
                 uow.Complete();
             }
         }
 
-
-        private void CheckPermission(MethodInfo method)
+        private void Audit(IInvocation invocation)
         {
-            var attrs = method.GetCustomAttributes(true).OfType<PermissionAttribute>().ToArray();
-            if (attrs.Length == 0)
+            var action = invocation.GetAuditAction();
+            if (action != null)
             {
-                throw new AuthorizationException();
+                AuditLogService.Add(Session.GetApplication(), "", Session.GetAgentId() ?? Guid.Empty, action, invocation.Arguments);
             }
-            var permissionName = attrs[0].Name;
-            if (!PermissionChecker.IsGranted(Session.GetAgentId(), permissionName))
+        }
+
+
+        private void CheckPermission(IInvocation invocation)
+        {
+            var attrs = invocation.GetAttributes<PermissionAttribute>();
+            if (attrs.Length != 0)  // permission defined
             {
-                Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckFail,Permission:{permissionName} ");
-                throw new AuthorizationException();
+                var permission = attrs[0].Name;
+
+                if (!PermissionChecker.IsGranted(Session, permission))
+                {
+                    Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckFail,Permission:{permission} ");
+                    throw new AuthorizationException();
+                }
             }
-            Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckSuccess,Permission:{permissionName} ");
         }
     }
 }

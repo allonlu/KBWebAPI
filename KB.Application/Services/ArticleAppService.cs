@@ -13,6 +13,7 @@ using Comm100.Extension;
 using KB.Domain.Interfaces;
 using KB.Application.Dto;
 using KB.Domain.Bo;
+using Comm100.Public.AuditLog;
 
 namespace KB.Application.Articles
 {
@@ -52,6 +53,7 @@ namespace KB.Application.Articles
 
         [Permission("article:write")]
         [Transaction(IsolationLevel.Serializable)]
+        [Audit("Create article")]
         public ArticleDto Add(ArticleCreateDto dto)
         {
             Article article = _articleDomainService.Create(Mapper.Map<Article>(dto));
@@ -59,6 +61,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
+        [Audit("Publish article")]
         public void Publish(Guid id)
         {
             _articleDomainService.Publish(id);
@@ -66,6 +69,7 @@ namespace KB.Application.Articles
 
         [Permission("article:write")]
         [Transaction(IsolationLevel.Serializable)]
+        [Audit("Update article")]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
             Article article = _articleDomainService.Update(Mapper.Map<ArticleUpdateBo>(dto));
@@ -73,6 +77,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
+        [Audit("Delete article")]
         public void Delete(Guid id)
         {
             Article article = _articleDomainService.Delete(id);
@@ -135,6 +140,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
+        [Audit("Add Article Tags")]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
             var article = _articleDomainService.AddTags(id, dto.TagIds);
@@ -142,6 +148,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
+        [Audit("Delete article tags")]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.DeleteTags(id, dto.TagIds);
@@ -156,6 +163,7 @@ namespace KB.Application.Articles
         }
 
         [Permission("article:write")]
+        [Audit("Set article tags")]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.SetTags(id, dto.TagIds);

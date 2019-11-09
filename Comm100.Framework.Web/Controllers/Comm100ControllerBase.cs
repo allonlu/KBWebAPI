@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Comm100.Domain.Ioc;
+using Comm100.Framework.Logging;
 using Comm100.Runtime;
 using Microsoft.AspNetCore.Mvc;
 
