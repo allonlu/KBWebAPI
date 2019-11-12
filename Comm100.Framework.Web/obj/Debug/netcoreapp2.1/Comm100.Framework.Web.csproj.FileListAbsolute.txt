@@ -1,7 +1,0 @@
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\obj\Debug\netcoreapp2.1\Comm100.Framework.Web.csprojAssemblyReference.cache
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\obj\Debug\netcoreapp2.1\Comm100.Framework.Web.csproj.CoreCompileInputs.cache
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\obj\Debug\netcoreapp2.1\Comm100.Framework.Web.AssemblyInfoInputs.cache
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\obj\Debug\netcoreapp2.1\Comm100.Framework.Web.AssemblyInfo.cs
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\bin\Debug\netcoreapp2.1\Comm100.Framework.Web.deps.json
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\bin\Debug\netcoreapp2.1\Comm100.Framework.Web.dll
-D:\Developer\kb-web-api\KBWebAPI\Comm100.Framework.Web\bin\Debug\netcoreapp2.1\Comm100.Framework.dll
