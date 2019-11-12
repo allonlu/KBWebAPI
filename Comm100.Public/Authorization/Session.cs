@@ -6,11 +6,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Comm100.Public.Authorization
+namespace Comm100.Framework.Authentication.Session
 {
     public class Session : ISession
     {
         public string GetApplication()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetIP()
         {
             throw new NotImplementedException();
         }

@@ -9,6 +9,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Comm100.Framework.Authentication.Session;
+using Comm100.Framework.Authorization;
 
 namespace KB.Application
 {

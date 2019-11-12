@@ -15,4 +15,7 @@
   <ItemGroup>
     <Folder Include="Constants\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Enum.cs" />
+  </ItemGroup>
 </Project>

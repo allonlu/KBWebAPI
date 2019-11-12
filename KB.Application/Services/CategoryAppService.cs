@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Comm100.Application.Services;
+using Comm100.Framework.AuditLog;
+using Comm100.Framework.Authorization;
 using Comm100.Runtime;
 using KB.Application.Dto;
 using KB.Application.Services;
@@ -27,34 +29,37 @@ namespace KB.Application.Categories.Service
             this.Mapper = configuration.CreateMapper();
         }
 
-        [Permission("category:write")]
+        [Authorization("category", EnumAuthorizationType.write)]
+        [Audit("category", EnumAuditAction.destory)]
         public void Delete(Guid id)
         {
             _domainService.Delete(id);
         }
 
-        [Permission("category:write")]
+        [Authorization("category", EnumAuthorizationType.write)]
+        [Audit("category", EnumAuditAction.create)]
         public CategoryDto Add(CategoryCreateDto dto)
         {
             Category category = _domainService.Create(Mapper.Map<Category>(dto));
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Permission("category:write")]
+        [Authorization("category", EnumAuthorizationType.write)]
+        [Audit("category", EnumAuditAction.update)]
         public CategoryDto Update(CategoryUpdateDto dto)
         {
             Category category = _domainService.Update(Mapper.Map<CategoryUpdateBo>(dto));
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Permission("category:read")]
+        [Authorization("category", EnumAuthorizationType.read)]
         public CategoryDto Get(Guid id)
         {
             Category category = _domainService.Get(id);
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Permission("category:read")]
+        [Authorization("category", EnumAuthorizationType.read)]
         public IReadOnlyList<CategoryDto> GetList()
         {
             IReadOnlyList<Category> list = _domainService.List();

@@ -7,7 +7,7 @@ namespace Comm100.Framework.AuditLog
         {
         }
 
-        public void Add(string app, string module, Guid agentId, string action, object[] details)
+        public void Add(Guid agentId, string app, string ip, string source, string action, object[] details)
         {
             throw new NotImplementedException();
         }

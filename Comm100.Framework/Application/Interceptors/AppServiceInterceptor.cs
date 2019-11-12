@@ -3,6 +3,8 @@ using Comm100.Domain.Ioc;
 using Comm100.Domain.Uow;
 using Comm100.Extension;
 using Comm100.Framework.AuditLog;
+using Comm100.Framework.Authentication.Session;
+using Comm100.Framework.Authorization;
 using Comm100.Framework.Extensions;
 using Comm100.Framework.Logging;
 using Comm100.Runtime;
@@ -56,24 +58,26 @@ namespace Comm100.Framework.Application.Interceptors
 
         private void Audit(IInvocation invocation)
         {
-            var action = invocation.GetAuditAction();
-            if (action != null)
+            AuditAttribute audit = invocation.GetAudit();
+            if (audit != null)
             {
-                AuditLogService.Add(Session.GetApplication(), "", Session.GetAgentId() ?? Guid.Empty, action, invocation.Arguments);
+                AuditLogService.Add(Session.GetAgentId() ?? Guid.Empty, Session.GetApplication(), Session.GetIP(),
+                    audit.Source,  audit.Action.ToString(), invocation.Arguments);
             }
         }
 
 
         private void CheckPermission(IInvocation invocation)
         {
-            var attrs = invocation.GetAttributes<PermissionAttribute>();
+            var attrs = invocation.GetAttributes<AuthorizationAttribute>();
             if (attrs.Length != 0)  // permission defined
             {
-                var permission = attrs[0].Name;
+                string source = attrs[0].Source;
+                var type = attrs[0].Type;
 
-                if (!PermissionChecker.IsGranted(Session, permission))
+                if (!PermissionChecker.IsGranted(Session, source, type))
                 {
-                    Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckFail,Permission:{permission} ");
+                    Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckFail,Permission:{source}:{type} ");
                     throw new AuthorizationException();
                 }
             }

@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Castle.Core.Logging;
 using Comm100.Domain.Ioc;
-using Comm100.Runtime;
+using Comm100.Framework.Authentication.Session;
+using Comm100.Framework.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Text;

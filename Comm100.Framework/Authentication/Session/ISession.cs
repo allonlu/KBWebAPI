@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Comm100.Framework.Authentication;
 
-namespace Comm100.Runtime
+namespace Comm100.Framework.Authentication.Session
 {
    public interface ISession
     {
@@ -14,5 +14,7 @@ namespace Comm100.Runtime
         int? GetSiteId();
 
         Guid? GetAgentId();
+
+        string GetIP();
     }
 }

@@ -1,8 +1,7 @@
+/Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.AssemblyInfoInputs.cache
+/Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.AssemblyInfo.cs
 /Users/allon/git/KBWebAPI/Comm100.Framework/bin/Debug/netstandard2.1/Comm100.Framework.deps.json
 /Users/allon/git/KBWebAPI/Comm100.Framework/bin/Debug/netstandard2.1/Comm100.Framework.dll
 /Users/allon/git/KBWebAPI/Comm100.Framework/bin/Debug/netstandard2.1/Comm100.Framework.pdb
-/Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.csprojAssemblyReference.cache
-/Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.AssemblyInfoInputs.cache
-/Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.AssemblyInfo.cs
 /Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.dll
 /Users/allon/git/KBWebAPI/Comm100.Framework/obj/Debug/netstandard2.1/Comm100.Framework.pdb

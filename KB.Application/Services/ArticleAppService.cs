@@ -13,7 +13,8 @@ using Comm100.Extension;
 using KB.Domain.Interfaces;
 using KB.Application.Dto;
 using KB.Domain.Bo;
-using Comm100.Public.AuditLog;
+using Comm100.Framework.AuditLog;
+using Comm100.Framework.Authorization;
 
 namespace KB.Application.Articles
 {
@@ -51,40 +52,40 @@ namespace KB.Application.Articles
             this.Mapper = configuration.CreateMapper();
         }
 
-        [Permission("article:write")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.create)]
         [Transaction(IsolationLevel.Serializable)]
-        [Audit("Create article")]
         public ArticleDto Add(ArticleCreateDto dto)
         {
             Article article = _articleDomainService.Create(Mapper.Map<Article>(dto));
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Permission("article:write")]
-        [Audit("Publish article")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.update)]
         public void Publish(Guid id)
         {
             _articleDomainService.Publish(id);
         }
 
-        [Permission("article:write")]
+        [Authorization("article", EnumAuthorizationType.write)]
         [Transaction(IsolationLevel.Serializable)]
-        [Audit("Update article")]
+        [Audit("article", EnumAuditAction.update)]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
             Article article = _articleDomainService.Update(Mapper.Map<ArticleUpdateBo>(dto));
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Permission("article:write")]
-        [Audit("Delete article")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.destory)]
         public void Delete(Guid id)
         {
             Article article = _articleDomainService.Delete(id);
             // audit log - article deleted
         }
 
-        [Permission("article:read")]
+        [Authorization("article", EnumAuthorizationType.read)]
         public ArticleWithIncludeDto Get(Guid id, string include)
         {
             Article article = _articleDomainService.Get(id);
@@ -121,7 +122,7 @@ namespace KB.Application.Articles
             }
         }
 
-        [Permission("article:read")]
+        [Authorization("article", EnumAuthorizationType.read)]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
             var spec = new ArticleFilterSpecification(dto.CategoryId, dto.TagId, dto.Keywords);
@@ -139,31 +140,31 @@ namespace KB.Application.Articles
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
 
-        [Permission("article:write")]
-        [Audit("Add Article Tags")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.update)]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
             var article = _articleDomainService.AddTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Permission("article:write")]
-        [Audit("Delete article tags")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.update)]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.DeleteTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Permission("article:read")]
+        [Authorization("article", EnumAuthorizationType.read)]
         public ArticleTagsDto GetTags(Guid id)
         {
             Article article = _articleDomainService.Get(id);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Permission("article:write")]
-        [Audit("Set article tags")]
+        [Authorization("article", EnumAuthorizationType.write)]
+        [Audit("article", EnumAuditAction.update)]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.SetTags(id, dto.TagIds);

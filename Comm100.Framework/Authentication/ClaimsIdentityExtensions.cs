@@ -6,7 +6,7 @@ using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KB.Infrastructure.Runtime.Security
+namespace Comm100.Framework.Authentication
 {
     public static class ClaimsIdentityExtensions
     {

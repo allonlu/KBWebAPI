@@ -28,5 +28,6 @@
     <Compile Remove="Extension\CheckerExtension.cs" />
     <Compile Remove="Domain\Entity\Attributes\TableIsolationAttribute.cs" />
     <Compile Remove="Domain\Entity\Attributes\RowIsolationAttribute.cs" />
+    <Compile Remove="Authorization\EnumEntity.cs" />
   </ItemGroup>
 </Project>

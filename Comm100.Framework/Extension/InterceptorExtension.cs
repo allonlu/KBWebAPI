@@ -39,11 +39,11 @@ namespace Comm100.Framework.Extensions
             return IsolationLevel.ReadCommitted;
         }
 
-        public static string GetAuditAction(this IInvocation invocation)
+        public static AuditAttribute GetAudit(this IInvocation invocation)
         {
             var attrs = invocation.GetAttributes<AuditAttribute>();
             if (attrs.Length > 0)
-                return attrs[0].Action;
+                return attrs[0];
 
             return null;
         }
