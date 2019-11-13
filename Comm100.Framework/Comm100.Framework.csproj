@@ -20,6 +20,9 @@
     <Folder Include="Authentication\Session\" />
     <Folder Include="Extension\" />
     <Folder Include="AuditLog\" />
+    <Folder Include="Web\" />
+    <Folder Include="Web\Controllers\" />
+    <Folder Include="Web\Filters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />

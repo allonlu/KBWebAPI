@@ -7,8 +7,7 @@ namespace Comm100.Runtime.Exception
 {
     public class AuthorizationException : Comm100Exception
     {
-
-        public AuthorizationException():base(100102,ErrorMessages.E100102)
+        public AuthorizationException():base(100102, ErrorMessages.E100102)
         {
         }
     }

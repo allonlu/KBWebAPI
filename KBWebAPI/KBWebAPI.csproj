@@ -19,6 +19,5 @@
   <ItemGroup>
     <ProjectReference Include="..\KB.Application\KB.Application.csproj" />
     <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj" />
-    <ProjectReference Include="..\Comm100.Framework.Web\Comm100.Framework.Web.csproj" />
   </ItemGroup>
 </Project>
