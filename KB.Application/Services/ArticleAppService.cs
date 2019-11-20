@@ -15,6 +15,7 @@ using KB.Application.Dto;
 using KB.Domain.Bo;
 using Comm100.Framework.AuditLog;
 using Comm100.Framework.Authorization;
+using KB.Domain;
 
 namespace KB.Application.Articles
 {
@@ -52,8 +53,8 @@ namespace KB.Application.Articles
             this.Mapper = configuration.CreateMapper();
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.create)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.CREATE)]
         [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Add(ArticleCreateDto dto)
         {
@@ -61,31 +62,31 @@ namespace KB.Application.Articles
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.update)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.UPDATE)]
         public void Publish(Guid id)
         {
             _articleDomainService.Publish(id);
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
         [Transaction(IsolationLevel.Serializable)]
-        [Audit("article", EnumAuditAction.update)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.UPDATE)]
         public ArticleDto Update(ArticleUpdateDto dto)
         {
             Article article = _articleDomainService.Update(Mapper.Map<ArticleUpdateBo>(dto));
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.destory)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.DESTROY)]
         public void Delete(Guid id)
         {
             Article article = _articleDomainService.Delete(id);
             // audit log - article deleted
         }
 
-        [Authorization("article", EnumAuthorizationType.read)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.READ)]
         public ArticleWithIncludeDto Get(Guid id, string include)
         {
             Article article = _articleDomainService.Get(id);
@@ -122,7 +123,7 @@ namespace KB.Application.Articles
             }
         }
 
-        [Authorization("article", EnumAuthorizationType.read)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.READ)]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
             var spec = new ArticleFilterSpecification(dto.CategoryId, dto.TagId, dto.Keywords);
@@ -140,31 +141,31 @@ namespace KB.Application.Articles
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.update)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
             var article = _articleDomainService.AddTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.update)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.DeleteTags(id, dto.TagIds);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization("article", EnumAuthorizationType.read)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.READ)]
         public ArticleTagsDto GetTags(Guid id)
         {
             Article article = _articleDomainService.Get(id);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization("article", EnumAuthorizationType.write)]
-        [Audit("article", EnumAuditAction.update)]
+        [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(EntityTypes.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
             Article article = _articleDomainService.SetTags(id, dto.TagIds);

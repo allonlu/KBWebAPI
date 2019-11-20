@@ -20,7 +20,7 @@ namespace Comm100.Framework.Authentication.Session
             throw new NotImplementedException();
         }
 
-        public EnumRole GetRole()
+        public Role GetRole()
         {
             throw new NotImplementedException();
         }

@@ -19,9 +19,9 @@ namespace Comm100.Framework.Authentication.Session
             return null;
         }
 
-        public EnumRole GetRole()
+        public Role GetRole()
         {
-            return EnumRole.system;
+            return Role.system;
         }
 
         public int? GetSiteId()

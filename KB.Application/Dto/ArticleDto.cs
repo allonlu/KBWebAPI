@@ -17,7 +17,7 @@ namespace KB.Application.Dto
 
         public Guid AuthorId { get; set; }
 
-        public EnumArticleStatus Status { get; set; }
+        public ArticleStatus Status { get; set; }
 
         public DateTime CreatedTime { get; set; }
 

@@ -5,9 +5,9 @@ namespace Comm100.Framework.AuditLog
     {
         public string Source { get; private set; }
 
-        public EnumAuditAction Action { get; private set; }
+        public AuditAction Action { get; private set; }
 
-        public AuditAttribute(string source, EnumAuditAction action)
+        public AuditAttribute(string source, AuditAction action)
         {
             this.Source = source;
             this.Action = action;

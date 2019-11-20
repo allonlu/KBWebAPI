@@ -5,8 +5,9 @@ namespace Comm100.Framework.Exception
 {
     public class AuthenticationException : Comm100Exception
     {
-        public AuthenticationException()
+        public AuthenticationException() : base(401001, "")
         {
+
         }
     }
 }

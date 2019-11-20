@@ -9,6 +9,6 @@ namespace Comm100.Framework.Authorization
 {
     public interface IPermissionChecker
     {
-        bool IsGranted(ISession session, string source, EnumAuthorizationType type);
+        bool IsGranted(ISession session, string source, AuthorizationType type);
     }
 }

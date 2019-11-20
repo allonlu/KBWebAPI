@@ -19,6 +19,7 @@ using Comm100.Web.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Comm100.Framework.Authentication;
 
 namespace KB.WebAPI
 {
@@ -105,13 +106,15 @@ namespace KB.WebAPI
             else
             {
                 app.UseHsts();
+                app.UseExceptionHandler("/error");
             }
+
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthentication();
+            app.UseJwtAuthentication(); // jwt authentication
 
             app.UseAuthorization();
 

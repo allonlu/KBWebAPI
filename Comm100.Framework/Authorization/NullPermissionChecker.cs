@@ -9,7 +9,7 @@ namespace Comm100.Framework.Authorization
 {
     public class NullPermissionChecker : IPermissionChecker
     {
-        public bool IsGranted(ISession session, string source, EnumAuthorizationType type)
+        public bool IsGranted(ISession session, string source, AuthorizationType type)
         {
             return true;
         }

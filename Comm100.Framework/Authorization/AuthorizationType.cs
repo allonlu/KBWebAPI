@@ -1,9 +1,9 @@
 ﻿using System;
 namespace Comm100.Framework.Authorization
 {
-    public enum EnumAuthorizationType
+    public enum AuthorizationType
     {
-        read,
-        write,
+        READ,
+        WRITE,
     }
 }

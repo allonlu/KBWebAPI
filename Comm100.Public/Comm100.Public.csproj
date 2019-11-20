@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Enum.cs" />
+    <Compile Remove="EntityType.cs" />
   </ItemGroup>
 </Project>

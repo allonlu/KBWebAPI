@@ -10,9 +10,9 @@ namespace Comm100.Framework.Authorization
     {
         public string Source { get; private set; }
 
-        public EnumAuthorizationType Type { get; private set; }
+        public AuthorizationType Type { get; private set; }
 
-        public AuthorizationAttribute(string source, EnumAuthorizationType type)
+        public AuthorizationAttribute(string source, AuthorizationType type)
         {
             this.Source = source;
             this.Type = type;

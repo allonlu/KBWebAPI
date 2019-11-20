@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Comm100.Framework.Authentication
 {
-    public enum EnumRole
+    public enum Role
     {
         system = 1,
         application = 2,

@@ -23,6 +23,7 @@
     <Folder Include="Web\" />
     <Folder Include="Web\Controllers\" />
     <Folder Include="Web\Filters\" />
+    <Folder Include="Throttling\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />

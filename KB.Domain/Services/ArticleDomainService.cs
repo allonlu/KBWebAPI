@@ -72,11 +72,11 @@ namespace KB.Domain.Services
 
             if (category.IsPublished)
             {
-                if (article.Status != EnumArticleStatus.Audited.ToString())
+                if (article.Status != ArticleStatus.audited)
                 {
                     throw new Exception("Article needs to be audited first.");
                 }
-                article.Status = EnumArticleStatus.Published.ToString();
+                article.Status = ArticleStatus.published;
             }
             else
             {

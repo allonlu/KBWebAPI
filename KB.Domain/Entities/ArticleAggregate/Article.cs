@@ -6,11 +6,11 @@ using System.Collections.Generic;
 
 namespace KB.Domain.Entities
 {
-    public enum EnumArticleStatus
+    public enum ArticleStatus
     {
-        Draft,
-        Audited,
-        Published,
+        draft,
+        audited,
+        published,
     }
 
     public class Article : ISoftDelete
@@ -25,13 +25,13 @@ namespace KB.Domain.Entities
 
         public Guid CategoryId { get; set; }
 
-        public string Status { get; set; }
+        public ArticleStatus Status { get; set; }
 
         public DateTime CreatedTime { get; set; }
 
         public DateTime LastModifiedTime { get; set; }
 
-        public IEnumerable<ArticleTag> Tags { get; set; }
+        public virtual IEnumerable<ArticleTag> Tags { get; set; }
 
         public bool IsDeleted { get; set; }
     }

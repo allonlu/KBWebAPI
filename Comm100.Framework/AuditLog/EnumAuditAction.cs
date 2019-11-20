@@ -1,10 +1,10 @@
 ﻿using System;
 namespace Comm100.Framework.AuditLog
 {
-    public enum EnumAuditAction
+    public enum AuditAction
     {
-        create,
-        update,
-        destory
+        CREATE,
+        UPDATE,
+        DESTROY
     }
 }

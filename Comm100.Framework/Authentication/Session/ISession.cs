@@ -7,7 +7,7 @@ namespace Comm100.Framework.Authentication.Session
 {
    public interface ISession
     {
-        EnumRole GetRole();
+        Role GetRole();
 
         string GetApplication();
 

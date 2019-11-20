@@ -17,7 +17,7 @@ namespace Comm100.Public.Authorization
             return true;
         }
 
-        public bool IsGranted(ISession session, string source, EnumAuthorizationType type)
+        public bool IsGranted(ISession session, string source, AuthorizationType type)
         {
             throw new NotImplementedException();
         }
