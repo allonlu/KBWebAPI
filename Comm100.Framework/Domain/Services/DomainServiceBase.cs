@@ -1,13 +1,13 @@
-﻿
-using Comm100.Domain.Ioc;
-using Comm100.Framework.Logging;
-using Comm100.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DomainServiceBase.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Domain.Services
 {
+    using Comm100.Framework.Logging;
+
     public abstract class DomainServiceBase : IDomainService
     {
         public DomainServiceBase()
@@ -15,7 +15,6 @@ namespace Comm100.Domain.Services
             this.Logger = NullLogger.Instance;
         }
 
-        [Mandatory]
         public ILogger Logger { get; set; }
     }
 }

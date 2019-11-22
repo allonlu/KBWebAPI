@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Comm100.Framework.Authentication
+﻿namespace Comm100.Framework.Authentication
 {
+    using System;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Security.Principal;
+
     public static class ClaimsIdentityExtensions
     {
         public static int? GetUserId(this IIdentity identity)
@@ -28,16 +25,13 @@ namespace Comm100.Framework.Authentication
         }
         public static int? GetSiteId(this ClaimsIdentity identity)
         {
-
+            var userIdOrNull = identity.Claims.FirstOrDefault(c => c.Type == Comm100ClaimTypes.SideId);
+            if (userIdOrNull == null || string.IsNullOrWhiteSpace(userIdOrNull.Value))
             {
-                var userIdOrNull = identity.Claims.FirstOrDefault(c => c.Type == Comm100ClaimTypes.SideId);
-                if (userIdOrNull == null || string.IsNullOrWhiteSpace(userIdOrNull.Value))
-                {
-                    return null;
-                }
-
-                return Convert.ToInt32(userIdOrNull.Value);
+                return null;
             }
+
+            return Convert.ToInt32(userIdOrNull.Value);
 
         }
     }

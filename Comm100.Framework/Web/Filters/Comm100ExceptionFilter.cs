@@ -1,7 +1,5 @@
-﻿using Comm100.Domain.Ioc;
+﻿using Comm100.Framework.Exception;
 using Comm100.Framework.Logging;
-using Comm100.Runtime;
-using Comm100.Runtime.Exception;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.AspNetCore.Mvc.Filters;
@@ -11,7 +9,6 @@ namespace Comm100.Web.Filters
 {
     public class Comm100ExceptionFilter : IExceptionFilter
     {
-        [Mandatory]
         public static ILogger Logger { get; set; }
 
         public void OnException(ExceptionContext context)
@@ -25,7 +22,7 @@ namespace Comm100.Web.Filters
 
             context.HttpContext.Response.StatusCode = GetStatusCode(context);
 
-            var myException = context.Exception as Comm100Exception;
+            var myException = context.Exception as BaseException;
             if (myException == null)
                 context.Result = new ObjectResult(
                     new { 

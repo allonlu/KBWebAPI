@@ -1,4 +1,5 @@
 ﻿using System;
+using Comm100.Framework.Constants;
 using Comm100.Framework.Infrastructure;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -10,7 +11,7 @@ namespace KB.Infrastructure.EntityConfigurations
     {
         public override void Configure(EntityTypeBuilder<Article> config)
         {
-            config.ToTable("t_KB_Article" + "{#TENANTID}");
+            config.ToTable("t_KB_Article" + DBConstants.MULTI_TENANT_TABLE_PLACEHOLDER);
 
             config.HasKey(a => a.Id);
 

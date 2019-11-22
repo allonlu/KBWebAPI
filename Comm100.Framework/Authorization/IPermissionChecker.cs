@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Comm100.Framework.Authentication.Session;
-
-namespace Comm100.Framework.Authorization
+﻿namespace Comm100.Framework.Authorization
 {
+    using Comm100.Framework.Authentication.Session;
+
     public interface IPermissionChecker
     {
         bool IsGranted(ISession session, string source, AuthorizationType type);

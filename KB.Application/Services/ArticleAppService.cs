@@ -3,19 +3,18 @@ using System.Linq;
 using AutoMapper;
 using Comm100.Framework;
 using KB.Domain.Entities;
-using Comm100.Runtime;
 using Comm100.Application.Services;
-using Comm100.Runtime.Transactions;
 using System.Transactions;
 using Comm100.Public.Dto;
 using KB.Domain.Specificaitons;
-using Comm100.Extension;
 using KB.Domain.Interfaces;
 using KB.Application.Dto;
 using KB.Domain.Bo;
 using Comm100.Framework.AuditLog;
 using Comm100.Framework.Authorization;
 using KB.Domain;
+using Comm100.Framework.Extension;
+using Comm100.Framework.Infrastructure;
 
 namespace KB.Application.Articles
 {
@@ -26,10 +25,11 @@ namespace KB.Application.Articles
         private readonly ITagDomainService _tagDomainService;
 
         public ArticleAppService(IArticleDomainService articleDomainService, 
-            ICategoryDomainService categoryDomainService) : base()
+            ICategoryDomainService categoryDomainService, ITagDomainService tagDomainService) : base()
         {
             this._articleDomainService = articleDomainService;
             this._categoryDomainService = categoryDomainService;
+            this._tagDomainService = tagDomainService;
 
             MapperConfiguration configuration = new MapperConfiguration(config => {
 

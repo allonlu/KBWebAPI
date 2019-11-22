@@ -1,28 +1,18 @@
-﻿using Castle.DynamicProxy;
-using Castle.Windsor;
-using Castle.Windsor.Proxy;
-using Comm100.Domain.Uow;
-using Comm100.Framework.Tenants;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
-
-namespace Comm100.Framework.Infrastructure
+﻿namespace Comm100.Framework.Infrastructure
 {
+    using Comm100.Domain.Uow;
+    using Comm100.Framework.Tenants;
+    using Microsoft.EntityFrameworkCore;
+    using System.Transactions;
+
     public class EFUnitOfWorkManager : IUnitOfWorkManager
     {
-        private DbContext _dbContext;
-        private Tenant _tenant;
+        private BaseDBContext _dbContext;
         private IUnitOfWork _outerUow;
 
-        public EFUnitOfWorkManager(DbContext dbContext, ITenantProvider tenantProvider)
+        public EFUnitOfWorkManager(BaseDBContext dbContext)
         {
             this._dbContext = dbContext;
-            this._tenant = tenantProvider.GetTenant();
         }
 
         public IUnitOfWork Current =>_outerUow;
@@ -42,7 +32,7 @@ namespace Comm100.Framework.Infrastructure
                 IsolationLevel = isolationLevel
             };
 
-            var uow = new EFUnitOfWork(_dbContext, option, _tenant);
+            var uow = new EFUnitOfWork(_dbContext, option);
 
             uow.Disposed += (sender, e) =>
             {

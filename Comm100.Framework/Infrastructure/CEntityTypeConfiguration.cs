@@ -1,10 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Comm100.Framework.Domain.Entity;
-
-namespace Comm100.Framework.Infrastructure
+﻿namespace Comm100.Framework.Infrastructure
 {
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using Comm100.Framework.Domain.Entity;
+
     public abstract class CEntityTypeConfiguration<TEntity> : IEntityTypeConfiguration<TEntity> where TEntity : class
     {
 

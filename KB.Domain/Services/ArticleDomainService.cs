@@ -72,11 +72,11 @@ namespace KB.Domain.Services
 
             if (category.IsPublished)
             {
-                if (article.Status != ArticleStatus.audited)
+                if (article.Status != ArticleStatus.AUDITED)
                 {
                     throw new Exception("Article needs to be audited first.");
                 }
-                article.Status = ArticleStatus.published;
+                article.Status = ArticleStatus.PUBLISHED;
             }
             else
             {
@@ -103,9 +103,17 @@ namespace KB.Domain.Services
         {
             Article article = _repository.Get(id);
 
-            article.Tags = article.Tags
-                    .Concat<ArticleTag>(tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId }))
-                    .Distinct();
+            IEnumerable<ArticleTag> addingTags = tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId });
+
+            ArticleTagEqualityComparer comparer = new ArticleTagEqualityComparer();
+
+            foreach (ArticleTag addingTag in addingTags)
+            {
+                if (!article.Tags.Contains(addingTag, comparer))
+                {
+                    article.Tags.Add(addingTag);
+                }
+            }
 
             _repository.Update(article);
 
@@ -116,7 +124,17 @@ namespace KB.Domain.Services
         {
             Article article = _repository.Get(id);
 
-            article.Tags = article.Tags.Where(articleTag => !tagIds.Any(tagId => articleTag.TagId == tagId));
+            IEnumerable<ArticleTag> removingTags = tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId });
+
+            ArticleTagEqualityComparer comparer = new ArticleTagEqualityComparer();
+
+            foreach (ArticleTag tag in article.Tags)
+            {
+                if (removingTags.Contains(tag, comparer))
+                {
+                    article.Tags.Remove(tag);
+                }
+            }
 
             _repository.Update(article);
 
@@ -128,7 +146,7 @@ namespace KB.Domain.Services
         {
             Article article = _repository.Get(id);
 
-            article.Tags = tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId });
+            article.Tags = tagIds.Select(tagId => new ArticleTag() { ArticleId = id, TagId = tagId }).ToList();
 
             return article;
         }

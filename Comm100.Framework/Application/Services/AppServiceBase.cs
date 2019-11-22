@@ -1,14 +1,10 @@
-﻿using AutoMapper;
-using Castle.Core.Logging;
-using Comm100.Domain.Ioc;
-using Comm100.Framework.Authentication.Session;
-using Comm100.Framework.Authorization;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Comm100.Application.Services
+﻿namespace Comm100.Application.Services
 {
+    using AutoMapper;
+    using Castle.Core.Logging;
+    using Comm100.Framework.Authentication.Session;
+    using Comm100.Framework.Authorization;
+
     public abstract class AppServiceBase: IAppService
     {
         public AppServiceBase()
@@ -17,20 +13,9 @@ namespace Comm100.Application.Services
             this.PermissionChecker = NullPermissionChecker.Instance;
             this.Logger = NullLogger.Instance;
         }
-        /// <summary>
-        /// IOC容器注入
-        /// </summary>
-        [Mandatory]
+
         public ISession Session { get; set; }
-        /// <summary>
-        /// IOC容器注入
-        /// </summary>
-        [Mandatory]
         public IPermissionChecker PermissionChecker { get; set; }
-        /// <summary>
-        /// IOC容器注入
-        /// </summary>
-        [Mandatory]
         public ILogger Logger { get; set; }
 
         public IMapper Mapper { get; set; }

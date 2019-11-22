@@ -1,9 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿//-----------------------------------------------------------------------
+// <copyright file="ISpecification.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Framework.Domain.Specifications
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq.Expressions;
+
     public interface ISpecification<T>
     {
         Expression<Func<T, bool>> Criteria { get; }

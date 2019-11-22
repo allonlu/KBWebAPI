@@ -1,15 +1,18 @@
-﻿using Castle.DynamicProxy;
-using Comm100.Framework.AuditLog;
-using Comm100.Runtime.Transactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Transactions;
+﻿//-----------------------------------------------------------------------
+// <copyright file="InterceptorExtension.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
-namespace Comm100.Framework.Extensions
+namespace Comm100.Framework.Extension
 {
+    using Castle.DynamicProxy;
+    using Comm100.Framework.AuditLog;
+    using Comm100.Framework.Infrastructure;
+    using System.Linq;
+    using System.Reflection;
+    using System.Transactions;
+
     public static class InterceptorExtension
     {
         private static MethodInfo GetMethod(this IInvocation invocation)

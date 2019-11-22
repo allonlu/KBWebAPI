@@ -11,6 +11,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Specifications\" />
@@ -24,6 +29,7 @@
     <Folder Include="Web\Controllers\" />
     <Folder Include="Web\Filters\" />
     <Folder Include="Throttling\" />
+    <Folder Include="Constants\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
@@ -33,5 +39,10 @@
     <Compile Remove="Domain\Entity\Attributes\TableIsolationAttribute.cs" />
     <Compile Remove="Domain\Entity\Attributes\RowIsolationAttribute.cs" />
     <Compile Remove="Authorization\EnumEntity.cs" />
+    <Compile Remove="Domain\Ioc\MandatoryAttribute.cs" />
+    <Compile Remove="Domain\Ioc\MandatoryPropertyComponentModelHelper.cs" />
+    <Compile Remove="Infrastructure\ITableIsolationResolver.cs" />
+    <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
+    <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
   </ItemGroup>
 </Project>

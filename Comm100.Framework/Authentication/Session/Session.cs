@@ -1,13 +1,13 @@
-﻿using Comm100.Framework.Authentication;
-using Comm100.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//-----------------------------------------------------------------------
+// <copyright file="Session.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Framework.Authentication.Session
 {
+    using System;
+
     public class Session : ISession
     {
         public string GetApplication()

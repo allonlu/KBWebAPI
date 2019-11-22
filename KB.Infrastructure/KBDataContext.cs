@@ -1,28 +1,18 @@
-
+using Comm100.Framework.Infrastructure;
+using Comm100.Framework.Tenants;
 using KB.Domain.Entities;
 using KB.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
-
 using Microsoft.Extensions.Configuration;
 
 namespace KB.Infrastructure
 {
-    public class KBDataContext : DbContext
+    public class KBDataContext : BaseDBContext
     {
-        private string _connectString { get; set; }
 
-        private ITableIsolationResolver _resolver;
-
-        public KBDataContext(IConfiguration configuration, ITableIsolationResolver resolver)
+        public KBDataContext(IConfiguration configuration, ITenantProvider provider)
+            :base(configuration, provider)
         {
-            this._connectString = configuration.GetConnectionString("DefaultConnection");
-            this._resolver = resolver;
-        }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder
-                .UseSqlServer(_connectString)
-                .AddInterceptors(new TableIsolationCommandInterceptor(_resolver));
         }
 
         public virtual DbSet<Article> Articles { get; set; }

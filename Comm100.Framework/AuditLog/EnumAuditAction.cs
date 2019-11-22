@@ -1,5 +1,4 @@
-﻿using System;
-namespace Comm100.Framework.AuditLog
+﻿namespace Comm100.Framework.AuditLog
 {
     public enum AuditAction
     {

@@ -2,13 +2,7 @@
 using Castle.MicroKernel.Registration;
 using Comm100.Application;
 using Comm100.Framework.Logging;
-using Comm100.Public.Authorization;
-using Comm100.Runtime;
 using KB.Domain;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.EntityFrameworkCore;
 using Comm100.Framework.Authentication.Session;
 using Comm100.Framework.Authorization;
 

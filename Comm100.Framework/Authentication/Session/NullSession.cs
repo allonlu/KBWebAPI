@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Comm100.Framework.Authentication;
-
-namespace Comm100.Framework.Authentication.Session
+﻿namespace Comm100.Framework.Authentication.Session
 {
+    using System;
+
     public class NullSession : ISession
     {
         public static ISession Instance => new NullSession();
@@ -21,7 +18,7 @@ namespace Comm100.Framework.Authentication.Session
 
         public Role GetRole()
         {
-            return Role.system;
+            return Role.SYSTEM;
         }
 
         public int? GetSiteId()

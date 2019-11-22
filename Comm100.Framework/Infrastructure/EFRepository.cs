@@ -1,27 +1,27 @@
-using Comm100.Domain.Entity;
-using Comm100.Framework.Domain.Entity;
-using Comm100.Framework.Domain.Repository;
-using Comm100.Framework.Domain.Specifications;
-using Comm100.Framework.Tenants;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+//-----------------------------------------------------------------------
+// <copyright file="EFRepository.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
-namespace Comm100.Framework.Infrastructure 
+namespace Comm100.Framework.Infrastructure
 {
+    using Comm100.Domain.Entity;
+    using Comm100.Framework.Domain.Entity;
+    using Comm100.Framework.Domain.Repository;
+    using Comm100.Framework.Domain.Specifications;
+    using Comm100.Framework.Tenants;
+    using Microsoft.EntityFrameworkCore;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class EFRepository<TId, TEntity> : IRepository<TId, TEntity> where TEntity : class
     {
-        protected readonly DbContext _dbContext;
+        protected readonly BaseDBContext _dbContext;
 
-        private readonly Tenant _tenant;
-
-        public EFRepository(DbContext dbContext, ITenantProvider tenantProvider)
+        public EFRepository(BaseDBContext dbContext)
         {
             _dbContext = dbContext;
-
-            _tenant = tenantProvider.GetTenant();
         }
         public int Count(ISpecification<TEntity> spec)
         {
@@ -81,7 +81,7 @@ namespace Comm100.Framework.Infrastructure
 
             if (typeof(IMultiSite).IsAssignableFrom(typeof(TEntity)))
             {
-                query = query.Where(t => ((IMultiSite)t).SiteId == _tenant.Id);
+                query = query.Where(t => ((IMultiSite)t).SiteId == _dbContext.Tenant.Id);
             }
 
             return query;

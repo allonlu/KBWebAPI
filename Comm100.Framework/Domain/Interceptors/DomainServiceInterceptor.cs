@@ -1,14 +1,16 @@
-﻿using Castle.DynamicProxy;
-using Comm100.Domain.Uow;
-using Comm100.Framework.Extensions;
-using Comm100.Runtime.Exception;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DomainServiceInterceptor.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Domain.Interceptors
 {
+    using Castle.DynamicProxy;
+    using Comm100.Domain.Uow;
+    using Comm100.Framework.Exception;
+    using Comm100.Framework.Extension;
+
     public class DomainServiceInterceptor : IInterceptor
     {
         private readonly IUnitOfWorkManager _unitOfWorkManager;

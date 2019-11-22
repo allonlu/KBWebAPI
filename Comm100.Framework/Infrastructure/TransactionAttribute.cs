@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Transactions;
+﻿//-----------------------------------------------------------------------
+// <copyright file="TransactionAttribute.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
-namespace Comm100.Runtime.Transactions
+namespace Comm100.Framework.Infrastructure
 {
+    using System;
+    using System.Transactions;
+
     public class TransactionAttribute : Attribute
     {
         public IsolationLevel IsolationLevel { get; private set; }

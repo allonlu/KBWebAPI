@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Comm100.Runtime.Exception
+﻿namespace Comm100.Framework.Exception
 {
-    public class WrongSoringException:Comm100Exception
+    public class WrongSoringException : BaseException
     {
         public WrongSoringException() : base(100103, ErrorMessages.E100103) { }
     }

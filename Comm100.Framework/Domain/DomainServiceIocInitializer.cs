@@ -1,15 +1,18 @@
-﻿using Castle.Core;
-using Castle.MicroKernel;
-using Castle.MicroKernel.Registration;
-using Comm100.Domain.Interceptors;
-using Comm100.Domain.Services;
-using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿//-----------------------------------------------------------------------
+// <copyright file="DomainServiceIocInitializer.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Domain
 {
+    using Castle.Core;
+    using Castle.MicroKernel;
+    using Castle.MicroKernel.Registration;
+    using Comm100.Domain.Interceptors;
+    using Comm100.Domain.Services;
+    using System.Reflection;
+
     public static class DomainServiceIocInitializer
     {
         public static void DomainServiceRegister(this IKernel kernel, Assembly assembly)

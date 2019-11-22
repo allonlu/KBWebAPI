@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-
-namespace Comm100.Framework.Authentication
+﻿namespace Comm100.Framework.Authentication
 {
+    using Microsoft.AspNetCore.Builder;
+
     public static class JwtAuthenticationMiddleware
     {
+        
+
         public static void UseJwtAuthentication(this IApplicationBuilder app)
         {
             app.Use(async (context, next) =>
