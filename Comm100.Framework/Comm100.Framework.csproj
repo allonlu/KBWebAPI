@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="Castle.Core" Version="4.4.0" />
+    <PackageReference Include="Castle.Windsor" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Domain\Specifications\" />
+    <Folder Include="Exception\" />
+    <Folder Include="Authentication\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Authentication\Session\" />
+    <Folder Include="Extension\" />
+    <Folder Include="AuditLog\" />
+    <Folder Include="Web\" />
+    <Folder Include="Web\Controllers\" />
+    <Folder Include="Web\Filters\" />
+    <Folder Include="Throttling\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Module\" />
+    <Folder Include="Util\" />
+    <Folder Include="AutoMapper\" />
+    <Folder Include="Reflection\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
+    <Compile Remove="Extension\IQueryableExtension.cs" />
+    <Compile Remove="Domain\Repository\ISoftDelete.cs" />
+    <Compile Remove="Extension\CheckerExtension.cs" />
+    <Compile Remove="Domain\Entity\Attributes\TableIsolationAttribute.cs" />
+    <Compile Remove="Domain\Entity\Attributes\RowIsolationAttribute.cs" />
+    <Compile Remove="Authorization\EnumEntity.cs" />
+    <Compile Remove="Domain\Ioc\MandatoryAttribute.cs" />
+    <Compile Remove="Domain\Ioc\MandatoryPropertyComponentModelHelper.cs" />
+    <Compile Remove="Infrastructure\ITableIsolationResolver.cs" />
+    <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
+    <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
+    <Compile Remove="Application\AppServiceIocInitializer.cs" />
+    <Compile Remove="Logging\Logger.cs" />
+    <Compile Remove="Domain\DomainServiceIocInitializer.cs" />
+  </ItemGroup>
+</Project>

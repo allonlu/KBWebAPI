@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Comm100.Framework\Comm100.Framework.csproj" />
+    <ProjectReference Include="..\Comm100.Public\Comm100.Public.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Articles\Entity\ArticleWithInclude.cs" />
+    <Compile Remove="Entities\ArticleAggregate\ArticleTags.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\ArticleAggregate\" />
+  </ItemGroup>
+</Project>
