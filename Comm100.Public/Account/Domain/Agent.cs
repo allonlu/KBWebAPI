@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Comm100.Public.Dto
+namespace Comm100.Public.Account.Domain
 {
-    public class AgentRefDto
+    public class Agent
     {
         public Guid Id { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace Comm100.Domain.Services
+﻿namespace Comm100.Framework.Domain.Services
 {
     public interface IDomainService
     {

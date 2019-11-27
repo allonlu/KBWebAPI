@@ -5,7 +5,6 @@ using Comm100.Framework;
 using KB.Domain.Entities;
 using Comm100.Application.Services;
 using System.Transactions;
-using Comm100.Public.Dto;
 using KB.Domain.Specificaitons;
 using KB.Domain.Interfaces;
 using KB.Application.Dto;
@@ -15,6 +14,8 @@ using Comm100.Framework.Authorization;
 using KB.Domain;
 using Comm100.Framework.Extension;
 using Comm100.Framework.Infrastructure;
+using Comm100.Public.Account.Dto;
+using Comm100.Public.Account.Domain;
 
 namespace KB.Application.Articles
 {
@@ -23,34 +24,27 @@ namespace KB.Application.Articles
         private readonly IArticleDomainService _articleDomainService;
         private readonly ICategoryDomainService _categoryDomainService;
         private readonly ITagDomainService _tagDomainService;
+        private readonly IAgentDomainService _agentDomainService;
 
         public ArticleAppService(IArticleDomainService articleDomainService, 
-            ICategoryDomainService categoryDomainService, ITagDomainService tagDomainService) : base()
+            ICategoryDomainService categoryDomainService,
+            ITagDomainService tagDomainService,
+            IAgentDomainService agentDomainService) : base()
         {
             this._articleDomainService = articleDomainService;
             this._categoryDomainService = categoryDomainService;
             this._tagDomainService = tagDomainService;
+            this._agentDomainService = agentDomainService;
 
-            MapperConfiguration configuration = new MapperConfiguration(config => {
+            //MapperConfiguration configuration = new MapperConfiguration(config => {
 
-                // because tags should be included, and if not include we should not return a empty array []
-                config.AllowNullCollections = true; 
+            //    // because tags should be included, and if not include we should not return a empty array []
+            //    config.AllowNullCollections = true; 
 
-                config.AddProfile(new AgentMapperProfile());
-                config.AddProfile(new CategoryMapperProfile());
-                
-                config.CreateMap<Article, ArticleDto>();
-                config.CreateMap<Article, ArticleWithIncludeDto>();
-                config.CreateMap<ArticleTag, Guid>().ConvertUsing(t => t.TagId);
-         
-                config.CreateMap<ArticleCreateDto, Article>();
-                config.CreateMap<ArticleUpdateDto, ArticleUpdateBo>();
+            //    config.CreateMap<ArticleTag, Guid>().ConvertUsing(t => t.TagId);
+            //});
 
-                config.CreateMap<ArticleTagsDto, Article>();
-                config.CreateMap<Article, ArticleTagsDto>();
-            });
-
-            this.Mapper = configuration.CreateMapper();
+            //this.Mapper = configuration.CreateMapper();
         }
 
         [Authorization(EntityTypes.ARTICLE, AuthorizationType.WRITE)]
@@ -83,7 +77,6 @@ namespace KB.Application.Articles
         public void Delete(Guid id)
         {
             Article article = _articleDomainService.Delete(id);
-            // audit log - article deleted
         }
 
         [Authorization(EntityTypes.ARTICLE, AuthorizationType.READ)]
@@ -111,7 +104,7 @@ namespace KB.Application.Articles
                             dto.Category = Mapper.Map<CategoryRefDto>(_categoryDomainService.Get(dto.CategoryId));
                             break;
                         case "author":
-                            dto.Author = null; // need call public module.
+                            dto.Author = Mapper.Map<AgentRefDto>(_agentDomainService.Get(dto.AuthorId));
                             break;
                         case "tags":
                             dto.Tags = dto.TagIds.Select(id => Mapper.Map<TagRefDto>(_tagDomainService.Get(id)));

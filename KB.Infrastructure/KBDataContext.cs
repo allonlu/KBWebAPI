@@ -11,7 +11,7 @@ namespace KB.Infrastructure
     {
 
         public KBDataContext(IConfiguration configuration, ITenantProvider provider)
-            :base(configuration, provider)
+            : base(configuration, provider)
         {
         }
 

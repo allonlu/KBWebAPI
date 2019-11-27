@@ -1,10 +1,12 @@
-﻿using KB.Domain.Entities;
+﻿using Comm100.Framework.AutoMapper;
+using KB.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace KB.Application.Dto
 {
+    [AutoMapFrom(typeof(Article))]
     public class ArticleDto
     {
         public Guid Id { get; set; }

@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Domain.Interceptors
+namespace Comm100.Framework.Domain.Interceptors
 {
     using Castle.DynamicProxy;
     using Comm100.Domain.Uow;

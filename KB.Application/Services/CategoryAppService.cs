@@ -21,12 +21,6 @@ namespace KB.Application.Categories.Service
         public CategoryAppService(ICategoryDomainService domainService) : base()
         {
             this._domainService = domainService;
-            var configuration = new MapperConfiguration(cfg => 
-            {
-                cfg.CreateMap<CategoryDto, Category>();
-                cfg.CreateMap<Category, CategoryDto>();
-            });
-            this.Mapper = configuration.CreateMapper();
         }
 
         [Authorization(EntityTypes.CATEGORY, AuthorizationType.WRITE)]

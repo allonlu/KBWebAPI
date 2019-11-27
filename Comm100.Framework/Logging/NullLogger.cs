@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Comm100.Framework.Logging;
+﻿//-----------------------------------------------------------------------
+// <copyright file="NullLogger.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using System;
 
 namespace Comm100.Framework.Logging
 {
@@ -20,6 +23,14 @@ namespace Comm100.Framework.Logging
         }
 
         public void Warn(string message)
+        {
+        }
+
+        public void Warn(System.Exception exp, string message)
+        {
+        }
+
+        public void Error(System.Exception exp, string message)
         {
         }
 

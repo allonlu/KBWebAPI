@@ -1,9 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using Comm100.Framework.Domain.Specifications;
+﻿//-----------------------------------------------------------------------
+// <copyright file="SpecificationEvaluator.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Framework.Infrastructure
 {
+    using Microsoft.EntityFrameworkCore;
+    using System.Linq;
+    using Comm100.Framework.Domain.Specifications;
+
     public class SpecificationEvaluator<T> where T : class
     {
         public static IQueryable<T> GetQuery(IQueryable<T> inputQuery, ISpecification<T> specification)

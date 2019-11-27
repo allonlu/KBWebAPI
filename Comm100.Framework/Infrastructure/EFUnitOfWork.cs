@@ -2,13 +2,13 @@
 
 namespace Comm100.Framework.Infrastructure
 {
-    using Comm100.Domain.Uow;
-    using Comm100.Framework.Tenants;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Storage;
     using System;
     using System.Data;
     using System.Transactions;
+    using Comm100.Domain.Uow;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.Storage;
+    
 
     public class EFUnitOfWork : IUnitOfWork
     {

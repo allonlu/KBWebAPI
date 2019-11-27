@@ -16,6 +16,8 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="NLog" Version="4.6.8" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="4.9.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Specifications\" />
@@ -30,6 +32,10 @@
     <Folder Include="Web\Filters\" />
     <Folder Include="Throttling\" />
     <Folder Include="Constants\" />
+    <Folder Include="Module\" />
+    <Folder Include="Util\" />
+    <Folder Include="AutoMapper\" />
+    <Folder Include="Reflection\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
@@ -44,5 +50,8 @@
     <Compile Remove="Infrastructure\ITableIsolationResolver.cs" />
     <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
     <Compile Remove="Infrastructure\TableIsolationResolver.cs" />
+    <Compile Remove="Application\AppServiceIocInitializer.cs" />
+    <Compile Remove="Logging\Logger.cs" />
+    <Compile Remove="Domain\DomainServiceIocInitializer.cs" />
   </ItemGroup>
 </Project>

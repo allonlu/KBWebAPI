@@ -13,4 +13,7 @@
   <ItemGroup>
     <Folder Include="EntityConfigurations\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="InfrastructureIocFacility.cs" />
+  </ItemGroup>
 </Project>

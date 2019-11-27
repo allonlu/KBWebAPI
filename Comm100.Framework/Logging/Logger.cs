@@ -6,7 +6,7 @@
 
 namespace Comm100.Framework.Logging
 {
-    public class Logger : ILogger
+    public class DebugLogger : ILogger
     {
         public void Debug(string message)
         {

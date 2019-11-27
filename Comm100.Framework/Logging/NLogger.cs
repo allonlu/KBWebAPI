@@ -1,31 +1,51 @@
 ﻿using System;
+using NLog;
+using NLog.Web;
+
 namespace Comm100.Framework.Logging
 {
     public class NLogger : ILogger
     {
+        private Logger _logger;
+
         public NLogger()
         {
-            // load configuration and create log instance
+            _logger = NLogBuilder.ConfigureNLog("nlog.config").GetCurrentClassLogger();
         }
 
         public void Debug(string message)
         {
-            throw new NotImplementedException();
+            _logger.Debug(message);
         }
 
         public void Error(string message)
         {
-            throw new NotImplementedException();
+            _logger.Error(message);
         }
 
-        public void Info(string messsage)
+        public void Info(string message)
         {
-            throw new NotImplementedException();
+            _logger.Info(message);
         }
 
         public void Warn(string message)
         {
-            throw new NotImplementedException();
+            _logger.Warn(message);
+        }
+
+        public static void Shotdown()
+        {
+            NLog.LogManager.Shutdown();
+        }
+
+        public void Warn(System.Exception exp, string message)
+        {
+            _logger.Warn(exp, message);
+        }
+
+        public void Error(System.Exception exp, string message)
+        {
+            _logger.Error(exp, message);
         }
     }
 }

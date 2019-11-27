@@ -14,6 +14,9 @@
 
   <ItemGroup>
     <Folder Include="Constants\" />
+    <Folder Include="Account\" />
+    <Folder Include="Account\Dto\" />
+    <Folder Include="Account\Domain\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Enum.cs" />

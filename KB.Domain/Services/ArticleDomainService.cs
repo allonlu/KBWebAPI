@@ -33,7 +33,7 @@ namespace KB.Domain.Services
             return _repository.Count(spec);
         }
 
-        public IReadOnlyList<Article> List(ArticleFilterSpecification spec)
+        public IEnumerable<Article> List(ArticleFilterSpecification spec)
         {
             return _repository.List(spec);
         }

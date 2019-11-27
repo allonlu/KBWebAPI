@@ -1,4 +1,10 @@
-﻿namespace Comm100.Framework.Application.Interceptors
+﻿//-----------------------------------------------------------------------
+// <copyright file="AppServiceInterceptor.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
+
+namespace Comm100.Framework.Application.Interceptors
 {
     using Castle.DynamicProxy;
     using Comm100.Domain.Uow;
@@ -13,7 +19,9 @@
     public class AppServiceInterceptor : IInterceptor
     {
         public ISession Session { get; set; }
+
         public IPermissionChecker PermissionChecker { get; set; }
+
         public ILogger Logger { get; set; }
 
         public IAuditLogService AuditLogService { get; set; }

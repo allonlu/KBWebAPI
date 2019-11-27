@@ -1,12 +1,9 @@
-﻿using Comm100.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using Comm100.Domain.Services;
 using KB.Domain.Entities;
-using Comm100.Framework.Domain.Specifications;
 using KB.Domain.Bo;
 using KB.Domain.Specificaitons;
+using Comm100.Framework.Domain.Services;
 
 namespace KB.Domain.Interfaces
 {
@@ -16,7 +13,7 @@ namespace KB.Domain.Interfaces
 
         int Count(ArticleFilterSpecification spec);
 
-        IReadOnlyList<Article> List(ArticleFilterSpecification spec);
+        IEnumerable<Article> List(ArticleFilterSpecification spec);
 
         Article Create(Article entity);
 

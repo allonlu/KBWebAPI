@@ -1,10 +1,15 @@
-﻿using System;
-using Comm100.Framework.Tenants;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿//-----------------------------------------------------------------------
+// <copyright file="BaseDBContext.cs" company="Comm100 Network Corporation">
+//     Copyright (c) Comm100 Network Corporation. All rights reserved.
+// </copyright>
+//-----------------------------------------------------------------------
 
 namespace Comm100.Framework.Infrastructure
 {
+    using Comm100.Framework.Tenants;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+
     public class BaseDBContext : DbContext
     {
         private string _connectString { get; set; }

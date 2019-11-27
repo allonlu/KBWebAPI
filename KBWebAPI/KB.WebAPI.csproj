@@ -2,6 +2,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'KBWebAPI' ">
+    <StartAction>Project</StartAction>
+    <LaunchUrl>api/articles</LaunchUrl>
+    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <Folder Include="wwwroot\" />
   </ItemGroup>
@@ -15,5 +20,8 @@
   <ItemGroup>
     <ProjectReference Include="..\KB.Application\KB.Application.csproj" />
     <ProjectReference Include="..\KB.Infrastructure\KB.Infrastructure.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="IocInstaller.cs" />
   </ItemGroup>
 </Project>

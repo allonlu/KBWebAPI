@@ -1,12 +1,12 @@
-﻿using Comm100.Framework.Exception;
-using Comm100.Framework.Logging;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Controllers;
-using Microsoft.AspNetCore.Mvc.Filters;
-using System.Net;
-
-namespace Comm100.Web.Filters
+﻿namespace Comm100.Web.Filters
 {
+    using System.Net;
+    using Comm100.Framework.Exception;
+    using Comm100.Framework.Logging;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.Controllers;
+    using Microsoft.AspNetCore.Mvc.Filters;
+
     public class Comm100ExceptionFilter : IExceptionFilter
     {
         public static ILogger Logger { get; set; }

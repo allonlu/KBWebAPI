@@ -14,6 +14,10 @@ namespace Comm100.Framework.Logging
 
         void Warn(string message);
 
+        void Warn(System.Exception exp, string message);
+
         void Error(string message);
+
+        void Error(System.Exception exp, string message);
     }
 }

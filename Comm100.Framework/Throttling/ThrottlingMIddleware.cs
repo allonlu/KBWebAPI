@@ -1,8 +1,7 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
-
-namespace Comm100.Framework.Throttling
+﻿namespace Comm100.Framework.Throttling
 {
+    using Microsoft.AspNetCore.Builder;
+
     public static class ThrottlingMIddleware
     {
         public static void UseThrottling(this IApplicationBuilder app)

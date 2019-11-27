@@ -1,4 +1,4 @@
-﻿using Comm100.Domain.Services;
+﻿using Comm100.Framework.Domain.Services;
 using KB.Domain.Bo;
 using KB.Domain.Entities;
 using System;

@@ -21,7 +21,7 @@ namespace Comm100.Framework.Infrastructure
 
         public EFRepository(BaseDBContext dbContext)
         {
-            _dbContext = dbContext;
+            this._dbContext = dbContext;
         }
         public int Count(ISpecification<TEntity> spec)
         {
@@ -30,8 +30,8 @@ namespace Comm100.Framework.Infrastructure
 
         public TEntity Create(TEntity entity)
         {
-            _dbContext.Set<TEntity>().Add(entity);
-            _dbContext.SaveChanges();
+            this._dbContext.Set<TEntity>().Add(entity);
+            this._dbContext.SaveChanges();
             return entity;
         }
 

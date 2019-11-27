@@ -13,19 +13,22 @@ using Microsoft.Extensions.DependencyInjection;
 using Castle.Facilities.AspNetCore;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Castle.Windsor.MsDependencyInjection;
 
-using Comm100.Web.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Comm100.Framework.Authentication;
+using Comm100.Framework.Module;
+using Comm100.Framework.Web;
 
 namespace KB.WebAPI
 {
     public class Startup
     {
+
         private static readonly WindsorContainer Container = new WindsorContainer();
+
+        private IModuleManager _moduleManager = null;
 
         public Startup(IConfiguration configuration)
         {
@@ -89,8 +92,6 @@ namespace KB.WebAPI
 
             services.AddHttpContextAccessor();
 
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
             return services.AddWindsor(Container,
                  opts => opts.UseEntryAssembly(this.GetType().Assembly));
         }
@@ -126,11 +127,15 @@ namespace KB.WebAPI
             });
         }
 
+        
+
         private void RegisterApplicationComponents(IServiceCollection services)
         {
-            // Application components
-            Container.Register(Component.For<IHttpContextAccessor>().ImplementedBy<HttpContextAccessor>());
-            Container.Install(new IocInstaller());
+            Container.Install(new CoreInstaller());
+
+            _moduleManager = Container.Resolve<IModuleManager>();
+            _moduleManager.Initialize(typeof(WebAPIModule));
+            _moduleManager.StartModules();
         }
     }
 }

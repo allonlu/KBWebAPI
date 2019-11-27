@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29123.88
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KBWebAPI", "KBWebAPI\KBWebAPI.csproj", "{E4FD8AF1-35F6-414E-B9B4-24B8984C2626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KB.WebAPI", "KBWebAPI\KB.WebAPI.csproj", "{E4FD8AF1-35F6-414E-B9B4-24B8984C2626}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KB.Application", "KB.Application\KB.Application.csproj", "{927DCCA5-2F32-4EB0-B71D-62DC707C8A34}"
 EndProject

@@ -1,6 +1,8 @@
 ﻿using Comm100.Framework;
+using Comm100.Framework.AutoMapper;
 using Comm100.Public;
 using Comm100.Public.Constants;
+using KB.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,6 +10,7 @@ using System.Text;
 
 namespace KB.Application.Dto
 {
+    [AutoMapTo(typeof(Article))]
     public class ArticleCreateDto
     {
 

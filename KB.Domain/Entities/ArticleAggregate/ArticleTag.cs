@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Comm100.Framework.AutoMapper;
 
 namespace KB.Domain.Entities
 {
+    [AutoMapTo(typeof(Guid))]
     public class ArticleTag
     {
         public Guid ArticleId { get; set; }

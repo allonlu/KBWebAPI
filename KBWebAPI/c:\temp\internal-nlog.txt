@@ -1,0 +1,32 @@
+2019-11-26 15:18:35.7341 Info Message Template Auto Format enabled
+2019-11-26 15:18:35.7401 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 15:18:35.7842 Info Adding target FileTarget(Name=allfile)
+2019-11-26 15:18:35.7854 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 15:18:35.8969 Info Found 45 configuration items
+2019-11-26 15:18:53.4727 Info Message Template Auto Format enabled
+2019-11-26 15:18:53.4769 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 15:18:53.5168 Info Adding target FileTarget(Name=allfile)
+2019-11-26 15:18:53.5181 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 15:18:53.6302 Info Found 45 configuration items
+2019-11-26 15:19:17.5155 Info Message Template Auto Format enabled
+2019-11-26 15:19:17.5195 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 15:19:17.5575 Info Adding target FileTarget(Name=allfile)
+2019-11-26 15:19:17.5587 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 15:19:17.6792 Info Found 45 configuration items
+2019-11-26 15:31:56.6948 Info AppDomain Shutting down. Logger closing...
+2019-11-26 15:31:56.7032 Info Logger has been shut down.
+2019-11-26 15:32:24.7286 Info Message Template Auto Format enabled
+2019-11-26 15:32:24.7336 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 15:32:24.7810 Info Adding target FileTarget(Name=allfile)
+2019-11-26 15:32:24.7824 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 15:32:24.9144 Info Found 45 configuration items
+2019-11-26 16:05:33.5717 Info Message Template Auto Format enabled
+2019-11-26 16:05:33.5771 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 16:05:33.6179 Info Adding target FileTarget(Name=allfile)
+2019-11-26 16:05:33.6192 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 16:05:33.7233 Info Found 45 configuration items
+2019-11-26 17:25:52.0942 Info Message Template Auto Format enabled
+2019-11-26 17:25:52.0995 Info Loading assembly: NLog.Web.AspNetCore
+2019-11-26 17:25:52.1426 Info Adding target FileTarget(Name=allfile)
+2019-11-26 17:25:52.1440 Info Adding target FileTarget(Name=ownFile-web)
+2019-11-26 17:25:52.2607 Info Found 45 configuration items
