@@ -15,6 +15,7 @@ namespace Comm100.Framework.Web
             container.Register<ITypeFinder, TypeFinder>();
             container.Register<IAssemblyFinder, AssemblyFinder>();
             container.Register<IModuleManager, ModuleManager>();
+
         }
     }
 }
