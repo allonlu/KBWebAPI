@@ -17,9 +17,13 @@
     <Folder Include="Account\" />
     <Folder Include="Account\Dto\" />
     <Folder Include="Account\Domain\" />
+    <Folder Include="Auditing\" />
+    <Folder Include="Auditing\Domain\" />
+    <Folder Include="Permission\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Enum.cs" />
     <Compile Remove="EntityType.cs" />
+    <Compile Remove="Audit.cs" />
   </ItemGroup>
 </Project>

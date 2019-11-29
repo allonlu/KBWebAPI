@@ -20,7 +20,7 @@ namespace Comm100.Framework.Module
 
             this.Container.RegisterIfNot<ILogger, NLogger>();
             this.Container.RegisterIfNot<ISession, Session>(DependencyLifeStyle.Scoped);
-            this.Container.RegisterIfNot<IPermissionChecker, PermissionChecker>(DependencyLifeStyle.Scoped);
+            this.Container.RegisterIfNot<IAuthorizationProvider, AuthorizationProvider>(DependencyLifeStyle.Scoped);
             this.Container.RegisterIfNot<AppServiceInterceptor>(DependencyLifeStyle.Transient);
             this.Container.RegisterAssembly<IAppService>(Assembly.GetAssembly(this.GetType()), configurer => {
                 _ = configurer.Named(configurer.Implementation.Name);

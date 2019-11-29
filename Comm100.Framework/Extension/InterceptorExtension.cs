@@ -7,7 +7,7 @@
 namespace Comm100.Framework.Extension
 {
     using Castle.DynamicProxy;
-    using Comm100.Framework.AuditLog;
+    using Comm100.Framework.Auditing;
     using Comm100.Framework.Infrastructure;
     using System.Linq;
     using System.Reflection;

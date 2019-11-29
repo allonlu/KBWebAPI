@@ -32,7 +32,7 @@ namespace Comm100.Framework.Module
         private void RegisterMissingComponents()
         {
             Container.RegisterIfNot<ILogger, NullLogger>(DependencyLifeStyle.Singleton);
-            Container.RegisterIfNot<IPermissionChecker, NullPermissionChecker>(DependencyLifeStyle.Scoped);
+            Container.RegisterIfNot<IAuthorizationProvider, NullAuthorizationProvider>(DependencyLifeStyle.Scoped);
         }
     }
 }

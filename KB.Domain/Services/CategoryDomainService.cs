@@ -52,7 +52,7 @@ namespace KB.Domain.Categories.Service
 
         }
 
-        public IReadOnlyList<Category> List()
+        public IEnumerable<Category> List()
         {
             return _repository.ListAll();
         }

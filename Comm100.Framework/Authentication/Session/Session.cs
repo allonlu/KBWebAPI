@@ -7,32 +7,29 @@
 namespace Comm100.Framework.Authentication.Session
 {
     using System;
+    using System.Security.Principal;
+    using Microsoft.AspNetCore.Http;
 
     public class Session : ISession
     {
-        public string GetApplication()
+        private readonly UserIdentity _userIdentity;
+
+        private readonly string _ip;
+
+        public Session(IHttpContextAccessor accessor)
         {
-            throw new NotImplementedException();
+            this._userIdentity = accessor.HttpContext.User.Identity as UserIdentity;
+            this._ip = accessor.HttpContext.Connection.RemoteIpAddress.ToString();
         }
 
-        public string GetIP()
-        {
-            throw new NotImplementedException();
-        }
+        public string IP => _ip;
 
-        public Role GetRole()
-        {
-            throw new NotImplementedException();
-        }
+        public int? SiteId => _userIdentity.SiteId;
 
-        Guid? ISession.GetAgentId()
-        {
-            throw new NotImplementedException();
-        }
+        public Role Role => _userIdentity.Role;
 
-        int? ISession.GetSiteId()
-        {
-            throw new NotImplementedException();
-        }
+        public string Application => _userIdentity.Application;
+
+        public Guid? UserId => _userIdentity.UserId;
     }
 }

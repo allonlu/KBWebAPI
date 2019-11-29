@@ -4,19 +4,24 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.AuditLog
+namespace Comm100.Public.Audit.Domain
 {
     using System;
+    using Comm100.Framework.Domain.Repository;
 
-    public class AuditLogService : IAuditLogService
+    public class AuditDomainService : IAuditDomainService
     {
-        public AuditLogService()
+        private IRepository<Guid, AuditLog> _repository;
+
+        public AuditDomainService(IRepository<Guid, AuditLog> repository)
         {
+            this._repository = repository;
         }
 
         public void Add(Guid agentId, string app, string ip, string source, string action, object[] details)
         {
-            throw new NotImplementedException();
+            AuditLog log = new AuditLog();
+            _repository.Create(log);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace KB.Application.Services
     {
         CategoryDto Get(Guid id);
 
-        IReadOnlyList<CategoryDto> GetList();
+        IEnumerable<CategoryDto> GetList();
 
         CategoryDto Add(CategoryCreateDto dto);
 

@@ -27,9 +27,9 @@ namespace KBWebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IReadOnlyList<CategoryDto>> GetList()
+        public ActionResult<IEnumerable<CategoryDto>> GetList()
         {
-            IReadOnlyList<CategoryDto> list = _app.GetList();
+            IEnumerable<CategoryDto> list = _app.GetList();
             return Ok(list);
         }
 

@@ -1,4 +1,4 @@
-﻿namespace Comm100.Framework.AuditLog
+﻿namespace Comm100.Framework.Auditing
 {
     public enum AuditAction
     {

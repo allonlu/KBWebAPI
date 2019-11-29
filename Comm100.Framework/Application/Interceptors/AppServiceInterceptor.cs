@@ -8,30 +8,31 @@ namespace Comm100.Framework.Application.Interceptors
 {
     using Castle.DynamicProxy;
     using Comm100.Domain.Uow;
-    using Comm100.Framework.AuditLog;
+    using Comm100.Framework.Auditing;
     using Comm100.Framework.Authentication.Session;
     using Comm100.Framework.Authorization;
     using Comm100.Framework.Exception;
     using Comm100.Framework.Extension;
     using Comm100.Framework.Logging;
     using System;
+    using System.Linq;
 
     public class AppServiceInterceptor : IInterceptor
     {
         public ISession Session { get; set; }
 
-        public IPermissionChecker PermissionChecker { get; set; }
+        public IAuthorizationProvider AuthorizationProvider { get; set; }
 
         public ILogger Logger { get; set; }
 
-        public IAuditLogService AuditLogService { get; set; }
+        public IAuditLogger AuditLogger { get; set; }
 
         private IUnitOfWorkManager _unitOfWorkMananger;
         public AppServiceInterceptor(IUnitOfWorkManager unitOfWorkManager)
         {
             _unitOfWorkMananger = unitOfWorkManager;
             Logger = NullLogger.Instance;
-            PermissionChecker = NullPermissionChecker.Instance;
+            AuthorizationProvider = NullAuthorizationProvider.Instance;
             Session = NullSession.Instance;
         }
 
@@ -54,7 +55,7 @@ namespace Comm100.Framework.Application.Interceptors
             AuditAttribute audit = invocation.GetAudit();
             if (audit != null)
             {
-                AuditLogService.Add(Session.GetAgentId() ?? Guid.Empty, Session.GetApplication(), Session.GetIP(),
+                AuditLogger.Add(Session.UserId ?? Guid.Empty, Session.Application, Session.IP,
                     audit.Source,  audit.Action.ToString(), invocation.Arguments);
             }
         }
@@ -67,12 +68,10 @@ namespace Comm100.Framework.Application.Interceptors
             {
                 return;
             }
-            var source = attrs[0].Source;
-            var type = attrs[0].Type;
+            var permissions = attrs.Select(att => att.Permission).ToList();
 
-            if (!PermissionChecker.IsGranted(Session, source, type))
+            if (!AuthorizationProvider.IsGranted(permissions))
             {
-                Logger.Info($"SiteId:{Session.GetSiteId()},AgentId:{Session.GetAgentId()},Type:PermissionCheckFail,Permission:{source}:{type} ");
                 throw new AuthorizationException();
             }
         }

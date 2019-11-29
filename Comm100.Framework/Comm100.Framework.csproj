@@ -26,7 +26,6 @@
     <Folder Include="Authorization\" />
     <Folder Include="Authentication\Session\" />
     <Folder Include="Extension\" />
-    <Folder Include="AuditLog\" />
     <Folder Include="Web\" />
     <Folder Include="Web\Controllers\" />
     <Folder Include="Web\Filters\" />
@@ -36,6 +35,7 @@
     <Folder Include="Util\" />
     <Folder Include="AutoMapper\" />
     <Folder Include="Reflection\" />
+    <Folder Include="Auditing\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
@@ -53,5 +53,7 @@
     <Compile Remove="Application\AppServiceIocInitializer.cs" />
     <Compile Remove="Logging\Logger.cs" />
     <Compile Remove="Domain\DomainServiceIocInitializer.cs" />
+    <Compile Remove="Authentication\ClaimsIdentityExtensions.cs" />
+    <Compile Remove="Audit.cs" />
   </ItemGroup>
 </Project>

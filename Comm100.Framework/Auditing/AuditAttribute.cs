@@ -4,7 +4,7 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.AuditLog
+namespace Comm100.Framework.Auditing
 {
     using System;
 

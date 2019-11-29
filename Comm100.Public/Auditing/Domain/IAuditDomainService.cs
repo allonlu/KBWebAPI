@@ -4,11 +4,11 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.AuditLog
+namespace Comm100.Public.Audit.Domain
 {
     using System;
 
-    public interface IAuditLogService
+    public interface IAuditDomainService
     {
         void Add(Guid agentId, string app, string ip, string source, string action, object[] details);
     }

@@ -9,4 +9,7 @@
     <ProjectReference Include="..\Comm100.Public\Comm100.Public.csproj" />
     <ProjectReference Include="..\KB.Domain\KB.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="EntityTypes.cs" />
+  </ItemGroup>
 </Project>

@@ -1,10 +1,9 @@
 ﻿using System;
-namespace KB.Application
+namespace Comm100.Framework.Authorization
 {
-    public class EntityTypes
+    public class KBPermission
     {
         public const string CATEGORY = "category";
         public const string ARTICLE = "article";
-        public const string TAG = "tag";
     }
 }

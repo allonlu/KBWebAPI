@@ -10,14 +10,14 @@ namespace Comm100.Framework.Authentication.Session
 
     public interface ISession
     {
-        Role GetRole();
+        Role Role { get; }
 
-        string GetApplication();
+        string Application { get; }
 
-        int? GetSiteId();
+        int? SiteId { get; }
 
-        Guid? GetAgentId();
+        Guid? UserId { get; }
 
-        string GetIP();
+        string IP { get; }
     }
 }

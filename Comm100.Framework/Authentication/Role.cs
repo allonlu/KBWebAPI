@@ -10,7 +10,8 @@ namespace Comm100.Framework.Authentication
     {
         SYSTEM = 1,
         APPLICATION = 2,
-        ADMIN = 3,
-        AGENT = 4,
+        AGENT = 3,
+        ANONYMOUS = 4,
+        PARTNER = 100,
     }
 }

@@ -4,17 +4,17 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
+using System.Collections.Generic;
+
 namespace Comm100.Framework.Authorization
 {
-    using Comm100.Framework.Authentication.Session;
-
-    public class NullPermissionChecker : IPermissionChecker
+    public class NullAuthorizationProvider : IAuthorizationProvider
     {
-        public bool IsGranted(ISession session, string source, AuthorizationType type)
-        {
-            return true;
-        }
+        public static NullAuthorizationProvider Instance => new NullAuthorizationProvider();
 
-        public static IPermissionChecker Instance => new NullPermissionChecker();
+        public bool IsGranted(IEnumerable<Permission> permissions)
+        {
+            return false;
+        }
     }
 }

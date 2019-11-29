@@ -7,7 +7,7 @@
 
     public static class ClaimsIdentityExtensions
     {
-        public static int? GetUserId(this IIdentity identity)
+        public static Guid? GetUserId(this IIdentity identity)
         {
             var claimsIdentity = identity as ClaimsIdentity;
             if (claimsIdentity != null && claimsIdentity.Claims != null)
@@ -18,7 +18,7 @@
                     return null;
                 }
 
-                return Convert.ToInt32(userIdOrNull.Value);
+                return new Guid(userIdOrNull.Value);
             }
 
             return null;
@@ -32,7 +32,6 @@
             }
 
             return Convert.ToInt32(userIdOrNull.Value);
-
         }
     }
 }

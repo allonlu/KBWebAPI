@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Comm100.Application.Services;
-using Comm100.Framework.AuditLog;
+using Comm100.Framework.Auditing;
 using Comm100.Framework.Authorization;
+using Comm100.Public.Audit;
 using KB.Application.Dto;
 using KB.Application.Services;
-using KB.Domain;
 using KB.Domain.Bo;
 using KB.Domain.Entities;
 using KB.Domain.Interfaces;
@@ -23,41 +23,42 @@ namespace KB.Application.Categories.Service
             this._domainService = domainService;
         }
 
-        [Authorization(EntityTypes.CATEGORY, AuthorizationType.WRITE)]
-        [Audit(EntityTypes.CATEGORY, AuditAction.DESTROY)]
+        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Audit(KBEntity.CATEGORY, AuditAction.DESTROY)]
         public void Delete(Guid id)
         {
             _domainService.Delete(id);
         }
 
-        [Authorization(EntityTypes.CATEGORY, AuthorizationType.WRITE)]
-        [Audit(EntityTypes.CATEGORY, AuditAction.CREATE)]
+        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
+        [Audit(KBEntity.CATEGORY, AuditAction.CREATE)]
         public CategoryDto Add(CategoryCreateDto dto)
         {
             Category category = _domainService.Create(Mapper.Map<Category>(dto));
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(EntityTypes.CATEGORY, AuthorizationType.WRITE)]
-        [Audit(EntityTypes.CATEGORY, AuditAction.UPDATE)]
+        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
+        [Audit(KBEntity.CATEGORY, AuditAction.UPDATE)]
         public CategoryDto Update(CategoryUpdateDto dto)
         {
             Category category = _domainService.Update(Mapper.Map<CategoryUpdateBo>(dto));
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(EntityTypes.CATEGORY, AuthorizationType.READ)]
+        [Authorization(KBPermission.CATEGORY, AuthorizationType.READ)]
         public CategoryDto Get(Guid id)
         {
             Category category = _domainService.Get(id);
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(EntityTypes.CATEGORY, AuthorizationType.READ)]
-        public IReadOnlyList<CategoryDto> GetList()
+        [Authorization(KBPermission.CATEGORY, AuthorizationType.READ)]
+        public IEnumerable<CategoryDto> GetList()
         {
-            IReadOnlyList<Category> list = _domainService.List();
-            return Mapper.Map<IReadOnlyList<CategoryDto>>(list);
+            IEnumerable<Category> list = _domainService.List();
+            return Mapper.Map<IEnumerable<CategoryDto>>(list);
         }
     }
 }

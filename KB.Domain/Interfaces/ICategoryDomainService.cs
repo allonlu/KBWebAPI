@@ -1,6 +1,7 @@
 ﻿using Comm100.Framework.Domain.Services;
 using KB.Domain.Bo;
 using KB.Domain.Entities;
+using KB.Domain.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -15,7 +16,7 @@ namespace KB.Domain.Interfaces
 
         Category Update(CategoryUpdateBo id);
 
-        IReadOnlyList<Category> List();
+        IEnumerable<Category> List();
 
         void DeleteAndAdoptChildren(Guid id, Guid targetId);
 

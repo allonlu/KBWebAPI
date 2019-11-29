@@ -6,29 +6,14 @@
     {
         public static ISession Instance => new NullSession();
 
-        public Guid? GetAgentId()
-        {
-            return null;
-        }
+        public Role Role => throw new NotImplementedException();
 
-        public string GetApplication()
-        {
-            return null;
-        }
+        public string Application => throw new NotImplementedException();
 
-        public Role GetRole()
-        {
-            return Role.SYSTEM;
-        }
+        public int? SiteId => throw new NotImplementedException();
 
-        public int? GetSiteId()
-        {
-            return null;
-        }
+        public Guid? UserId => throw new NotImplementedException();
 
-        public string GetIP()
-        {
-            return "";
-        }
+        public string IP => throw new NotImplementedException();
     }
 }
