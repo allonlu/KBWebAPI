@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Castle.Core;
+using Castle.MicroKernel.Registration;
 using Comm100.Application.Services;
 using Comm100.Framework.Application.Interceptors;
 using Comm100.Framework.Authentication.Session;
@@ -15,12 +16,24 @@ namespace Comm100.Framework.Module
     [DependsOn(typeof(AutoMapperModule))]
     public class BaseApplicationModule : AbstractModule
     {
+        private string Name { get; set; }
+
+        public BaseApplicationModule(string name) {
+            this.Name = name;
+        }
+
         public override void Initialize()
         {
             this.Container.RegisterIfNot<ILogger, NLogger>();
             this.Container.RegisterIfNot<ISession, Session>(DependencyLifeStyle.Scoped);
-            this.Container.RegisterIfNot<IAuthorizationProvider, AuthorizationProvider>(DependencyLifeStyle.Scoped);
-            this.Container.RegisterIfNot<AppServiceInterceptor>(DependencyLifeStyle.Transient);
+
+            this.Container.Register(
+                    Component.For<AppServiceInterceptor>()
+                    .ImplementedBy(typeof(AppServiceInterceptor))
+                    .LifestyleTransient()
+                    .DependsOn(Dependency.OnValue("Application", this.Name))
+                );
+
             this.Container.RegisterAssembly<IAppService>(Assembly.GetAssembly(this.GetType()), configurer => {
                 _ = configurer.Named(configurer.Implementation.Name);
                 //// register ioc interceptor

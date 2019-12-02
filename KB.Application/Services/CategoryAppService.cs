@@ -23,15 +23,14 @@ namespace KB.Application.Categories.Service
             this._domainService = domainService;
         }
 
-        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.CATEGORY, AuditAction.DESTROY)]
         public void Delete(Guid id)
         {
             _domainService.Delete(id);
         }
 
-        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.CATEGORY, AuditAction.CREATE)]
         public CategoryDto Add(CategoryCreateDto dto)
         {
@@ -39,7 +38,7 @@ namespace KB.Application.Categories.Service
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(KBPermission.CATEGORY, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.CATEGORY, AuditAction.UPDATE)]
         public CategoryDto Update(CategoryUpdateDto dto)
         {
@@ -47,14 +46,12 @@ namespace KB.Application.Categories.Service
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(KBPermission.CATEGORY, AuthorizationType.READ)]
         public CategoryDto Get(Guid id)
         {
             Category category = _domainService.Get(id);
             return Mapper.Map<CategoryDto>(category);
         }
 
-        [Authorization(KBPermission.CATEGORY, AuthorizationType.READ)]
         public IEnumerable<CategoryDto> GetList()
         {
             IEnumerable<Category> list = _domainService.List();

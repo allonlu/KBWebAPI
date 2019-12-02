@@ -19,7 +19,9 @@
     <Folder Include="Account\Domain\" />
     <Folder Include="Auditing\" />
     <Folder Include="Auditing\Domain\" />
-    <Folder Include="Permission\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Enum\" />
+    <Folder Include="Authorization\RolePermission\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Enum.cs" />

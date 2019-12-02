@@ -8,15 +8,14 @@ namespace Comm100.Framework.Authorization
 {
     using System;
 
-    [AttributeUsage(AttributeTargets.Method, AllowMultiple = true)]
+    [AttributeUsage(AttributeTargets.Method, AllowMultiple = false)]
     public class AuthorizationAttribute:Attribute
     {
+        public string[] Permissions { get; private set; }
 
-        public Permission Permission { get; private set; }
-
-        public AuthorizationAttribute(string source, AuthorizationType type)
+        public AuthorizationAttribute(params string[] permissions)
         {
-            this.Permission = new Permission(source, type);
+            this.Permissions = permissions;
         }
     }
 }

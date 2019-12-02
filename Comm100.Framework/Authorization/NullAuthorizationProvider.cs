@@ -12,9 +12,9 @@ namespace Comm100.Framework.Authorization
     {
         public static NullAuthorizationProvider Instance => new NullAuthorizationProvider();
 
-        public bool IsGranted(IEnumerable<Permission> permissions)
+        public bool IsGranted(string application, string[] permissions)
         {
-            return false;
+            return true;
         }
     }
 }

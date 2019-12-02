@@ -1,21 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
 using Comm100.Framework.Authentication;
 using Comm100.Framework.Authentication.Session;
 using Comm100.Framework.Authorization;
+using Comm100.Framework.Exception;
+using Comm100.Public.Authorization.RolePermission;
 
-namespace Comm100.Public.Permission
+namespace Comm100.Public.Authorization
 {
-    public class PermissionProvider : IPermissionProvider
+    public class AuthorizationProvider : IAuthorizationProvider
     {
-        private BasePermission _permission;
-        public PermissionProvider(ISession session)
+        private BaseRolePermission _permission;
+
+        public AuthorizationProvider(ISession session)
         {
             if (session.Role == Role.SYSTEM)
             {
                 this._permission = new FullPermission();
             } else if (session.Role == Role.APPLICATION) {
-                // TODO
-                // create permission base on application scope
+                this._permission = new ApplicationRolePermission(session.Application);
             } else if (session.Role == Role.AGENT)
             {
                 this._permission = new AgentPermission(session.SiteId.GetValueOrDefault(), session.UserId.GetValueOrDefault());
@@ -24,23 +27,24 @@ namespace Comm100.Public.Permission
                 this._permission = new AnonymousPermission();
             } else if (session.Role == Role.PARTNER)
             {
-                //TODO
-                // create permission base on partner
+                this._permission = new PartnerRolePermission(session.UserId.GetValueOrDefault());
             } else
             {
                 this._permission = new NoPermission();
             }
-            
         }
 
-        public bool Read(string source)
+        public bool IsGranted(string application, string[] permissions)
         {
-            return _permission.HavePermissionRead(source);
-        }
+            foreach(string permission in permissions)
+            {
+                if (!this._permission.HavePermission(application, permission))
+                {
+                    throw new NoPermissionException(permission);
+                }
+            }
 
-        public bool Write(string source)
-        {
-            return _permission.HavePermissionWrite(source);
+            return true;
         }
     }
 }

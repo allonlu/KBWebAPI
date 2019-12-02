@@ -1,9 +1,10 @@
-﻿namespace Comm100.Framework.Authorization
-{
-    using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
+namespace Comm100.Framework.Authorization
+{
     public interface IAuthorizationProvider
     {
-        bool IsGranted(IEnumerable<Permission> permissions);
+        bool IsGranted(string application, string[] permissions);
     }
 }

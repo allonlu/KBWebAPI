@@ -1,15 +1,7 @@
 ﻿using System;
 using System.Reflection;
-using Castle.Core;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
-using Comm100.Application.Services;
-using Comm100.Framework.Application.Interceptors;
-using Comm100.Framework.Authentication.Session;
-using Comm100.Framework.Authorization;
-using Comm100.Framework.Domain.Interceptors;
-using Comm100.Framework.Domain.Services;
-using Comm100.Framework.Logging;
 using Comm100.Framework.Module;
 
 namespace Comm100.Framework.Extension
@@ -51,42 +43,31 @@ namespace Comm100.Framework.Extension
             container.Register(ApplyLifestyle(Component.For(type).ImplementedBy(type), lifeStyle));
         }
 
-        public static bool RegisterIfNot<T>(this IWindsorContainer container, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+        public static void RegisterIfNot<T>(this IWindsorContainer container, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
             where T : class
         {
-            if (container.IsRegistered<T>())
+            if (!container.IsRegistered<T>())
             {
-                return false;
+                container.Register<T>(lifeStyle);
             }
-
-            container.Register<T>(lifeStyle);
-
-            return true;
         }
 
-        public static bool RegisterIfNot(this IWindsorContainer container, Type type, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+        public static void RegisterIfNot(this IWindsorContainer container, Type type, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
         {
-            if (container.IsRegistered(type))
+            if (!container.IsRegistered(type))
             {
-                return false;
+                container.Register(type, lifeStyle);
             }
-
-            container.Register(type, lifeStyle);
-            return true;
         }
 
-        public static bool RegisterIfNot<TType, TImpl>(this IWindsorContainer container, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+        public static void RegisterIfNot<TType, TImpl>(this IWindsorContainer container, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
             where TType : class
             where TImpl : class, TType
         {
-            if (container.IsRegistered<TType>())
+            if (!container.IsRegistered<TType>())
             {
-                return false;
+                container.Register<TType, TImpl>(lifeStyle);
             }
-
-            container.Register<TType, TImpl>(lifeStyle);
-
-            return true;
         }
 
         private static ComponentRegistration<T> ApplyLifestyle<T>(ComponentRegistration<T> registration, DependencyLifeStyle lifeStyle)

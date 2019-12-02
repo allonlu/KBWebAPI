@@ -28,6 +28,9 @@ namespace Comm100.Framework.Application.Interceptors
         public IAuditLogger AuditLogger { get; set; }
 
         private IUnitOfWorkManager _unitOfWorkMananger;
+
+        private string Application { get; set; }
+
         public AppServiceInterceptor(IUnitOfWorkManager unitOfWorkManager, IAuthorizationProvider provider)
         {
             _unitOfWorkMananger = unitOfWorkManager;
@@ -64,13 +67,14 @@ namespace Comm100.Framework.Application.Interceptors
         private void CheckPermission(IInvocation invocation)
         {
             var attrs = invocation.GetAttributes<AuthorizationAttribute>();
-            if (attrs.Length == 0)  // permission defined
+            if (attrs.Length == 0)  // permission undefined
             {
                 return;
             }
-            var permissions = attrs.Select(att => att.Permission).ToList();
 
-            if (!AuthorizationProvider.IsGranted(permissions))
+            var permissions = attrs[0].Permissions;
+
+            if (!AuthorizationProvider.IsGranted(this.Application, permissions))
             {
                 throw new AuthorizationException();
             }

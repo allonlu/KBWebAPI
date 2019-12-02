@@ -58,5 +58,8 @@
     <Compile Remove="Audit.cs" />
     <Compile Remove="Authentication\JwtCookieAuthenticationOptions.cs" />
     <Compile Remove="Authentication\JwtAuthenticationMiddleware.cs" />
+    <Compile Remove="Authorization\AuthorizationType.cs" />
+    <Compile Remove="Authorization\AuthorizationProvider.cs" />
+    <Compile Remove="Authorization\Permission.cs" />
   </ItemGroup>
 </Project>

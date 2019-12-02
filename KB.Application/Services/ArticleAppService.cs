@@ -47,7 +47,7 @@ namespace KB.Application.Articles
             //this.Mapper = configuration.CreateMapper();
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.CREATE)]
         [Transaction(IsolationLevel.Serializable)]
         public ArticleDto Add(ArticleCreateDto dto)
@@ -56,14 +56,14 @@ namespace KB.Application.Articles
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.UPDATE)]
         public void Publish(Guid id)
         {
             _articleDomainService.Publish(id);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Transaction(IsolationLevel.Serializable)]
         [Audit(KBEntity.ARTICLE, AuditAction.UPDATE)]
         public ArticleDto Update(ArticleUpdateDto dto)
@@ -72,14 +72,13 @@ namespace KB.Application.Articles
             return Mapper.Map<ArticleDto>(article);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.DESTROY)]
         public void Delete(Guid id)
         {
             Article article = _articleDomainService.Delete(id);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.READ)]
         public ArticleWithIncludeDto Get(Guid id, string include)
         {
             Article article = _articleDomainService.Get(id);
@@ -116,7 +115,6 @@ namespace KB.Application.Articles
             }
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.READ)]
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
             var spec = new ArticleFilterSpecification(dto.CategoryId, dto.TagId, dto.Keywords);
@@ -134,7 +132,7 @@ namespace KB.Application.Articles
             return new PagedListDto<ArticleWithIncludeDto>(count, list.Select(e => Mapper.Map<ArticleWithIncludeDto>(e)));
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto AddTags(Guid id, ArticleTagsDto dto)
         {
@@ -142,7 +140,7 @@ namespace KB.Application.Articles
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto DeleteTags(Guid id, ArticleTagsDto dto)
         {
@@ -150,14 +148,13 @@ namespace KB.Application.Articles
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.READ)]
         public ArticleTagsDto GetTags(Guid id)
         {
             Article article = _articleDomainService.Get(id);
             return Mapper.Map<ArticleTagsDto>(article);
         }
 
-        [Authorization(KBPermission.ARTICLE, AuthorizationType.WRITE)]
+        [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.UPDATE)]
         public ArticleTagsDto SetTags(Guid id, ArticleTagsDto dto)
         {
