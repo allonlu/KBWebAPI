@@ -1,9 +1,11 @@
 ﻿using Comm100.Domain.Entity;
+using Comm100.Framework.Constants;
 using Comm100.Framework.Domain.Entity;
 using Comm100.Framework.Extension;
 using Comm100.Public;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KB.Domain.Entities
@@ -15,8 +17,10 @@ namespace KB.Domain.Entities
         PUBLISHED,
     }
 
+    [Table("t_KB_Article" + DBConstants.MULTI_TENANT_TABLE_PLACEHOLDER)]
     public class Article : ISoftDelete
     {
+        [Key]
         public Guid Id { get; set; }
 
         public string Title { get; set; }
@@ -41,6 +45,7 @@ namespace KB.Domain.Entities
 
         public DateTime LastModifiedTime { get; set; }
 
+        [ForeignKey("ArticleId")]
         public virtual ICollection<ArticleTag> Tags { get; set; }
 
         public bool IsDeleted { get; set; }

@@ -11,9 +11,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityConfigurations\" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Remove="InfrastructureIocFacility.cs" />
+    <Compile Remove="EntityConfigurations\CategoryEntityTypeConfiguration.cs" />
+    <Compile Remove="EntityConfigurations\ArticleEntityTypeConfiguration.cs" />
+    <Compile Remove="EntityConfigurations\ArticleTagEntityTypeConfiguration.cs" />
+    <Compile Remove="EntityConfigurations\TagEntityTypeConfiguration.cs" />
   </ItemGroup>
 </Project>

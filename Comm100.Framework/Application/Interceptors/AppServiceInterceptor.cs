@@ -28,11 +28,11 @@ namespace Comm100.Framework.Application.Interceptors
         public IAuditLogger AuditLogger { get; set; }
 
         private IUnitOfWorkManager _unitOfWorkMananger;
-        public AppServiceInterceptor(IUnitOfWorkManager unitOfWorkManager)
+        public AppServiceInterceptor(IUnitOfWorkManager unitOfWorkManager, IAuthorizationProvider provider)
         {
             _unitOfWorkMananger = unitOfWorkManager;
+            this.AuthorizationProvider = provider;
             Logger = NullLogger.Instance;
-            AuthorizationProvider = NullAuthorizationProvider.Instance;
             Session = NullSession.Instance;
         }
 

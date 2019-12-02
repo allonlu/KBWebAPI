@@ -51,23 +51,34 @@ namespace KB.WebAPI
 
             var key = Encoding.ASCII.GetBytes("comm100-secret");
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = true;
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
+            services
+                .AddAuthentication(options =>
+                    {
+                        options.DefaultAuthenticateScheme = "jwt";
+                        options.DefaultScheme = "jwt";
+                    })
+                .AddScheme<JwtBearerAuthenticationOptions, JwtAuthenticationHandler>("jwt", options =>
+                    {
+                        options.Audience = "kb";
+                    });
+
+            //services.AddAuthentication(options =>
+            //{
+            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //})
+
+            //.AddJwtBearer(x =>
+            //{
+            //    x.RequireHttpsMetadata = true;
+            //    x.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(key),
+            //        ValidateIssuer = false,
+            //        ValidateAudience = false
+            //    };
+            //});
 
             services.Configure<CookiePolicyOptions>(options => {
                 options.CheckConsentNeeded = context => true;
@@ -113,9 +124,9 @@ namespace KB.WebAPI
 
             app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseAuthentication();
 
-            app.UseJwtAuthentication(); // jwt authentication
+            app.UseRouting();
 
             app.UseAuthorization();
 

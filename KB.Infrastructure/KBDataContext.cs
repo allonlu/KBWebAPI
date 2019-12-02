@@ -1,7 +1,6 @@
 using Comm100.Framework.Infrastructure;
 using Comm100.Framework.Tenants;
 using KB.Domain.Entities;
-using KB.Infrastructure.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -22,10 +21,7 @@ namespace KB.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new ArticleEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new ArticleTagEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new CategoryEntityTypeConfiguration());
-            modelBuilder.ApplyConfiguration(new TagEntityTypeConfiguration());
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

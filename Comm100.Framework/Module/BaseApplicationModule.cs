@@ -17,7 +17,6 @@ namespace Comm100.Framework.Module
     {
         public override void Initialize()
         {
-
             this.Container.RegisterIfNot<ILogger, NLogger>();
             this.Container.RegisterIfNot<ISession, Session>(DependencyLifeStyle.Scoped);
             this.Container.RegisterIfNot<IAuthorizationProvider, AuthorizationProvider>(DependencyLifeStyle.Scoped);

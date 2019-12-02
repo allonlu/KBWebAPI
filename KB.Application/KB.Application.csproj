@@ -11,5 +11,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="EntityTypes.cs" />
+    <Compile Remove="Dto\CategoryMapperProfile.cs" />
   </ItemGroup>
 </Project>

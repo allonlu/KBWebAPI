@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Comm100.Framework.AutoMapper;
 
 namespace KB.Domain.Entities
 {
-    [AutoMapTo(typeof(Guid))]
+    [Table("t_KB_ArticleTag")]
     public class ArticleTag
     {
+        [Key]
+        public Guid Id { get; set; }
+
         public Guid ArticleId { get; set; }
 
+        [AutoMapKey]
         public Guid TagId { get; set; }
-
     }
 
     public class ArticleTagEqualityComparer : IEqualityComparer<ArticleTag>

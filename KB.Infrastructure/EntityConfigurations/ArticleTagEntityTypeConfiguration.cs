@@ -11,8 +11,8 @@ namespace KB.Infrastructure.EntityConfigurations
         public override void Configure(EntityTypeBuilder<ArticleTag> config)
         {
             config.ToTable("t_KB_ArticleTag");
+
             config.HasKey(t => new { t.ArticleId, t.TagId });
-            config.HasIndex(t => new { t.ArticleId, t.TagId }).IsUnique();
 
             base.Configure(config);
         }
