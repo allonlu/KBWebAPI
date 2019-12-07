@@ -10,7 +10,6 @@ namespace Comm100.Framework.Infrastructure
     using Comm100.Framework.Domain.Entity;
     using Comm100.Framework.Domain.Repository;
     using Comm100.Framework.Domain.Specifications;
-    using Comm100.Framework.Tenants;
     using Microsoft.EntityFrameworkCore;
     using System.Collections.Generic;
     using System.Linq;

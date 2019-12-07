@@ -2,6 +2,6 @@
 {
     public class DBConstants
     {
-        public const string MULTI_TENANT_TABLE_PLACEHOLDER = "{#TENANT_ID}";
+        public const string TABLE_SEPERATE_PLACEHOLDER = "{#SITE_ID}";
     }
 }

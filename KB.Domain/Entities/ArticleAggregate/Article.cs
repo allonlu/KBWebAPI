@@ -7,6 +7,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace KB.Domain.Entities
 {
@@ -17,7 +19,7 @@ namespace KB.Domain.Entities
         PUBLISHED,
     }
 
-    [Table("t_KB_Article" + DBConstants.MULTI_TENANT_TABLE_PLACEHOLDER)]
+    [TableSeparate("t_KB_Article")]
     public class Article : ISoftDelete
     {
         [Key]
@@ -31,14 +33,7 @@ namespace KB.Domain.Entities
 
         public Guid CategoryId { get; set; }
 
-        [Column("Status")]
-        public string StatusString
-        {
-            get { return Status.ToString(); }
-            private set { Status = value.ParseEnum<ArticleStatus>();  }
-        }
-
-        [NotMapped]
+        [EnumToString]
         public ArticleStatus Status { get; set; }
 
         public DateTime CreatedTime { get; set; }

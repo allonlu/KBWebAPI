@@ -9,7 +9,7 @@
 
     public class Comm100ExceptionFilter : IExceptionFilter
     {
-        public static ILogger Logger { get; set; }
+        public ILogger Logger { get; set; }
 
         public void OnException(ExceptionContext context)
         {

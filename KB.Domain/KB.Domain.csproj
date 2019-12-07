@@ -14,4 +14,7 @@
     <Folder Include="Entities\" />
     <Folder Include="Entities\ArticleAggregate\" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="4.7.0" />
+  </ItemGroup>
 </Project>

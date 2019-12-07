@@ -8,10 +8,10 @@ namespace Comm100.Framework.Authentication
 {
     public enum Role
     {
-        SYSTEM = 1,
-        APPLICATION = 2,
-        AGENT = 3,
-        ANONYMOUS = 4,
-        PARTNER = 100,
+        SYSTEM,
+        APPLICATION,
+        AGENT,
+        PARTNER,
+        ANONYMOUS,
     }
 }

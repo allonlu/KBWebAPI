@@ -20,6 +20,8 @@ using System.Text;
 using Comm100.Framework.Authentication;
 using Comm100.Framework.Module;
 using Comm100.Framework.Web;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace KB.WebAPI
 {
@@ -51,8 +53,7 @@ namespace KB.WebAPI
 
             var key = Encoding.ASCII.GetBytes("comm100-secret");
 
-            services
-                .AddAuthentication(options =>
+            services.AddAuthentication(options =>
                     {
                         options.DefaultAuthenticateScheme = "jwt";
                         options.DefaultScheme = "jwt";
@@ -61,24 +62,6 @@ namespace KB.WebAPI
                     {
                         options.Audience = "kb";
                     });
-
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-
-            //.AddJwtBearer(x =>
-            //{
-            //    x.RequireHttpsMetadata = true;
-            //    x.TokenValidationParameters = new TokenValidationParameters
-            //    {
-            //        ValidateIssuerSigningKey = true,
-            //        IssuerSigningKey = new SymmetricSecurityKey(key),
-            //        ValidateIssuer = false,
-            //        ValidateAudience = false
-            //    };
-            //});
 
             services.Configure<CookiePolicyOptions>(options => {
                 options.CheckConsentNeeded = context => true;
@@ -96,9 +79,10 @@ namespace KB.WebAPI
             {
                 //options.Filters.Add(typeof(Comm100ExceptionFilter));
                 options.MaxValidationDepth = 200;
-            }).AddJsonOptions(option =>
+            }).AddJsonOptions(options =>
             {
-                option.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
+                options.JsonSerializerOptions.IgnoreNullValues = true;
             }).SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
             services.AddHttpContextAccessor();

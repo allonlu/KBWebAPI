@@ -1,7 +1,8 @@
 using Comm100.Framework.Infrastructure;
-using Comm100.Framework.Tenants;
+using Comm100.Framework.Tenancy;
 using KB.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.Configuration;
 
 namespace KB.Infrastructure
@@ -9,8 +10,8 @@ namespace KB.Infrastructure
     public class KBDataContext : BaseDBContext
     {
 
-        public KBDataContext(IConfiguration configuration, ITenantProvider provider)
-            : base(configuration, provider)
+        public KBDataContext(IConfiguration configuration, ITenancyResolver resolver)
+            : base(configuration, resolver)
         {
         }
 

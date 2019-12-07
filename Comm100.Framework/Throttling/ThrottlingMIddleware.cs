@@ -2,7 +2,7 @@
 {
     using Microsoft.AspNetCore.Builder;
 
-    public static class ThrottlingMIddleware
+    public static class ThrottlingMiddleware
     {
         public static void UseThrottling(this IApplicationBuilder app)
         {

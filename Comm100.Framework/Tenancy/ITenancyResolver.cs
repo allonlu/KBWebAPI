@@ -4,9 +4,9 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.Tenants
+namespace Comm100.Framework.Tenancy
 {
-    public interface ITenantProvider
+    public interface ITenancyResolver
     {
         Tenant GetTenant();
     }

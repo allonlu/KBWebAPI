@@ -4,32 +4,34 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.Web
+namespace Comm100.Framework.Tenancy
 {
-    using Comm100.Framework.Tenants;
     using Microsoft.AspNetCore.Http;
     using System;
+    using System.Collections.Concurrent;
 
-    public class TenantProvider : ITenantProvider
+    public class TenancyResolver : ITenancyResolver
     {
-        private Tenant _tenant;
+        private static ConcurrentDictionary<int, Tenant> tenants = new ConcurrentDictionary<int, Tenant>(); // cache tenant config
 
-        public TenantProvider(IHttpContextAccessor accessor)
+        private Tenant _tenant = null;
+
+        public TenancyResolver(IHttpContextAccessor accessor)
         {
             var host = accessor.HttpContext.Request.Host.Value;
 
             // get from database by host if use subdomain, if complete the site database merge, also need get the database name from the database
             var id = Convert.ToInt32(accessor.HttpContext.Request.Query["siteId"]);
-            
-            this._tenant = new Tenant()
+
+            this._tenant = tenants.GetOrAdd(id, new Tenant()
             {
                 Id = id,
                 DatabaseName = GetDbName(id),
                 Host = host
-            };
+            });
         }
 
-        private string GetDbName(int siteId)
+        private string GetDbName(int siteId)    // read from db
         {
             if(siteId > 0)
             {

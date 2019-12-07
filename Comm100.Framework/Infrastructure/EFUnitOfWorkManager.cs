@@ -1,8 +1,6 @@
 ﻿namespace Comm100.Framework.Infrastructure
 {
     using Comm100.Domain.Uow;
-    using Comm100.Framework.Tenants;
-    using Microsoft.EntityFrameworkCore;
     using System.Transactions;
 
     public class EFUnitOfWorkManager : IUnitOfWorkManager

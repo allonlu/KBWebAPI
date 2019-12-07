@@ -7,15 +7,15 @@
 namespace Comm100.Framework.Infrastructure
 {
     using System.Data.Common;
-    using Comm100.Framework.Tenants;
+    using Comm100.Framework.Tenancy;
     using Microsoft.EntityFrameworkCore.Diagnostics;
     using Comm100.Framework.Constants;
 
-    public class MultiTenantTableCommandInterceptor : DbCommandInterceptor
+    public class TenancyTableSeparateCommandInterceptor : DbCommandInterceptor
     {
         private readonly Tenant _tenant;
 
-        public MultiTenantTableCommandInterceptor(Tenant tenant)
+        public TenancyTableSeparateCommandInterceptor(Tenant tenant)
         {
             this._tenant = tenant;
         }
@@ -24,7 +24,7 @@ namespace Comm100.Framework.Infrastructure
         {
             int tenantId = _tenant.Id;
 
-            return commandText.Replace(DBConstants.MULTI_TENANT_TABLE_PLACEHOLDER, tenantId.ToString());
+            return commandText.Replace(DBConstants.TABLE_SEPERATE_PLACEHOLDER, tenantId.ToString());
         }
 
         public override InterceptionResult<int> NonQueryExecuting(DbCommand command, CommandEventData eventData, InterceptionResult<int> result)

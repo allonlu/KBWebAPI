@@ -1,6 +1,6 @@
 ﻿using System;
 using Comm100.Framework.Module;
-using Comm100.Framework.Tenants;
+using Comm100.Framework.Tenancy;
 using Comm100.Framework.Web;
 using Comm100.Framework.Extension;
 using KB.Application;
@@ -15,7 +15,7 @@ namespace KB.WebAPI
         public override void Initialize()
         {
             this.Container.Register<IHttpContextAccessor, HttpContextAccessor>();
-            this.Container.Register<ITenantProvider, TenantProvider>(DependencyLifeStyle.Scoped);
+            this.Container.Register<ITenancyResolver, TenancyResolver>(DependencyLifeStyle.Scoped);
         }
     }
 }
