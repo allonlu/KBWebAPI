@@ -18,6 +18,9 @@ namespace KB.Application.Dto
         [MaxLength(StringLength.MaxLength_ArticleTitle)]
         public string Title { get; set; }
 
+        //[Email]
+        //public string Email { get; set; }
+
         public string Content { get; set; }
     }
 }

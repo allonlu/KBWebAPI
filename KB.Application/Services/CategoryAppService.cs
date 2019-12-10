@@ -14,7 +14,7 @@ using System.Text;
 
 namespace KB.Application.Categories.Service
 {
-    public class CategoryAppService : AppServiceBase, ICategoryAppService
+    public class CategoryAppService : BaseAppService, ICategoryAppService
     {
         private ICategoryDomainService _domainService;
 

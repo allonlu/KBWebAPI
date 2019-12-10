@@ -3,11 +3,10 @@
     using AutoMapper;
     using Castle.Core.Logging;
     using Comm100.Framework.Authentication.Session;
-    using Comm100.Framework.Authorization;
 
-    public abstract class AppServiceBase: IAppService
+    public abstract class BaseAppService: IAppService
     {
-        public AppServiceBase()
+        public BaseAppService()
         {
             this.Session = NullSession.Instance;
             this.Logger = NullLogger.Instance;

@@ -19,7 +19,7 @@ using Comm100.Public.Audit;
 
 namespace KB.Application.Articles
 {
-    public class ArticleAppService : AppServiceBase, IArticleAppService
+    public class ArticleAppService : BaseAppService, IArticleAppService
     {
         private readonly IArticleDomainService _articleDomainService;
         private readonly ICategoryDomainService _categoryDomainService;
@@ -35,17 +35,8 @@ namespace KB.Application.Articles
             this._categoryDomainService = categoryDomainService;
             this._tagDomainService = tagDomainService;
             this._agentDomainService = agentDomainService;
-
-            //MapperConfiguration configuration = new MapperConfiguration(config => {
-
-            //    // because tags should be included, and if not include we should not return a empty array []
-            //    config.AllowNullCollections = true; 
-
-            //    config.CreateMap<ArticleTag, Guid>().ConvertUsing(t => t.TagId);
-            //});
-
-            //this.Mapper = configuration.CreateMapper();
         }
+
 
         [Authorization(KBPermission.MANAGE_ARTICLES)]
         [Audit(KBEntity.ARTICLE, AuditAction.CREATE)]
@@ -118,14 +109,19 @@ namespace KB.Application.Articles
         public PagedListDto<ArticleWithIncludeDto> GetList(ArticleQueryDto dto, string include, Paging paging)
         {
             var spec = new ArticleFilterSpecification(dto.CategoryId, dto.TagId, dto.Keywords);
+
             int count = _articleDomainService.Count(spec);
+
             spec.ApplyPaging(paging);
+
             var list = _articleDomainService.List(spec);
 
             var listIncludes = list.Select(e =>
             {
                 ArticleWithIncludeDto toDto = Mapper.Map<ArticleWithIncludeDto>(e);
+
                 HandleInclude(toDto, include);
+
                 return toDto;
             });
 

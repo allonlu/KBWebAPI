@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using Castle.Core.Logging;
 using Castle.Windsor;
-using Comm100.Framework.Exception;
+using Comm100.Framework.Exceptions;
 using Comm100.Framework.Extension;
 
 namespace Comm100.Framework.Module

@@ -2,8 +2,6 @@
 using KB.Domain.Entities;
 using System.Linq;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Comm100.Framework;
 
 namespace KB.Domain.Specificaitons
@@ -18,9 +16,10 @@ namespace KB.Domain.Specificaitons
         }
 
         public ArticleFilterSpecification(Guid? categoryId, Guid? tagId, string keywords)
-            : base(i => (!categoryId.HasValue || i.CategoryId == categoryId) &&
-                 (tagId.HasValue || i.Tags.Any(t => t.TagId == tagId)) &&
-                 (string.IsNullOrEmpty(keywords) || i.Content.Contains(keywords) || i.Title.Contains(keywords)))
+            : base(article =>
+                (!categoryId.HasValue || article.CategoryId == categoryId) &&
+                (tagId.HasValue || article.Tags.Any(t => t.TagId == tagId)) &&
+                (string.IsNullOrEmpty(keywords) || article.Content.Contains(keywords) || article.Title.Contains(keywords)))
         {
         }
 

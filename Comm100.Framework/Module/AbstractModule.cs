@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Castle.Windsor;
-using Comm100.Framework.Exception;
+using Comm100.Framework.Exceptions;
 using Comm100.Framework.Extension;
 using Comm100.Framework.Logging;
 

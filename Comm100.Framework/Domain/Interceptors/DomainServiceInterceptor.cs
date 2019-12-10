@@ -8,7 +8,7 @@ namespace Comm100.Framework.Domain.Interceptors
 {
     using Castle.DynamicProxy;
     using Comm100.Domain.Uow;
-    using Comm100.Framework.Exception;
+    using Comm100.Framework.Exceptions;
     using Comm100.Framework.Extension;
 
     public class DomainServiceInterceptor : IInterceptor

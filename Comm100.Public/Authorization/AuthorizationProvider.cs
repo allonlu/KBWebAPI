@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Comm100.Framework.Authentication;
 using Comm100.Framework.Authentication.Session;
 using Comm100.Framework.Authorization;
-using Comm100.Framework.Exception;
+using Comm100.Framework.Exceptions;
 using Comm100.Public.Authorization.RolePermission;
 
 namespace Comm100.Public.Authorization
@@ -40,7 +40,7 @@ namespace Comm100.Public.Authorization
             {
                 if (!this._permission.HavePermission(application, permission))
                 {
-                    throw new NoPermissionException(permission);
+                    throw new AuthorizationException(permission);
                 }
             }
 

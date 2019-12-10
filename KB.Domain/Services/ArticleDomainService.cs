@@ -25,6 +25,10 @@ namespace KB.Domain.Services
 
         public Article Create(Article entity)
         {
+            //if (_repository.Exists(article => article.name == entity.name))
+            //{
+            //    throw Exception("")
+            //}
             return _repository.Create(entity);
         }
 

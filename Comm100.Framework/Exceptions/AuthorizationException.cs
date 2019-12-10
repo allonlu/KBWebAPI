@@ -4,11 +4,20 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace Comm100.Framework.Exception
+using System.Net;
+
+namespace Comm100.Framework.Exceptions
 {
+    [HttpStatus(HttpStatusCode.Forbidden)]
     public class AuthorizationException : BaseException
     {
-        public AuthorizationException():base(100102, ErrorMessages.E100102)
+        public AuthorizationException()
+            : base(ErrorMessages.NO_SUFFICIENT_PERMISSION)
+        {
+        }
+
+        public AuthorizationException(string permission)
+            : base(string.Format(ErrorMessages.NO_SUFFICIENT_PERMISSION, permission))
         {
         }
     }

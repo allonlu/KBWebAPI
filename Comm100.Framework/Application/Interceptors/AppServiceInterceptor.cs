@@ -11,7 +11,7 @@ namespace Comm100.Framework.Application.Interceptors
     using Comm100.Framework.Auditing;
     using Comm100.Framework.Authentication.Session;
     using Comm100.Framework.Authorization;
-    using Comm100.Framework.Exception;
+    using Comm100.Framework.Exceptions;
     using Comm100.Framework.Extension;
     using Comm100.Framework.Logging;
     using System;

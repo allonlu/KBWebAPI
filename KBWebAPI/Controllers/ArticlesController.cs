@@ -15,6 +15,7 @@ namespace KB.WebAPI.Controllers
     {
 
         private readonly IArticleAppService _app;
+
         public ArticlesController(IArticleAppService app)
         {
             this._app = app;
@@ -56,6 +57,11 @@ namespace KB.WebAPI.Controllers
             return NoContent();
         }
 
+        public IActionResult Delete([FromBody] Guid[] ids)
+        {
+            return NoContent();
+        }
+
         [HttpPost("{id}:publish")]
         public ActionResult<ArticleDto> Publish([FromRoute] Guid id)
         {
@@ -90,6 +96,15 @@ namespace KB.WebAPI.Controllers
         {
             var tags = _app.DeleteTags(id, dto);
             return Ok(tags);
+        }
+
+        [HttpPost(":import")]
+        public IActionResult Import()//File file)
+        {
+            // convert xml file to object
+            // validate object
+            //_app.Import(articles) // async
+            return NoContent();
         }
     }
 }

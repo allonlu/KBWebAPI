@@ -22,7 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Domain\Specifications\" />
-    <Folder Include="Exception\" />
+    <Folder Include="Exceptions\" />
     <Folder Include="Authentication\" />
     <Folder Include="Authorization\" />
     <Folder Include="Authentication\Session\" />
@@ -37,6 +37,8 @@
     <Folder Include="AutoMapper\" />
     <Folder Include="Reflection\" />
     <Folder Include="Auditing\" />
+    <Folder Include="Caching\" />
+    <Folder Include="Caching\Memory\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Domain\Entity\Comparers\EntityEqualityComparer.cs" />
@@ -62,5 +64,6 @@
     <Compile Remove="Authorization\AuthorizationProvider.cs" />
     <Compile Remove="Authorization\Permission.cs" />
     <Compile Remove="Infrastructure\CEntityTypeConfiguration.cs" />
+    <Compile Remove="Exception\NoPermissionException.cs" />
   </ItemGroup>
 </Project>
