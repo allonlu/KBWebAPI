@@ -26,9 +26,12 @@ namespace Comm100.Framework.Infrastructure
             _dbContext = dbContext;
             this.options = options;
 
-            var databaseName = dbContext.Tenant.DatabaseName;
+            if (dbContext.IsSupportMultiTenancy)
+            {
+                var databaseName = dbContext.Tenant.DatabaseName;
 
-            ChangeDatabase(databaseName);
+                ChangeDatabase(databaseName);
+            }
         }
 
         public event EventHandler Disposed;

@@ -20,7 +20,7 @@ namespace Comm100.Framework.Infrastructure
     {
         private string _connectString { get; set; }
 
-        private IConfiguration _configuration;
+        public virtual bool IsSupportMultiTenancy => true;
 
         public Tenant Tenant { get; private set; }
 
@@ -35,11 +35,15 @@ namespace Comm100.Framework.Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder
-                .UseSqlServer(_connectString)
-                .AddInterceptors(new TenancyTableSeparateCommandInterceptor(Tenant));
-
-            
+            if (this.IsSupportMultiTenancy)
+            {
+                optionsBuilder
+                    .UseSqlServer(_connectString)
+                    .AddInterceptors(new TenancyTableSeparateCommandInterceptor(Tenant));
+            } else
+            {
+                optionsBuilder.UseSqlServer(_connectString);
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

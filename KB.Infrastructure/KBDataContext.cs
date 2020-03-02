@@ -10,6 +10,8 @@ namespace KB.Infrastructure
     public class KBDataContext : BaseDBContext
     {
 
+        public override bool IsSupportMultiTenancy => false;
+
         public KBDataContext(IConfiguration configuration, ITenancyResolver resolver)
             : base(configuration, resolver)
         {

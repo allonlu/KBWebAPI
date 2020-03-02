@@ -78,7 +78,8 @@ namespace Comm100.Framework.Infrastructure
         {
             var query = _dbContext.Set<TEntity>().AsQueryable();
 
-            if (typeof(IMultiSite).IsAssignableFrom(typeof(TEntity)))
+            if (_dbContext.IsSupportMultiTenancy
+                && typeof(IMultiSite).IsAssignableFrom(typeof(TEntity)))
             {
                 query = query.Where(t => ((IMultiSite)t).SiteId == _dbContext.Tenant.Id);
             }
