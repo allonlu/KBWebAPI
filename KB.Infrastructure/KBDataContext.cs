@@ -20,6 +20,14 @@ namespace KB.Infrastructure
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .UseCosmos("https://channelapp.documents.azure.com:443/",
+                "6wCQTCdd61Qi16D4Ll5STG0YFJZ8gEtd3zBUVuMxogJpoBhD4soLtDWCE8xtcSEDTOUrbhDEvgkJov8P2r2uNg==",
+                "MessageBufferingProxyDB");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

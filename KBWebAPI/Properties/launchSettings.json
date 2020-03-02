@@ -12,6 +12,7 @@
     "KB.WebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
+      "launchUrl": "api/articles",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

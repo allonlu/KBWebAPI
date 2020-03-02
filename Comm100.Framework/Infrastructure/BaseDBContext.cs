@@ -20,11 +20,15 @@ namespace Comm100.Framework.Infrastructure
     {
         private string _connectString { get; set; }
 
+        private IConfiguration _configuration;
+
         public Tenant Tenant { get; private set; }
 
         public BaseDBContext(IConfiguration configuration, ITenancyResolver resolver)
         {
             this._connectString = configuration.GetConnectionString("DefaultConnection");
+
+            //this._config = configuration;
 
             this.Tenant = resolver.GetTenant();
         }
@@ -34,6 +38,8 @@ namespace Comm100.Framework.Infrastructure
             optionsBuilder
                 .UseSqlServer(_connectString)
                 .AddInterceptors(new TenancyTableSeparateCommandInterceptor(Tenant));
+
+            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

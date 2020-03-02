@@ -51,7 +51,7 @@ namespace Comm100.Framework.Infrastructure
         public void Update(TEntity entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-            _dbContext.SaveChangesAsync();
+            _dbContext.SaveChanges();
         }
 
         public TEntity Get(TId id)

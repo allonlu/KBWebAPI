@@ -15,8 +15,8 @@ namespace Comm100.Framework.Infrastructure
     {
         public override void Initialize()
         {
-            this.Container.Register(typeof(IRepository<,>), typeof(EFRepository<,>), DependencyLifeStyle.Scoped);
-            this.Container.Register<IUnitOfWorkManager, EFUnitOfWorkManager>(DependencyLifeStyle.Scoped);
+            this.Container.RegisterIfNot(typeof(IRepository<,>), typeof(EFRepository<,>), DependencyLifeStyle.Scoped);
+            this.Container.RegisterIfNot<IUnitOfWorkManager, EFUnitOfWorkManager>(DependencyLifeStyle.Scoped);
         }
     }
 }

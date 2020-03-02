@@ -37,6 +37,14 @@ namespace Comm100.Framework.Extension
         {
             container.Register(ApplyLifestyle(Component.For<T>().ImplementedBy<T>(), lifeStyle));
         }
+        
+        public static void RegisterIfNot(this IWindsorContainer container, Type type, Type impl, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+        {
+            if (!container.IsRegistered(type))
+            {
+                container.Register(type, impl, lifeStyle);
+            }
+        }
 
         public static void Register(this IWindsorContainer container, Type type, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
         {
